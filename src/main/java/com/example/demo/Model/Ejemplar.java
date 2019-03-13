@@ -15,6 +15,7 @@ public class Ejemplar {
     private String ciudad;
     private Date fechaAdquisicion;
     private String conservacion;
+    @OneToOne
     private Proveedor proveedor;
     public Ejemplar(){
 

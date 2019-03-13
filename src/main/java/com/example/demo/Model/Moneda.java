@@ -12,6 +12,7 @@ public class Moneda {
     private String unidadMonetaria;
     private float diametro;
     private float peso;
+    @ElementCollection
     private List<String> metales;
     private String descripcion;
     public Moneda(){
