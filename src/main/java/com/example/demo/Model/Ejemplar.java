@@ -17,7 +17,19 @@ public class Ejemplar {
     private String conservacion;
     @OneToOne
     private Proveedor proveedor;
+    @OneToOne
+    private Moneda moneda;
     public Ejemplar(){
 
     }
+	public Ejemplar(String modelo, Date anio, String ciudad, Date fechaAdquisicion, String conservacion,
+			Proveedor proveedor,Moneda moneda) {
+		this.modelo = modelo;
+		this.anio = anio;
+		this.ciudad = ciudad;
+		this.fechaAdquisicion = fechaAdquisicion;
+		this.conservacion = conservacion;
+		this.proveedor = proveedor;
+		this.moneda=moneda;
+	}
 }
