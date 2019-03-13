@@ -15,7 +15,19 @@ public class Moneda {
     @ElementCollection
     private List<String> metales;
     private String descripcion;
+    private int numeroEjemplares;
     public Moneda(){
 
     }
+	public Moneda(double valorFacial, String unidadMonetaria, float diametro, float peso, List<String> metales,
+			String descripcion,int numeroEjemplares) {
+		this.valorFacial = valorFacial;
+		this.unidadMonetaria = unidadMonetaria;
+		this.diametro = diametro;
+		this.peso = peso;
+		this.metales = metales;
+		this.descripcion = descripcion;
+		this.numeroEjemplares=numeroEjemplares;
+	}
+    
 }
