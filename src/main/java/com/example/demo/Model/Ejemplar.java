@@ -17,6 +17,6 @@ public class Ejemplar {
     private String conservacion;
     private Proveedor proveedor;
     public Ejemplar(){
-        
+
     }
 }
