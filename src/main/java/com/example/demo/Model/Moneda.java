@@ -27,7 +27,7 @@ public class Moneda {
 		this.peso = peso;
 		this.metales = metales;
 		this.descripcion = descripcion;
-		this.numeroEjemplares=numeroEjemplares;
+		this.numeroEjemplares=numeroEjemplares;		
 	}
     
 }
