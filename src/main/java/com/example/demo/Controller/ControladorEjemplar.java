@@ -21,14 +21,15 @@ public class ControladorEjemplar {
 	private RepositorioEjemplar repE;
 	
 	@RequestMapping(value="/ejemplarAniadir")
-	public String ejemplarAniadir(Model model, Ejemplar ejemplar) {
+	public String ejemplarAniadir(Model model, Ejemplar ejemplar,Moneda moneda) {
+		ejemplar.setMoneda(moneda);
 		repE.save(ejemplar);
 		return "index";
 	}
 
 	@RequestMapping(value = "/ejemplarConsultar")
 	public String ejemplaConsultar(Model model, Ejemplar ejemplar) {
-		List<Ejemplar> e = repE.findByModeloAndAnioAndCiudadAndFechaAdquisicionAndConservacionAndProveedorAndMoneda(ejemplar.getModelo(),
+		List<Ejemplar> e = repE.findByAnioAndCiudadAndFechaAdquisicionAndConservacionAndProveedorAndMoneda(
 				ejemplar.getAnio(),ejemplar.getCiudad(),
 				ejemplar.getFechaAdquisicion(),ejemplar.getConservacion(),
 				ejemplar.getProveedor(),
@@ -38,4 +39,18 @@ public class ControladorEjemplar {
 		}
 		return "";
 	}
+	@RequestMapping(value = "/ejemplarModificar")
+	public String ejemplaModificar(Model model, Ejemplar ejemplar,Ejemplar ejemplarNuevo) {
+		List<Ejemplar> e = repE.findByModeloAndAnioAndCiudadAndFechaAdquisicionAndConservacionAndProveedorAndMoneda(ejemplar.getModelo(),
+				ejemplar.getAnio(),ejemplar.getCiudad(),
+				ejemplar.getFechaAdquisicion(),ejemplar.getConservacion(),
+				ejemplar.getProveedor(),
+				ejemplar.getMoneda());
+		if(!e.isEmpty()) {
+			repE.delete(e.get(0));
+			repE.save(ejemplarNuevo);
+		}
+		return "";
+	}
+	
 }

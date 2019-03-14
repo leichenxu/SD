@@ -12,7 +12,7 @@ import javax.persistence.OneToOne;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RepositorioEjemplar extends JpaRepository<Ejemplar,Long> {
-	List<Ejemplar> findByModeloAndAnioAndCiudadAndFechaAdquisicionAndConservacionAndProveedorAndMoneda(String modelo,Date anio,String ciudad,
+	List<Ejemplar> findByAnioAndCiudadAndFechaAdquisicionAndConservacionAndProveedorAndMoneda(String modelo,Date anio,String ciudad,
 			Date fechaAdquisicion,String conservacion,Proveedor proveedor,
 			Moneda moneda);
 }

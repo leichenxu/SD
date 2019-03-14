@@ -10,7 +10,6 @@ public class Ejemplar {
     @Id
     @GeneratedValue
     private Long id;
-    private String modelo;
     private Date anio;
     private String ciudad;
     private Date fechaAdquisicion;
@@ -22,9 +21,8 @@ public class Ejemplar {
     public Ejemplar(){
 
     }
-	public Ejemplar(String modelo, Date anio, String ciudad, Date fechaAdquisicion, String conservacion,
+	public Ejemplar(Date anio, String ciudad, Date fechaAdquisicion, String conservacion,
 			Proveedor proveedor,Moneda moneda) {
-		this.modelo = modelo;
 		this.anio = anio;
 		this.ciudad = ciudad;
 		this.fechaAdquisicion = fechaAdquisicion;
@@ -37,12 +35,6 @@ public class Ejemplar {
 	}
 	public void setId(Long id) {
 		this.id = id;
-	}
-	public String getModelo() {
-		return modelo;
-	}
-	public void setModelo(String modelo) {
-		this.modelo = modelo;
 	}
 	public Date getAnio() {
 		return anio;
