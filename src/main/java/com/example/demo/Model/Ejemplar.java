@@ -32,4 +32,53 @@ public class Ejemplar {
 		this.proveedor = proveedor;
 		this.moneda=moneda;
 	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getModelo() {
+		return modelo;
+	}
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+	public Date getAnio() {
+		return anio;
+	}
+	public void setAnio(Date anio) {
+		this.anio = anio;
+	}
+	public String getCiudad() {
+		return ciudad;
+	}
+	public void setCiudad(String ciudad) {
+		this.ciudad = ciudad;
+	}
+	public Date getFechaAdquisicion() {
+		return fechaAdquisicion;
+	}
+	public void setFechaAdquisicion(Date fechaAdquisicion) {
+		this.fechaAdquisicion = fechaAdquisicion;
+	}
+	public String getConservacion() {
+		return conservacion;
+	}
+	public void setConservacion(String conservacion) {
+		this.conservacion = conservacion;
+	}
+	public Proveedor getProveedor() {
+		return proveedor;
+	}
+	public void setProveedor(Proveedor proveedor) {
+		this.proveedor = proveedor;
+	}
+	public Moneda getMoneda() {
+		return moneda;
+	}
+	public void setMoneda(Moneda moneda) {
+		this.moneda = moneda;
+	}
+	
 }
