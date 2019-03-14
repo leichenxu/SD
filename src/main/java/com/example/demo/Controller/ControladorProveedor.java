@@ -13,7 +13,7 @@ public class ControladorProveedor {
 	@Autowired
 	private RepositorioProveedor repP;
 
-	@RequestMapping(value = "/moneda")
+	@RequestMapping(value = "/proveedorAniadir")
 	public String proveedor(Model model, Proveedor proveedor) {
 		repP.save(proveedor);
 		return "index";

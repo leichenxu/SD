@@ -14,8 +14,13 @@ public class ControladorEjemplar {
 	@Autowired
 	private RepositorioEjemplar repE;
 	
-	@RequestMapping(value="/ejemplar")
-	public String ejemplar(Model model,Ejemplar ejemplar) {
+	@RequestMapping(value="/ejemplarAniadir")
+	public String ejemplarAniadir(Model model,Ejemplar ejemplar) {
+		repE.save(ejemplar);
+		return "index";
+	}
+	@RequestMapping(value="/ejemplarConsultar")
+	public String ejemplaConsultar(Model model,Ejemplar ejemplar) {
 		repE.save(ejemplar);
 		return "index";
 	}

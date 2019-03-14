@@ -13,7 +13,7 @@ public class ControladorMoneda {
 	@Autowired
 	private RepositorioMoneda repM;
 
-	@RequestMapping(value = "/moneda")
+	@RequestMapping(value = "/monedaAniadir")
 	public String moneda(Model model, Moneda moneda) {
 		repM.save(moneda);
 		return "index";
