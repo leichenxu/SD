@@ -24,6 +24,6 @@ public class ControladorBaseDeDatos {
     public void init() {
         Proveedor p = repP.save(new Proveedor("CIF", "nombre", "cp", "email", "telefono"));
         Moneda mone = repM.save(new Moneda(0, "peseta", 0, 0, new ArrayList<String>(), "descripcion", 0));
-        repE.save(new Ejemplar("modelo", new Date(1998, 10, 1), "ciudad", new Date(1998, 8, 7), "conservacion", p, mone));
+        repE.save(new Ejemplar(new Date(1998, 10, 1), "ciudad", new Date(1998, 8, 7), "conservacion", p, mone));
     }
 }
