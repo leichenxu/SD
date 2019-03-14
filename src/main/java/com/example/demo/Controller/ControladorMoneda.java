@@ -8,14 +8,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.demo.Model.Moneda;
 import com.example.demo.Repository.RepositorioMoneda;
 
+import java.util.Optional;
+
 @Controller
 public class ControladorMoneda {
-	@Autowired
-	private RepositorioMoneda repM;
+    @Autowired
+    private RepositorioMoneda repM;
 
-	@RequestMapping(value = "/monedaAniadir")
-	public String moneda(Model model, Moneda moneda) {
-		repM.save(moneda);
-		return "index";
-	}
+    @RequestMapping(value = "/monedaAniadir")
+    public String monedaAniadir(Model model, Moneda moneda) {
+        repM.save(moneda);
+        return "index";
+    }
+
+    @RequestMapping(value = "/monedaModificar")
+    public String monedaModificar(Model model, Moneda moneda) {
+        return "index";
+    }
+
+    @RequestMapping(value = "/monedaConsultar")
+    public String monedaConsultar(Model model, Moneda moneda) {
+        Optional<Moneda> m = repM.findById(moneda.getId());
+        if (m.isPresent()) {
+            model.addAttribute("moneda", m.get());
+        }
+        return "";
+    }
 }
