@@ -29,8 +29,7 @@ public class ControladorEjemplar {
 
 	@RequestMapping(value = "/ejemplarConsultar")
 	public String ejemplaConsultar(Model model, Ejemplar ejemplar) {
-		List<Ejemplar> e = repE.findByAnioAndCiudadAndFechaAdquisicionAndConservacionAndProveedorAndMoneda(
-				ejemplar.getAnio(),ejemplar.getCiudad(),
+		List<Ejemplar> e = repE.findByAnioAndCiudadAndFechaAdquisicionAndConservacionAndProveedorAndMoneda(ejemplar.getAnio(),ejemplar.getCiudad(),
 				ejemplar.getFechaAdquisicion(),ejemplar.getConservacion(),
 				ejemplar.getProveedor(),
 				ejemplar.getMoneda());
@@ -41,7 +40,7 @@ public class ControladorEjemplar {
 	}
 	@RequestMapping(value = "/ejemplarModificar")
 	public String ejemplaModificar(Model model, Ejemplar ejemplar,Ejemplar ejemplarNuevo) {
-		List<Ejemplar> e = repE.findByModeloAndAnioAndCiudadAndFechaAdquisicionAndConservacionAndProveedorAndMoneda(ejemplar.getModelo(),
+		List<Ejemplar> e = repE.findByAnioAndCiudadAndFechaAdquisicionAndConservacionAndProveedorAndMoneda(
 				ejemplar.getAnio(),ejemplar.getCiudad(),
 				ejemplar.getFechaAdquisicion(),ejemplar.getConservacion(),
 				ejemplar.getProveedor(),
