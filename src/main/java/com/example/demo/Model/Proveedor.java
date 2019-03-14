@@ -7,6 +7,7 @@ import javax.persistence.Id;
 public class Proveedor {
     @Id
     @GeneratedValue
+    private long id;
     private String codigoIdentificacionFiscal;
     private String nombre;
     private String codigoPostal;
@@ -24,6 +25,7 @@ public class Proveedor {
         this.codigoPostal = codigoPostal;
         this.email = email;
         this.telefono = telefono;
+        this.id = (long) codigoIdentificacionFiscal.hashCode();
     }
 
     public String getCodigoIdentificacionFiscal() {
