@@ -23,5 +23,35 @@ public class Proveedor {
 		this.email = email;
 		this.telefono = telefono;
 	}
+	public Long getCodigoIdentificacionFiscal() {
+		return codigoIdentificacionFiscal;
+	}
+	public void setCodigoIdentificacionFiscal(Long codigoIdentificacionFiscal) {
+		this.codigoIdentificacionFiscal = codigoIdentificacionFiscal;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public String getCodigoPostal() {
+		return codigoPostal;
+	}
+	public void setCodigoPostal(String codigoPostal) {
+		this.codigoPostal = codigoPostal;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getTelefono() {
+		return telefono;
+	}
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
 
 }
