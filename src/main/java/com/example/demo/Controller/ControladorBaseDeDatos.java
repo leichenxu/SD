@@ -13,17 +13,17 @@ import com.example.demo.Repository.*;
 
 @Controller
 public class ControladorBaseDeDatos {
-	@Autowired
-	private RepositorioEjemplar repE;
-	@Autowired
-	private RepositorioMoneda repM;
-	@Autowired
-	private RepositorioProveedor repP;
-	
-	@PostConstruct
-	public void init() {
-		Proveedor p=repP.save(new Proveedor("nombre","cp","email","telefono"));
-		Moneda mone=repM.save(new Moneda(0,"peseta",0,0,new ArrayList<String>(),"descripcion",0));
-		repE.save(new Ejemplar("modelo",new Date(1998,10,1),"ciudad",new Date(1998,8,7),"conservacion",p,mone));
-	}
+    @Autowired
+    private RepositorioEjemplar repE;
+    @Autowired
+    private RepositorioMoneda repM;
+    @Autowired
+    private RepositorioProveedor repP;
+
+    @PostConstruct
+    public void init() {
+        Proveedor p = repP.save(new Proveedor("CIF", "nombre", "cp", "email", "telefono"));
+        Moneda mone = repM.save(new Moneda(0, "peseta", 0, 0, new ArrayList<String>(), "descripcion", 0));
+        repE.save(new Ejemplar("modelo", new Date(1998, 10, 1), "ciudad", new Date(1998, 8, 7), "conservacion", p, mone));
+    }
 }
