@@ -28,6 +28,9 @@ public class Moneda {
 		this.metales = metales;
 		this.descripcion = descripcion;
 		this.numeroEjemplares=numeroEjemplares;		
+		this.id=(long)(this.valorFacial*100*this.unidadMonetaria.hashCode()*this.diametro*this.peso*
+				this.metales.hashCode());
 	}
+	
     
 }

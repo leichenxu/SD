@@ -15,8 +15,9 @@ public class Proveedor {
     public Proveedor(){
 
     }
-	public Proveedor(String nombre, String codigoPostal, String email,
+	public Proveedor(Long codigoIdentificacionFiscal,String nombre, String codigoPostal, String email,
 			String telefono) {
+		this.codigoIdentificacionFiscal=codigoIdentificacionFiscal;
 		this.nombre = nombre;
 		this.codigoPostal = codigoPostal;
 		this.email = email;
