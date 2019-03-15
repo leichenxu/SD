@@ -2,6 +2,7 @@ package com.example.demo.Controller;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 
@@ -22,8 +23,13 @@ public class ControladorBaseDeDatos {
 
     @PostConstruct
     public void init() {
-        Proveedor p = repP.save(new Proveedor("CIF", "nombre", "cp", "email", "telefono"));
-        Moneda mone = repM.save(new Moneda(0, "peseta", 0, 0, new ArrayList<String>(), "descripcion", 0));
-        repE.save(new Ejemplar(new Date(1998, 10, 1), "ciudad", new Date(1998, 8, 7), "conservacion", p, mone));
+        Proveedor p = repP.save(new Proveedor("B0000000A", "Calderilla",
+        		"47001", "calderilla@correo", "000000000"));
+        List<String> l=new ArrayList<String>();
+        l.add("oro");
+        Moneda mone = repM.save(new Moneda(-1, "Doblón español de oro",
+        		-1, 6.77f, l, "Ninguna descripción", 1));
+        repE.save(new Ejemplar(new Date(1634), "Valladolid", new Date(2000, 1, 1), 
+        		"Sin datos", p, mone));
     }
 }
