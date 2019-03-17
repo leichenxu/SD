@@ -6,14 +6,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.Model.Moneda;
+import com.example.demo.Model.Proveedor;
 import com.example.demo.Repository.RepositorioMoneda;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
 public class ControladorMoneda {
     @Autowired
     private RepositorioMoneda repM;
+
+	public static List<Moneda> lM=new ArrayList<Moneda>();
 
     @RequestMapping(value = "/monedaAniadir")
     public String monedaAniadir(Model model, Moneda moneda) {

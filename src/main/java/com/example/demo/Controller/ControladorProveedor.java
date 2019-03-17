@@ -1,5 +1,8 @@
 package com.example.demo.Controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +13,7 @@ import com.example.demo.Repository.RepositorioProveedor;
 
 @Controller
 public class ControladorProveedor {
+	public static List<Proveedor> lP=new ArrayList<Proveedor>();
 	@Autowired
 	private RepositorioProveedor repP;
 

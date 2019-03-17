@@ -2,6 +2,7 @@ package com.example.demo.Controller;
 
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,7 +20,8 @@ import com.example.demo.Repository.RepositorioEjemplar;
 public class ControladorEjemplar {
 	@Autowired
 	private RepositorioEjemplar repE;
-	
+
+	public static List<Ejemplar> lE=new ArrayList<Ejemplar>();
 	@RequestMapping(value="/ejemplarAniadir")
 	public String ejemplarAniadir(Model model, Ejemplar ejemplar,Moneda moneda) {
 		ejemplar.setMoneda(moneda);

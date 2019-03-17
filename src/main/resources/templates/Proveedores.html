@@ -51,12 +51,13 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td class="text-center">1</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+        <tr th:each="proveedor : ${Proveedores}">       
+        <th class="text-center"></th> 
+            <td><span th:text="${proveedor.codigoIdentificacionFiscal}"></span></td>
+            <td><span th:text="${proveedor.nombre}"></span></td>
+            <td><span th:text="${proveedor.codigoPostal}"></span></td>
+            <td><span th:text="${proveedor.email}"></span></td>
+            <td><span th:text="${proveedor.telefono}"></span></td>
             <td class="td-actions text-right">
                 <button type="button" rel="tooltip" class="btn btn-info btn-round">
                     <i class="material-icons">info</i>
@@ -69,42 +70,7 @@
                 </button>
             </td>
         </tr>
-        <tr>
-            <td class="text-center">2</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td class="td-actions text-right">
-                <button type="button" rel="tooltip" class="btn btn-info btn-round">
-                    <i class="material-icons">info</i>
-                </button>
-                <button type="button" rel="tooltip" class="btn btn-success btn-round">
-                    <i class="material-icons">edit</i>
-                </button>
-                <button type="button" rel="tooltip" class="btn btn-danger btn-round">
-                    <i class="material-icons">delete</i>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td class="text-center">3</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td class="td-actions text-right">
-                <button type="button" rel="tooltip" class="btn btn-info btn-simple btn-round">
-                    <i class="material-icons">info</i>
-                </button>
-                <button type="button" rel="tooltip" class="btn btn-success btn-simple btn-round">
-                    <i class="material-icons">edit</i>
-                </button>
-                <button type="button" rel="tooltip" class="btn btn-danger btn-simple btn-round">
-                    <i class="material-icons">delete</i>
-                </button>
-            </td>
-        </tr>
+        
         </tbody>
     </table>
     

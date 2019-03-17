@@ -29,7 +29,10 @@ public class ControladorBaseDeDatos {
         l.add("oro");
         Moneda mone = repM.save(new Moneda(-1, "Doblón español de oro",
         		-1, 6.77f, l, "Ninguna descripción", 1));
-        repE.save(new Ejemplar(new Date(1634), "Valladolid", new Date(2000, 1, 1), 
+        Ejemplar e=repE.save(new Ejemplar(new Date(1634), "Valladolid", new Date(2000, 1, 1), 
         		"Sin datos", p, mone));
+        ControladorProveedor.lP.add(p);
+        ControladorMoneda.lM.add(mone);
+        ControladorEjemplar.lE.add(e);
     }
 }
