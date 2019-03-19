@@ -43,22 +43,25 @@
         <thead>
         <tr>
             <th class="text-center"></th>
-            <th>ID</th>
             <th>Valor facial</th>
             <th>Unidad monetaria</th>
             <th>Diametro</th>
             <th>Peso</th>
-            <th>Composicion</th>
+            <th>Composicion</th>            
+            <th>Descripción</th>
+            <th>Numeros de ejemplares</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td class="text-center">1</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+        <tr th:each="moneda : ${Monedas}">       
+        <th class="text-center"></th> 
+            <td><span th:text="${moneda.valorFacial}"></span></td>
+            <td><span th:text="${moneda.unidadMonetaria}"></span></td>
+            <td><span th:text="${moneda.diametro}"></span></td>
+            <td><span th:text="${moneda.peso}"></span></td>
+            <td><span th:text="${moneda.metales}"></span></td>
+            <td><span th:text="${moneda.descripcion}"></span></td>
+            <td><span th:text="${moneda.numeroEjemplares}"></span></td>
             <td class="td-actions text-right">
                 <button type="button" rel="tooltip" class="btn btn-info btn-round">
                     <i class="material-icons">info</i>
@@ -67,44 +70,6 @@
                     <i class="material-icons">edit</i>
                 </button>
                 <button type="button" rel="tooltip" class="btn btn-danger btn-round">
-                    <i class="material-icons">delete</i>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td class="text-center">2</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td class="td-actions text-right">
-                <button type="button" rel="tooltip" class="btn btn-info btn-round">
-                    <i class="material-icons">info</i>
-                </button>
-                <button type="button" rel="tooltip" class="btn btn-success btn-round">
-                    <i class="material-icons">edit</i>
-                </button>
-                <button type="button" rel="tooltip" class="btn btn-danger btn-round">
-                    <i class="material-icons">delete</i>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td class="text-center">3</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td class="td-actions text-right">
-                <button type="button" rel="tooltip" class="btn btn-info btn-simple btn-round">
-                    <i class="material-icons">info</i>
-                </button>
-                <button type="button" rel="tooltip" class="btn btn-success btn-simple btn-round">
-                    <i class="material-icons">edit</i>
-                </button>
-                <button type="button" rel="tooltip" class="btn btn-danger btn-simple btn-round">
                     <i class="material-icons">delete</i>
                 </button>
             </td>

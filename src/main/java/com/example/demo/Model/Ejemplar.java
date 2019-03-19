@@ -36,8 +36,8 @@ public class Ejemplar {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Date getAnio() {
-		return anio;
+	public int getAnio() {
+		return anio.getYear();
 	}
 	public void setAnio(Date anio) {
 		this.anio = anio;
@@ -48,8 +48,8 @@ public class Ejemplar {
 	public void setCiudad(String ciudad) {
 		this.ciudad = ciudad;
 	}
-	public Date getFechaAdquisicion() {
-		return fechaAdquisicion;
+	public String getFechaAdquisicion() {
+		return fechaAdquisicion.getDay()+"/"+fechaAdquisicion.getMonth()+"/"+fechaAdquisicion.getYear();
 	}
 	public void setFechaAdquisicion(Date fechaAdquisicion) {
 		this.fechaAdquisicion = fechaAdquisicion;

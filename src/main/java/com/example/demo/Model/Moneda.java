@@ -33,6 +33,10 @@ public class Moneda {
         this.id = (long) (this.valorFacial * 100 * this.unidadMonetaria.hashCode() * this.diametro * this.peso *
                 this.metales.hashCode());
     }
+    @Override
+    public String toString() {
+    	return this.unidadMonetaria;
+    }
 
     public Long getId() {
         return id;

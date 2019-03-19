@@ -18,8 +18,6 @@ public class ControladorMoneda {
     @Autowired
     private RepositorioMoneda repM;
 
-	public static List<Moneda> lM=new ArrayList<Moneda>();
-
     @RequestMapping(value = "/monedaAniadir")
     public String monedaAniadir(Model model, Moneda moneda) {
         repM.save(moneda);

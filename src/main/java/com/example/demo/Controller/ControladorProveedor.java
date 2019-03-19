@@ -13,7 +13,6 @@ import com.example.demo.Repository.RepositorioProveedor;
 
 @Controller
 public class ControladorProveedor {
-	public static List<Proveedor> lP=new ArrayList<Proveedor>();
 	@Autowired
 	private RepositorioProveedor repP;
 
