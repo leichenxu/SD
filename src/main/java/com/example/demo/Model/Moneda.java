@@ -15,21 +15,22 @@ public class Moneda {
     @ElementCollection
     private List<String> metales;
     private String descripcion;
-    private int numeroEjemplares;
+    private String disponibilidad;
+
 
     public Moneda() {
 
     }
 
     public Moneda(double valorFacial, String unidadMonetaria, float diametro, float peso, List<String> metales,
-                  String descripcion, int numeroEjemplares) {
+                  String descripcion,String disponibilidad) {
         this.valorFacial = valorFacial;
         this.unidadMonetaria = unidadMonetaria;
         this.diametro = diametro;
         this.peso = peso;
         this.metales = metales;
         this.descripcion = descripcion;
-        this.numeroEjemplares = numeroEjemplares;
+        this.disponibilidad= disponibilidad;
         this.id = (long) (this.valorFacial * 100 * this.unidadMonetaria.hashCode() * this.diametro * this.peso *
                 this.metales.hashCode());
     }
@@ -66,8 +67,7 @@ public class Moneda {
         return valorFacial;
     }
 
-    public int getNumeroEjemplares() {
-        return numeroEjemplares;
+    public String getDisponibilidad() {
+        return disponibilidad;
     }
-
 }

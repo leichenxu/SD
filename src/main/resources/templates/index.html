@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th=http://www.thymeleaf.org xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance
+      xsi:schemaLocation=http://www.thymeleaf.org>
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Museo</title>
     <link rel="stylesheet" type="text/css"
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
@@ -10,73 +11,121 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/MyCSS.css">
 </head>
 <body>
-<!--Nombre-->
 <h1><i>Museo numismatica</i></h1>
 <div class="card">
-	<table>
-	<tr>
-    <th><div class="card-header card-header-primary mr-auto">
-        <a href="/PaginaMoneda"><h1 class="card-title">Monedas</h1></a>
-    </div>
-    </th>
-    <th>
-    <div class="card-header card-header-primary mr-auto">
-        <a href="/PaginaEjemplar"><h1 class="card-title">Ejemplares</h1></a>
-    </div>
-    </th>
-    <th>
-    <div class="card-header card-header-primary mr-auto">
-        <a href="/PaginaProveedor"><h1 class="card-title">Proveedores</h1></a>
-    </div>
-    </th>
-    </tr>    
-    </table>
-    <form class="form-inline ml-auto">
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
+    <div class="card-header card-header-text card-header-primary">
+        <div class="card-text">
+            <h1 class="card-title">Monedas</h1>
         </div>
-        <button type="submit" class="btn btn-just-icon btn-round">
-            <i class="material-icons">search</i>
-        </button>
-    </form>
-    <table class="table">
-        <thead>
-        <tr>
-            <th class="text-center"></th>
-            <th>Valor facial</th>
-            <th>Unidad monetaria</th>
-            <th>Diametro</th>
-            <th>Peso</th>
-            <th>Composicion</th>            
-            <th>Descripción</th>
-            <th>Numeros de ejemplares</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="moneda : ${Monedas}">       
-        <th class="text-center"></th> 
-            <td><span th:text="${moneda.valorFacial}"></span></td>
-            <td><span th:text="${moneda.unidadMonetaria}"></span></td>
-            <td><span th:text="${moneda.diametro}"></span></td>
-            <td><span th:text="${moneda.peso}"></span></td>
-            <td><span th:text="${moneda.metales}"></span></td>
-            <td><span th:text="${moneda.descripcion}"></span></td>
-            <td><span th:text="${moneda.numeroEjemplares}"></span></td>
-            <td class="td-actions text-right">
-                <button type="button" rel="tooltip" class="btn btn-info btn-round">
-                    <i class="material-icons">info</i>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <button type="button" rel="tooltip" class="btn btn-info btn-round ml-auto" data-toggle="modal" data-target="#searchModal">
+                <i class="material-icons">search</i>
+            </button>
+            <button type="button" rel="tooltip" class="btn btn-info btn-round" data-toggle="modal" data-target="#addModal">
+                <i class="material-icons">add_circle</i>
+            </button>
+        </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="text-center"></th>
+                <th>Valor facial</th>
+                <th>Unidad monetaria</th>
+                <th>Diametro</th>
+                <th>Peso</th>
+                <th>Composicion</th>
+                <th>Descripción</th>
+                <th>Disponibilidad</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="moneda : ${Monedas}">
+                <td class="text-center">1</td>
+                <td><span th:text="${moneda.valorFacial}"></span></td>
+                <td><span th:text="${moneda.unidadMonetaria}"></span></td>
+                <td><span th:text="${moneda.diametro}"></span></td>
+                <td><span th:text="${moneda.peso}"></span></td>
+                <td><span th:text="${moneda.metales}"></span></td>
+                <td><span th:text="${moneda.descripcion}"></span></td>
+                <td><span th:text="${moneda.disponibilidad}"></span></td>
+                <td class="td-actions text-right">
+                    <button type="button" rel="tooltip" class="btn btn-info btn-round">
+                        <i class="material-icons">info</i>
+                    </button>
+                    <button type="button" rel="tooltip" class="btn btn-success btn-round">
+                        <i class="material-icons">edit</i>
+                    </button>
+                    <button type="button" rel="tooltip" class="btn btn-danger btn-round">
+                        <i class="material-icons">delete</i>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+           aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle1">Busqueda por criterio</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
                 </button>
-                <button type="button" rel="tooltip" class="btn btn-success btn-round">
-                    <i class="material-icons">edit</i>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Buscar
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <a class="dropdown-item">Moneda</a>
+                            <a class="dropdown-item">Ejemplar</a>
+                            <a class="dropdown-item">Proveedor</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Buscar
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                            <a class="dropdown-item">UnidadMonetaria</a>
+                            <a class="dropdown-item">Fecha de adquisición</a>
+                            <a class="dropdown-item">Nombre</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle2">Busqueda por criterio</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
                 </button>
-                <button type="button" rel="tooltip" class="btn btn-danger btn-round">
-                    <i class="material-icons">delete</i>
-                </button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    
+            </div>
+            <div class="modal-body">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 

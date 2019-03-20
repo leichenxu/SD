@@ -24,7 +24,7 @@ public class ControladorCambioPagina {
 		model.addAttribute("Ejemplares",repE.findAll());
 		return "Ejemplares";
 	}
-	@RequestMapping(value="/PaginaMoneda")
+	@RequestMapping(value="/")
 	public String moneda(Model model) {
 		model.addAttribute("Monedas",repM.findAll());
 		return "index";
