@@ -17,7 +17,7 @@ public class Moneda {
     @ElementCollection
     private List<String> metales;
     private String descripcion;
-    private String disponibilidad;
+    //private String disponibilidad;
     @OneToMany
     private List<Ejemplar> listaEjemplares=new ArrayList<Ejemplar>();
 
@@ -26,28 +26,28 @@ public class Moneda {
     }
 
     public Moneda(double valorFacial, String unidadMonetaria, float diametro, float peso, List<String> metales,
-                  String descripcion,String disponibilidad,List<Ejemplar> l) {
+                  String descripcion,List<Ejemplar> l) {
         this.valorFacial = valorFacial;
         this.unidadMonetaria = unidadMonetaria;
         this.diametro = diametro;
         this.peso = peso;
         this.metales = metales;
         this.descripcion = descripcion;
-        this.disponibilidad= disponibilidad;
+        //this.disponibilidad= disponibilidad;
         this.id = (long) (this.valorFacial * 100 * this.unidadMonetaria.hashCode() * this.diametro * this.peso *
 				this.metales.hashCode());
 		this.listaEjemplares = l;
 	}
 
 	public Moneda(double valorFacial, String unidadMonetaria, float diametro, float peso, List<String> metales,
-			String descripcion, String disponibilidad) {
+			String descripcion) {
 		this.valorFacial = valorFacial;
 		this.unidadMonetaria = unidadMonetaria;
 		this.diametro = diametro;
 		this.peso = peso;
 		this.metales = metales;
 		this.descripcion = descripcion;
-		this.disponibilidad = disponibilidad;
+		//this.disponibilidad = disponibilidad;
 		this.id = (long) (this.valorFacial * 100 * this.unidadMonetaria.hashCode() * this.diametro * this.peso
 				* this.metales.hashCode());
 	}
@@ -93,7 +93,7 @@ public class Moneda {
         return valorFacial;
     }
 
-    public String getDisponibilidad() {
+    /*public String getDisponibilidad() {
         return disponibilidad;
-    }
+    }*/
 }

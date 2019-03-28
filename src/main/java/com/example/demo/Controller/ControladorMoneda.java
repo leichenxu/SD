@@ -7,12 +7,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.Model.Moneda;
 import com.example.demo.Model.Proveedor;
 import com.example.demo.Repository.RepositorioMoneda;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,8 +31,14 @@ public class ControladorMoneda {
         return ResponseEntity.noContent().build();
     }
     
-    @RequestMapping(value = "/monedaAniadir")
-    public String monedaAniadir(Model model, Moneda moneda) {
+    @RequestMapping(value = "/monedaAniadir",method=RequestMethod.POST)
+    public String monedaAniadir(@RequestParam("valorFacial") String valorFacial,
+    		@RequestParam("unidadMonetaria") String unidadMonetaria,
+    		@RequestParam("diametro") String diametro,@RequestParam("peso") String peso,
+    		@RequestParam("metales") String metales,@RequestParam("descripcion") String descripcion
+    		,Model model) {    	
+    	Moneda moneda=new Moneda(Double.valueOf(valorFacial),unidadMonetaria,Float.valueOf(diametro),
+    			Float.valueOf(peso),Arrays.asList(metales.split(",")),descripcion);
         repM.save(moneda);
         return "index";
     }

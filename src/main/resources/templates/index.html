@@ -45,7 +45,7 @@
                 <th>Peso</th>
                 <th>Composicion</th>
                 <th>Descripción</th>
-                <th>Disponibilidad</th>
+                <th>Ejemplares</th>
             </tr>
             </thead>
             <tbody>
@@ -57,7 +57,7 @@
                 <td><span th:text="${moneda.peso}"></span></td>
                 <td><span th:text="${moneda.metales}"></span></td>
                 <td><span th:text="${moneda.descripcion}"></span></td>
-                <td><span th:text="${moneda.disponibilidad}"></span>
+                <td>
                 <!--boton de info -->
                 <a th:href="@{/ejemplar/(id=${moneda.id})}">
            	     <button type="submit" class="btn btn-info btn-fab btn-round"
@@ -136,35 +136,28 @@
                 <form action="/monedaAniadir" method="post">
                     <div class="form-group">
                         <label>Valor facial</label>
-                        <input class="form-control" name="valorFacial">
+                        <input class="form-control" type="text" name="valorFacial">
                     </div>
                     <div class="form-group">
                         <label>Unidad monetaria</label>
-                        <input class="form-control" name="unidadMonetaria">
+                        <input class="form-control" type="text" name="unidadMonetaria">
                     </div>
                     <div class="form-group">
                         <label>Diametro</label>
-                        <input class="form-control" name="diametro">
+                        <input class="form-control" type="text"  name="diametro">
                     </div>
                     <div class="form-group">
-                        <label>Peso</label>
-                        <input class="form-control" name="peso">
+                        <label>Peso(G)</label>
+                        <input class="form-control" type="text" name="peso">
                     </div>
                     <div class="form-group">
                         <label>Composición</label>
-                        <input class="form-control" name="metales">
+                        <input class="form-control" type="text"  name="metales">
                     </div>
                     <div class="form-group">
                         <label>Descripción</label>
-                        <input class="form-control" name="descripcion">
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value="" name="disponibilidad">
-                            Disponible en museo
-                            <span class="form-check-sign"><span class="check"></span></span>
-                        </label>
-                    </div>
+                        <input class="form-control" type="text"  name="descripcion">
+                    </div>                    
                     <div class="modal-footer">
                 		<button type="submit" class="btn btn-primary">Añadir</button>
             		</div>
@@ -273,7 +266,6 @@
 <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
 <!--  Google Maps Plugin    -->
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-<!-- Chartist JS -->
 <script src="../assets/js/plugins/chartist.min.js"></script>
 <!--  Notifications Plugin    -->
 <script src="../assets/js/plugins/bootstrap-notify.js"></script>

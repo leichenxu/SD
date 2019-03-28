@@ -30,7 +30,7 @@ public class ControladorBaseDeDatos {
         List<String> l=new ArrayList<String>();
         l.add("oro");
         Moneda mone = repM.save(new Moneda(-1, "Doblón español de oro",
-        		-1, 6.77f, l, "Ninguna descripción", "si"));        
+        		-1, 6.77f, l, "Ninguna descripción"));        
         Ejemplar e=repE.save(new Ejemplar(new java.sql.Date(1634,1,1), "Valladolid", new java.sql.Date(2000, 1, 1), 
         		"Sin datos", p, mone));
         mone.getListaEjemplares().add(e);
