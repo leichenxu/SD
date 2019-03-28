@@ -1,6 +1,8 @@
 package com.example.demo.Model;
 
 import javax.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,14 +18,15 @@ public class Moneda {
     private List<String> metales;
     private String descripcion;
     private String disponibilidad;
-
+    @OneToMany
+    private List<Ejemplar> listaEjemplares=new ArrayList<Ejemplar>();
 
     public Moneda() {
 
     }
 
     public Moneda(double valorFacial, String unidadMonetaria, float diametro, float peso, List<String> metales,
-                  String descripcion,String disponibilidad) {
+                  String descripcion,String disponibilidad,List<Ejemplar> l) {
         this.valorFacial = valorFacial;
         this.unidadMonetaria = unidadMonetaria;
         this.diametro = diametro;
@@ -32,12 +35,27 @@ public class Moneda {
         this.descripcion = descripcion;
         this.disponibilidad= disponibilidad;
         this.id = (long) (this.valorFacial * 100 * this.unidadMonetaria.hashCode() * this.diametro * this.peso *
-                this.metales.hashCode());
-    }
-    @Override
-    public String toString() {
-    	return this.unidadMonetaria;
-    }
+				this.metales.hashCode());
+		this.listaEjemplares = l;
+	}
+
+	public Moneda(double valorFacial, String unidadMonetaria, float diametro, float peso, List<String> metales,
+			String descripcion, String disponibilidad) {
+		this.valorFacial = valorFacial;
+		this.unidadMonetaria = unidadMonetaria;
+		this.diametro = diametro;
+		this.peso = peso;
+		this.metales = metales;
+		this.descripcion = descripcion;
+		this.disponibilidad = disponibilidad;
+		this.id = (long) (this.valorFacial * 100 * this.unidadMonetaria.hashCode() * this.diametro * this.peso
+				* this.metales.hashCode());
+	}
+
+	@Override
+	public String toString() {
+		return this.unidadMonetaria;
+	}
 
     public Long getId() {
         return id;
@@ -51,7 +69,15 @@ public class Moneda {
         return peso;
     }
 
-    public float getDiametro() {
+    public List<Ejemplar> getListaEjemplares() {
+		return listaEjemplares;
+	}
+
+	public void setListaEjemplares(List<Ejemplar> listaEjemplares) {
+		this.listaEjemplares = listaEjemplares;
+	}
+
+	public float getDiametro() {
         return diametro;
     }
 

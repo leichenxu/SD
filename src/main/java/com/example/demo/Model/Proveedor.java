@@ -35,11 +35,16 @@ public class Proveedor {
     public void setCodigoIdentificacionFiscal(String codigoIdentificacionFiscal) {
         this.codigoIdentificacionFiscal = codigoIdentificacionFiscal;
     }
-
+    @Override
+    public String toString() {
+    	return this.nombre;
+    }
     public String getNombre() {
         return nombre;
     }
-
+    public long getId() {
+    	return this.id;
+    }
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }

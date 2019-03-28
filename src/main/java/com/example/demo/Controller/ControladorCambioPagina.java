@@ -32,6 +32,6 @@ public class ControladorCambioPagina {
 	@RequestMapping(value="/PaginaProveedor")
 	public String proveedor(Model model) {
 		model.addAttribute("Proveedores",repP.findAll());
-		return "Proveedores";
+		return "Proveedor";
 	}
 }

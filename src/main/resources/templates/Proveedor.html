@@ -14,7 +14,6 @@
 <h1><i>Museo numismatica</i></h1>
 <div class="card">
     <div class="card-header card-header-text card-header-primary">
-        
         <div class="card-text" >
             <h1 class="card-title"><a href="/">Monedas</a></h1>
         </div>        
@@ -38,33 +37,20 @@
         <table class="table">
             <thead>
             <tr>
-                <th>ID</th>
-                <th>Valor facial</th>
-                <th>Unidad monetaria</th>
-                <th>Diametro</th>
-                <th>Peso</th>
-                <th>Composicion</th>
-                <th>Descripción</th>
-                <th>Disponibilidad</th>
+                <th>Identificación fiscal</th>
+                <th>Nombre</th>
+                <th>Codigo postal</th>
+                <th>Email</th>
+                <th>Telefono</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="moneda : ${Monedas}">
-                <td><span th:text="${moneda.id}"></span></td>
-                <td><span th:text="${moneda.valorFacial}"></span></td>
-                <td><span th:text="${moneda.unidadMonetaria}"></span></td>
-                <td><span th:text="${moneda.diametro}"></span></td>
-                <td><span th:text="${moneda.peso}"></span></td>
-                <td><span th:text="${moneda.metales}"></span></td>
-                <td><span th:text="${moneda.descripcion}"></span></td>
-                <td><span th:text="${moneda.disponibilidad}"></span>
-                <!--boton de info -->
-                <a th:href="@{/ejemplar/(id=${moneda.id})}">
-           	     <button type="submit" class="btn btn-info btn-fab btn-round"
-                	 data-toggle="modal">
-                   		  <i class="material-icons">info</i>
-              	  </button>
-              	  </a>
+            <tr th:each="proveedor: ${Proveedores}">
+                <td><span th:text="${proveedor.codigoIdentificacionFiscal}"></span></td>
+                <td><span th:text="${proveedor.nombre}"></span></td>
+                <td><span th:text="${proveedor.codigoPostal}"></span></td>
+                <td><span th:text="${proveedor.email}"></span></td>
+                <td><span th:text="${proveedor.telefono}"></span>                
                 </td>
                 <td class="td-actions text-right">
                     <button type="button" rel="tooltip" class="btn btn-success btn-round">
@@ -133,10 +119,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="/monedaAniadir" method="post">
+                <form action="/moneda" method="post">
                     <div class="form-group">
-                        <label>Valor facial</label>
-                        <input class="form-control" name="valorFacial">
+                        <label>Año de acuñación</label>
+                        <input class="form-control" name="valorFacia">
                     </div>
                     <div class="form-group">
                         <label>Unidad monetaria</label>
@@ -144,7 +130,7 @@
                     </div>
                     <div class="form-group">
                         <label>Diametro</label>
-                        <input class="form-control" name="diametro">
+                        <input class="form-control" name="diamtro">
                     </div>
                     <div class="form-group">
                         <label>Peso</label>
@@ -155,7 +141,7 @@
                         <input class="form-control" name="metales">
                     </div>
                     <div class="form-group">
-                        <label>Descripción</label>
+                        <label>Descripcion</label>
                         <input class="form-control" name="descripcion">
                     </div>
                     <div class="form-check">
@@ -165,12 +151,11 @@
                             <span class="form-check-sign"><span class="check"></span></span>
                         </label>
                     </div>
-                    <div class="modal-footer">
-                		<button type="submit" class="btn btn-primary">Añadir</button>
-            		</div>
                 </form>
             </div>
-            
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Añadir</button>
+            </div>
         </div>
     </div>
 </div>

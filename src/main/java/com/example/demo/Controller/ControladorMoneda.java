@@ -27,7 +27,7 @@ public class ControladorMoneda {
         this.repM.save(moneda);
         return ResponseEntity.noContent().build();
     }
-
+    
     @RequestMapping(value = "/monedaAniadir")
     public String monedaAniadir(Model model, Moneda moneda) {
         repM.save(moneda);
