@@ -19,19 +19,21 @@ public class ControladorCambioPagina {
 
 	@Autowired
 	private RepositorioEjemplar repE;
-	@RequestMapping(value="/PaginaEjemplar")
-	public String ejemplar(Model model) {
-		model.addAttribute("Ejemplares",repE.findAll());
-		return "Ejemplares";
-	}
+//	@RequestMapping(value="/PaginaEjemplar")
+//	public String ejemplar(Model model) {
+//		model.addAttribute("Ejemplares",repE.findAll());
+//		return "Ejemplares";
+//	}
 	@RequestMapping(value="/")
 	public String moneda(Model model) {
 		model.addAttribute("Monedas",repM.findAll());
+		model.addAttribute("Ejemplares",repE.findAll());
+		model.addAttribute("Proveedores",repP.findAll());
 		return "index";
 	}
-	@RequestMapping(value="/PaginaProveedor")
-	public String proveedor(Model model) {
-		model.addAttribute("Proveedores",repP.findAll());
-		return "Proveedor";
-	}
+//	@RequestMapping(value="/PaginaProveedor")
+//	public String proveedor(Model model) {
+//		model.addAttribute("Proveedores",repP.findAll());
+//		return "Proveedor";
+//	}
 }

@@ -36,7 +36,7 @@ public class ControladorMoneda {
     		@RequestParam("unidadMonetaria") String unidadMonetaria,
     		@RequestParam("diametro") String diametro,@RequestParam("peso") String peso,
     		@RequestParam("metales") String metales,@RequestParam("descripcion") String descripcion
-    		,Model model) {    	
+    		,Model model) {
     	Moneda moneda=new Moneda(Double.valueOf(valorFacial),unidadMonetaria,Float.valueOf(diametro),
     			Float.valueOf(peso),Arrays.asList(metales.split(",")),descripcion);
         repM.save(moneda);
