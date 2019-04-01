@@ -78,10 +78,11 @@
                     <button type="button" rel="tooltip" class="btn btn-success btn-round">
                         <i class="material-icons">edit</i>
                     </button>
-                    <button type="button" rel="tooltip" class="btn btn-danger btn-round"
-                            onclick="deleteMoneda(${moneda.id})">
+                    <a th:href="@{/moneda/delete/(id=${moneda.id})}">
+                    <button type="button" rel="tooltip" class="btn btn-danger btn-round">
                         <i class="material-icons">delete</i>
                     </button>
+                    </a>
                 </td>
             </tr>
             </tbody>

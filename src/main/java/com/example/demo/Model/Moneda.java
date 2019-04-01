@@ -8,7 +8,6 @@ import java.util.List;
 @Entity
 public class Moneda {
     @Id
-    @GeneratedValue
     private Long id;
     private double valorFacial;
     private String unidadMonetaria;
