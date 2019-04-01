@@ -45,7 +45,7 @@ public class ControladorEjemplar {
 		repE.save(ejemplar);
 		return "index";
 	}
-	
+
 	@RequestMapping(value = "/ejemplarModificar")
 	public String ejemplaModificar(Model model, Ejemplar ejemplar,Ejemplar ejemplarNuevo) {
 		List<Ejemplar> e = repE.findByAnioAndCiudadAndFechaAdquisicionAndConservacionAndProveedorAndMoneda(
@@ -59,7 +59,7 @@ public class ControladorEjemplar {
 		}
 		return "";
 	}
-	
+
 	private boolean acun=false;
     @RequestMapping(value="/acun")
     public String EjemplarAsc(Model model) {
@@ -69,11 +69,11 @@ public class ControladorEjemplar {
     	}else {
     		acun=false;
     		model.addAttribute("Ejemplares",this.repE.findAllByOrderByAnioDesc());
-    	}    
-        this.defecto(model,true,false,true);	
+    	}
+        this.defecto(model,true,false,true);
     	return "index";
     }
-    
+
     private boolean ciud=false;
     @RequestMapping(value="/ciud")
     public String ejemplarCiu(Model model) {
@@ -83,8 +83,8 @@ public class ControladorEjemplar {
     	}else {
     		ciud=false;
     		model.addAttribute("Ejemplares",this.repE.findAllByOrderByCiudadDesc());
-    	}    
-        this.defecto(model,true,false,true);	
+    	}
+        this.defecto(model,true,false,true);
     	return "index";
     }
     private boolean prov=false;
@@ -96,11 +96,11 @@ public class ControladorEjemplar {
     	}else {
     		prov=false;
     		model.addAttribute("Ejemplares",this.repE.findAllByOrderByProveedorDesc());
-    	}    
-        this.defecto(model,true,false,true);	
+    	}
+        this.defecto(model,true,false,true);
     	return "index";
     }
-    
+
     private boolean fechaAd=false;
     @RequestMapping(value="/fechaAd")
     public String ejemplarFecha(Model model) {
@@ -110,24 +110,24 @@ public class ControladorEjemplar {
     	}else {
     		fechaAd=false;
     		model.addAttribute("Ejemplares",this.repE.findAllByOrderByFechaAdquisicionDesc());
-    	}    
-        this.defecto(model,true,false,true);	
+    	}
+        this.defecto(model,true,false,true);
     	return "index";
     }
-     
-    
+
+
     @RequestMapping(value = "/ejemplarAniadir",method=RequestMethod.POST)
     public String ejemplarAniadir(@RequestParam("anio") String anio,
     		@RequestParam("ciudad") String ciudad,
     		@RequestParam("fechaAdquicicion") Date fechaA,@RequestParam("conservacion") String conservacion,
     		@RequestParam("proveedor") String prov,
-    		@RequestParam("moneda") Moneda m,Model model) {    	
-    	Ejemplar e=new Ejemplar(new java.sql.Date(Integer.valueOf(anio),1,1), ciudad, fechaA,
-                 repP.findById(prov.hashCode()).get(),conservacion, m);
+    		@RequestParam("moneda") Moneda m,Model model) {
+    	Ejemplar e=new Ejemplar(new java.sql.Date(Integer.valueOf(anio),1,1), ciudad, fechaA, conservacion,
+                 repP.findById((long) prov.hashCode()).get(), m);
         repE.save(e);
         return "index";
     }
-    
+
     private void defecto(Model model,boolean a,boolean b,boolean c) {
     	if (a)
     	model.addAttribute("Monedas",repM.findAll());
