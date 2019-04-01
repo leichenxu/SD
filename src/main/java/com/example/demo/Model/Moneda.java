@@ -31,7 +31,7 @@ public class Moneda {
         this.peso = peso;
         this.metales = metales;
         this.descripcion = descripcion;
-        this.id = (long) (this.valorFacial * 100 * this.unidadMonetaria.hashCode() * this.diametro * this.peso *
+        this.id = (long) Math.abs(this.valorFacial * 10 +this.unidadMonetaria.hashCode() + this.diametro + this.peso +
 				this.metales.hashCode());
 		this.listaEjemplares = l;
 	}
@@ -44,8 +44,8 @@ public class Moneda {
 		this.peso = peso;
 		this.metales = metales;
 		this.descripcion = descripcion;
-		this.id = (long) (this.valorFacial * 100 * this.unidadMonetaria.hashCode() * this.diametro * this.peso
-				* this.metales.hashCode());
+		this.id = (long) Math.abs(this.valorFacial * 10+ this.unidadMonetaria.hashCode() + this.diametro + this.peso
+				+ this.metales.hashCode());
 	}
 
 	@Override

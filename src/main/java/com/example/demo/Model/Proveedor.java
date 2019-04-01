@@ -13,7 +13,7 @@ public class Proveedor {
     private String codigoPostal;
     private String email;
     private String telefono;
-    @OneToOne(cascade = CascadeType.DETACH)
+    @OneToOne
     private Ejemplar ejemplar;
 
     public Proveedor() {

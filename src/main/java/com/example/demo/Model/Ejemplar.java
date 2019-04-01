@@ -14,7 +14,7 @@ public class Ejemplar {
     private String ciudad;
     private Date fechaAdquisicion;
     private String conservacion;
-    @OneToOne(cascade =CascadeType.ALL)
+    @OneToOne
     private Proveedor proveedor;
 	@JoinColumn(nullable = false)
     @ManyToOne(cascade = CascadeType.DETACH)
