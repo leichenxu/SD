@@ -32,11 +32,11 @@
 </ul>
 
 <div class="row">
-    <button type="button" rel="tooltip" class="btn btn-info btn-round ml-auto" data-toggle="modal"
+    <button type="button" rel="tooltip" class="btn btn-success btn-round ml-auto" data-toggle="modal"
             data-target="#searchModal">
         <i class="material-icons">search</i>
     </button>
-    <button type="button" rel="tooltip" class="btn btn-info btn-round" data-toggle="modal" data-target="#addModal">
+    <button type="button" rel="tooltip" class="btn btn-success btn-round mr-5" data-toggle="modal" data-target="#addModal">
         <i class="material-icons">add_circle</i>
     </button>
 </div>
@@ -53,7 +53,7 @@
                 <th>Peso</th>
                 <th>Composicion</th>
                 <th>Descripción</th>
-                <th>Disponibilidad</th>
+                <th>Ejemplares</th>
             </tr>
             </thead>
             <tbody>
@@ -79,7 +79,7 @@
                         <i class="material-icons">edit</i>
                     </button>
                     <button type="button" rel="tooltip" class="btn btn-danger btn-round"
-                            data-toggle="modal" data-target="#deleteConfirmationModal">
+                            onclick="deleteMoneda(${moneda.id})">
                         <i class="material-icons">delete</i>
                     </button>
                 </td>
@@ -162,76 +162,6 @@
     </div>
 </div>
 
-<!--<div class="card">-->
-    <!--<div class="card-header card-header-text card-header-primary">-->
-
-        <!--<div class="card-text">-->
-            <!--<h1 class="card-title"><a href="/">Monedas</a></h1>-->
-        <!--</div>-->
-        <!--<div class="card-text">-->
-            <!--<h1 class="card-title"><a href="/PaginaEjemplar">Ejemplares</a></h1>-->
-        <!--</div>-->
-
-        <!--<div class="card-text">-->
-            <!--<h1 class="card-title"><a href="/PaginaProveedor">Proveedores</a></h1>-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--<div class="card-body">-->
-        <!--<div class="row">-->
-            <!--<button type="button" rel="tooltip" class="btn btn-info btn-round ml-auto" data-toggle="modal"-->
-                    <!--data-target="#searchModal">-->
-                <!--<i class="material-icons">search</i>-->
-            <!--</button>-->
-            <!--<button type="button" rel="tooltip" class="btn btn-info btn-round" data-toggle="modal"-->
-                    <!--data-target="#addModal">-->
-                <!--<i class="material-icons">add_circle</i>-->
-            <!--</button>-->
-        <!--</div>-->
-        <!--<table class="table">-->
-            <!--<thead>-->
-            <!--<tr>-->
-                <!--<th>ID</th>-->
-                <!--<th>Valor facial</th>-->
-                <!--<th>Unidad monetaria</th>-->
-                <!--<th>Diametro</th>-->
-                <!--<th>Peso</th>-->
-                <!--<th>Composicion</th>-->
-                <!--<th>Descripción</th>-->
-                <!--<th>Ejemplares</th>-->
-            <!--</tr>-->
-            <!--</thead>-->
-            <!--<tbody>-->
-            <!--<tr th:each="moneda : ${Monedas}">-->
-                <!--<td><span th:text="${moneda.id}"></span></td>-->
-                <!--<td><span th:text="${moneda.valorFacial}"></span></td>-->
-                <!--<td><span th:text="${moneda.unidadMonetaria}"></span></td>-->
-                <!--<td><span th:text="${moneda.diametro}"></span></td>-->
-                <!--<td><span th:text="${moneda.peso}"></span></td>-->
-                <!--<td><span th:text="${moneda.metales}"></span></td>-->
-                <!--<td><span th:text="${moneda.descripcion}"></span></td>-->
-                <!--<td>-->
-                    <!--&lt;!&ndash;boton de info &ndash;&gt;-->
-                    <!--<a th:href="@{/ejemplar/(id=${moneda.id})}">-->
-                        <!--<button type="submit" class="btn btn-info btn-fab btn-round"-->
-                                <!--data-toggle="modal">-->
-                            <!--<i class="material-icons">info</i>-->
-                        <!--</button>-->
-                    <!--</a>-->
-                <!--</td>-->
-                <!--<td class="td-actions text-right">-->
-                    <!--<button type="button" rel="tooltip" class="btn btn-success btn-round">-->
-                        <!--<i class="material-icons">edit</i>-->
-                    <!--</button>-->
-                    <!--<button type="button" rel="tooltip" class="btn btn-danger btn-round"-->
-                            <!--data-toggle="modal" data-target="#deleteConfirmationModal">-->
-                        <!--<i class="material-icons">delete</i>-->
-                    <!--</button>-->
-                <!--</td>-->
-            <!--</tr>-->
-            <!--</tbody>-->
-        <!--</table>-->
-    <!--</div>-->
-<!--</div>-->
 
 <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
      aria-hidden="true">
@@ -287,7 +217,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="/moneda" method="post">
+                <form action="/moneda/monedaAniadir" method="post">
                     <div class="form-group">
                         <label>Valor facial</label>
                         <input class="form-control" type="text" name="valorFacial">
@@ -315,76 +245,6 @@
                     <input type="hidden" name="listaEjemplares" value="">
                     <div class="modal-footer td-actions">
                         <button type="submit" class="btn btn-primary">Añadir</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="ejemplarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle3">Ejemplar</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label>Año de acuñación:</label>
-                    </div>
-                    <div class="form-group">
-                        <label>Ciudad de acuñación:</label>
-                    </div>
-                    <div class="form-group">
-                        <label>Fecha de adquisición:</label>
-                    </div>
-                    <div class="form-group">
-                        <label>Estado de conservación:</label>
-                    </div>
-                    <div class="form-group">
-                        <label>Proveedor</label>
-                        <button type="button" rel="tooltip" class="btn btn-info btn-fab btn-round" data-toggle="modal"
-                                data-target="#proveedorModal">
-                            <i class="material-icons">info</i>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="proveedorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle4">Proveedor</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label>Identificación fiscal:</label>
-                    </div>
-                    <div class="form-group">
-                        <label>Nombre:</label>
-                    </div>
-                    <div class="form-group">
-                        <label>Codigo postal:</label>
-                    </div>
-                    <div class="form-group">
-                        <label>Email:</label>
-                    </div>
-                    <div class="form-group">
-                        <label>Teléfono:</label>
                     </div>
                 </form>
             </div>
@@ -425,5 +285,6 @@
 <script src="../assets/js/plugins/bootstrap-notify.js"></script>
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="../assets/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
+<script src="../assets/js/myJs.js"></script>
 </body>
 </html>

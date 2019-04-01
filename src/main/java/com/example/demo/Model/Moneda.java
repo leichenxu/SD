@@ -17,8 +17,7 @@ public class Moneda {
     @ElementCollection
     private List<String> metales;
     private String descripcion;
-    //private String disponibilidad;
-    @OneToMany
+    @OneToMany(mappedBy = "moneda", cascade = CascadeType.ALL)
     private List<Ejemplar> listaEjemplares=new ArrayList<Ejemplar>();
 
     public Moneda() {
@@ -33,7 +32,6 @@ public class Moneda {
         this.peso = peso;
         this.metales = metales;
         this.descripcion = descripcion;
-        //this.disponibilidad= disponibilidad;
         this.id = (long) (this.valorFacial * 100 * this.unidadMonetaria.hashCode() * this.diametro * this.peso *
 				this.metales.hashCode());
 		this.listaEjemplares = l;
@@ -47,7 +45,6 @@ public class Moneda {
 		this.peso = peso;
 		this.metales = metales;
 		this.descripcion = descripcion;
-		//this.disponibilidad = disponibilidad;
 		this.id = (long) (this.valorFacial * 100 * this.unidadMonetaria.hashCode() * this.diametro * this.peso
 				* this.metales.hashCode());
 	}
@@ -93,7 +90,7 @@ public class Moneda {
         return valorFacial;
     }
 
-    /*public String getDisponibilidad() {
-        return disponibilidad;
-    }*/
+    public void removeEjemplar(Ejemplar ejemplar){
+        this.listaEjemplares.remove(ejemplar);
+    }
 }

@@ -13,6 +13,8 @@ public class Proveedor {
     private String codigoPostal;
     private String email;
     private String telefono;
+    @OneToOne
+    private Ejemplar ejemplar;
 
     public Proveedor() {
 

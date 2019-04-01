@@ -16,7 +16,8 @@ public class Ejemplar {
     private String conservacion;
     @OneToOne
     private Proveedor proveedor;
-    @OneToOne
+	@JoinColumn(nullable = false)
+    @ManyToOne(cascade = CascadeType.DETACH)
     private Moneda moneda;
     public Ejemplar(){
 

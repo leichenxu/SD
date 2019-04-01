@@ -33,6 +33,7 @@ public class ControladorEjemplar {
 		Moneda m=repM.findById(id).get();
 		List<Ejemplar> e=repE.findByMoneda(m);
 		model.addAttribute("Ejemplares",e);
+		model.addAttribute("Moneda",m);
 		return "Ejemplares";
 	}
 	@RequestMapping(value="/ejemplarAniadir")

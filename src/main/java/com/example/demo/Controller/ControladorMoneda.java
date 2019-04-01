@@ -1,14 +1,11 @@
 package com.example.demo.Controller;
 
+import com.example.demo.Model.Ejemplar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.Model.Moneda;
 import com.example.demo.Model.Proveedor;
@@ -55,5 +52,18 @@ public class ControladorMoneda {
             model.addAttribute("moneda", m.get());
         }
         return "";
+    }
+
+    @DeleteMapping("/delete/{moneda}")
+    public ResponseEntity<?> deleteMoneda (@PathVariable Moneda moneda){
+        this.repM.delete(moneda);
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/remove/{moneda}/{ejemplar}")
+    public ResponseEntity<?> removeRequest (@PathVariable Moneda moneda, @PathVariable Ejemplar ejemplar){
+        moneda.removeEjemplar(ejemplar);
+        this.repM.save(moneda);
+        return ResponseEntity.noContent().build();
     }
 }
