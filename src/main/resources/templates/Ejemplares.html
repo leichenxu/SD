@@ -124,35 +124,25 @@
                 <form action="/moneda" method="post">
                     <div class="form-group">
                         <label>Año de acuñación</label>
-                        <input class="form-control" name="valorFacia">
+                        <input class="form-control" name="anio">
                     </div>
                     <div class="form-group">
-                        <label>Unidad monetaria</label>
-                        <input class="form-control" name="unidadMonetaria">
+                        <label>Ciudad de acuñación</label>
+                        <input class="form-control" name="ciudad">
                     </div>
                     <div class="form-group">
-                        <label>Diametro</label>
-                        <input class="form-control" name="diamtro">
+                        <label>Fecha de adquisición</label>
+                        <input class="form-control" name="fechaAdquisicion" type="date">
                     </div>
                     <div class="form-group">
-                        <label>Peso</label>
-                        <input class="form-control" name="peso">
+                        <label>Estado de conservación</label>
+                        <input class="form-control" name="conservacion">
                     </div>
                     <div class="form-group">
-                        <label>Composición</label>
-                        <input class="form-control" name="metales">
+                        <label>NIF proveedor</label>
+                        <input class="form-control" name="proveedor">
                     </div>
-                    <div class="form-group">
-                        <label>Descripcion</label>
-                        <input class="form-control" name="descripcion">
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value="" name="disponibilidad">
-                            Disponible en museo
-                            <span class="form-check-sign"><span class="check"></span></span>
-                        </label>
-                    </div>
+                    <input type="hidden" name="moneda" th:value="${moneda}">
                 </form>
             </div>
             <div class="modal-footer">

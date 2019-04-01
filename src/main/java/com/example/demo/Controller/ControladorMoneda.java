@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.Model.Moneda;
 import com.example.demo.Model.Proveedor;
+import com.example.demo.Repository.RepositorioEjemplar;
 import com.example.demo.Repository.RepositorioMoneda;
+import com.example.demo.Repository.RepositorioProveedor;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,8 +21,14 @@ import java.util.Optional;
 @Controller
 @RequestMapping("moneda")
 public class ControladorMoneda {
+	@Autowired
+	private RepositorioProveedor repP;
+
     @Autowired
     private RepositorioMoneda repM;
+
+	@Autowired
+	private RepositorioEjemplar repE;
 
     @PostMapping
     public ResponseEntity<?> addMoneda (@ModelAttribute Moneda moneda){
@@ -44,14 +52,72 @@ public class ControladorMoneda {
     public String monedaModificar(Model model, Moneda moneda) {
         return "index";
     }
-
-    @RequestMapping(value = "/monedaConsultar")
-    public String monedaConsultar(Model model, Moneda moneda) {
-        Optional<Moneda> m = repM.findById(moneda.getId());
-        if (m.isPresent()) {
-            model.addAttribute("moneda", m.get());
-        }
-        return "";
+    private boolean asc=false;
+    @RequestMapping(value="/ascDes")
+    public String modenaAsc(Model model) {
+    	if(!asc) {
+    		asc=true;
+    		model.addAttribute("Monedas",this.repM.findAllByOrderByIdAsc());
+    	}else {
+    		asc=false;
+    		model.addAttribute("Monedas",this.repM.findAllByOrderByIdDesc());
+    	}    
+        this.defecto(model,false,true,true);	
+    	return "index";
+    }
+    
+    private boolean val=false;
+    @RequestMapping(value="/val")
+    public String modenaVal(Model model) {
+    	if(!val) {
+    		val=true;
+    		model.addAttribute("Monedas",this.repM.findAllByOrderByValorFacialAsc());
+    	}else {
+    		val=false;
+    		model.addAttribute("Monedas",this.repM.findAllByOrderByValorFacialDesc());
+    	}    
+    	this.defecto(model,false,true,true);
+    	return "index";
+    }
+    private boolean uni=false;
+    @RequestMapping(value="/uni")
+    public String modenaUni(Model model) {
+    	if(!uni) {
+    		uni=true;
+    		model.addAttribute("Monedas",this.repM.findAllByOrderByUnidadMonetariaAsc());
+    	}else {
+    		uni=false;
+    		model.addAttribute("Monedas",this.repM.findAllByOrderByUnidadMonetariaDesc());
+    	}            	
+    	this.defecto(model,false,true,true);
+    	return "index";
+    }
+    
+    private boolean diam=false;
+    @RequestMapping(value="/diam")
+    public String modenaDiam(Model model) {
+    	if(!diam) {
+    		diam=true;
+    		model.addAttribute("Monedas",this.repM.findAllByOrderByDiametroAsc());
+    	}else {
+    		diam=false;
+    		model.addAttribute("Monedas",this.repM.findAllByOrderByDiametroDesc());
+    	}            	
+    	this.defecto(model,false,true,true);
+    	return "index";
+    }
+    private boolean peso=false;
+    @RequestMapping(value="/peso")
+    public String modenaPeso(Model model) {
+    	if(!peso) {
+    		peso=true;
+    		model.addAttribute("Monedas",this.repM.findAllByOrderByPesoAsc());
+    	}else {
+    		peso=false;
+    		model.addAttribute("Monedas",this.repM.findAllByOrderByPesoDesc());
+    	}            
+    	this.defecto(model,false,true,true);
+    	return "index";
     }
 
     @DeleteMapping("/delete/{moneda}")
@@ -65,5 +131,13 @@ public class ControladorMoneda {
         moneda.removeEjemplar(ejemplar);
         this.repM.save(moneda);
         return ResponseEntity.noContent().build();
+    }
+    private void defecto(Model model,boolean a,boolean b,boolean c) {
+    	if (a)
+    	model.addAttribute("Monedas",repM.findAll());
+    	if(b)
+		model.addAttribute("Ejemplares",repE.findAll());
+    	if(c)
+		model.addAttribute("Proveedores",repP.findAll());
     }
 }

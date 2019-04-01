@@ -16,4 +16,12 @@ public interface RepositorioEjemplar extends JpaRepository<Ejemplar,Long> {
 	(int i,String ciudad,String string,String conservacion,Proveedor proveedor,
 			Moneda moneda);
 	List<Ejemplar> findByMoneda(Moneda moneda);
+	List<Ejemplar> findAllByOrderByAnioAsc();
+	List<Ejemplar> findAllByOrderByAnioDesc();
+	List<Ejemplar> findAllByOrderByCiudadAsc();
+	List<Ejemplar> findAllByOrderByCiudadDesc();
+	List<Ejemplar> findAllByOrderByFechaAdquisicionAsc();
+	List<Ejemplar> findAllByOrderByFechaAdquisicionDesc();
+	List<Ejemplar> findAllByOrderByProveedorAsc();
+	List<Ejemplar> findAllByOrderByProveedorDesc();
 }

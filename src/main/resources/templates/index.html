@@ -31,7 +31,10 @@
     </li>
 </ul>
 
-<div class="row">
+
+<div class="tab-content tab-space">
+    <div class="tab-pane active" id="link1" aria-expanded="true">
+    <div class="row">
     <button type="button" rel="tooltip" class="btn btn-success btn-round ml-auto" data-toggle="modal"
             data-target="#searchModal">
         <i class="material-icons">search</i>
@@ -41,17 +44,14 @@
         <i class="material-icons">add_circle</i>
     </button>
 </div>
-
-<div class="tab-content tab-space">
-    <div class="tab-pane active" id="link1" aria-expanded="true">
         <table class="table">
             <thead>
             <tr>
-                <th>ID</th>
-                <th>Valor facial</th>
-                <th>Unidad monetaria</th>
-                <th>Diametro</th>
-                <th>Peso</th>
+                <th><a href="/moneda/ascDes">ID</a></th>
+                <th><a href="/moneda/val">Valor facial</a></th>
+                <th><a href="/moneda/uni">Unidad monetaria</a></th>
+                <th><a href="/moneda/diam">Diametro</a></th>
+                <th><a href="/moneda/peso">Peso</a></th>
                 <th>Composicion</th>
                 <th>Descripción</th>
                 <th>Ejemplares</th>
@@ -88,15 +88,15 @@
         </table>
     </div>
 
-    <div class="tab-pane" id="link2" aria-expanded="false">
+    <div class="tab-pane" id="link2" aria-expanded="false">    
         <table class="table">
             <thead>
             <tr>
-                <th>Año de acuñación</th>
-                <th>Ciudad de acuñación</th>
-                <th>Fecha de adquisición</th>
+                <th><a href="/ejemplar/acun">Año de acuñación</a></th>
+                <th><a href="/ejemplar/ciud">Ciudad de acuñación</a></th>
+                <th><a href="/ejemplar/fechaAd">Fecha de adquisición</a></th>
                 <th>Estado de conservación</th>
-                <th>Proveedor</th>
+                <th><a href="/ejemplar/prov">Proveedor</a></th>
             </tr>
             </thead>
             <tbody>
@@ -129,6 +129,16 @@
     </div>
 
     <div class="tab-pane" id="link3" aria-expanded="false">
+    <div class="row">
+    <button type="button" rel="tooltip" class="btn btn-success btn-round ml-auto" data-toggle="modal"
+            data-target="#searchModal">
+        <i class="material-icons">search</i>
+    </button>
+    <button type="button" rel="tooltip" class="btn btn-success btn-round mr-5" data-toggle="modal"
+            data-target="#addModal">
+        <i class="material-icons">add_circle</i>
+    </button>
+</div>
         <table class="table">
             <thead>
             <tr>
