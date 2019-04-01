@@ -34,9 +34,8 @@ function deleteMoneda(moneda_id) {
 }
 
 function removeEjemplar(moneda_id,ejemplar_id) {
-    var service_id =$(element).parent().parent().prev(".serviceId").val();
     $.ajax({
-        "url": "/" +"moneda/" + "remove/" + moneda_id + "/" + ejemplar_id_id,
+        "url": "/" +"moneda/" + "remove/" + moneda_id + "/" + ejemplar_id,
         "method": "DELETE",
     }).done(refreshPage);
 }

@@ -59,9 +59,8 @@
                     <button type="button" rel="tooltip" class="btn btn-success btn-round">
                         <i class="material-icons">edit</i>
                     </button>
-                    <button type="button" rel="tooltip" class="btn btn-danger btn-round" 
-                    data-toggle="modal" data-target="#deleteConfirmationModal">
-                        <i class="material-icons" onclick="removeEjemplar((${Moneda.id},${ejemplar.id})">delete</i>
+                    <button type="button" rel="tooltip" class="btn btn-danger btn-round">
+                        <i class="material-icons" th:data-m-id="${Moneda.id}" th:data-e-id="${ejemplar.id}" onclick="removeEjemplar(this.getAttribute('data-m-id'),this.getAttribute('data-e-id'))">delete</i>
                     </button>
                 </td>
             </tr>
