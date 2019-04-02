@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface RepositorioProveedor extends JpaRepository<Proveedor,Long> {
-    List<Proveedor> findAllByEjemplar(Ejemplar ejemplar);
+    Proveedor findAllByNombre(String name);
 }

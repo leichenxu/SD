@@ -41,20 +41,19 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
+            <tr th:each="proveedor : ${Proveedor}">
                 <td><span th:text="${proveedor.codigoIdentificacionFiscal}"></span></td>
                 <td><span th:text="${proveedor.nombre}"></span></td>
                 <td><span th:text="${proveedor.codigoPostal}"></span></td>
                 <td><span th:text="${proveedor.email}"></span></td>
-                <td><span th:text="${proveedor.telefono}"></span>                
+                <td><span th:text="${proveedor.telefono}"></span>
                 </td>
                 <td class="td-actions text-right">
                     <button type="button" rel="tooltip" class="btn btn-success btn-round">
                         <i class="material-icons">edit</i>
                     </button>
-                    <button type="button" rel="tooltip" class="btn btn-danger btn-round" 
-                    data-toggle="modal" data-target="#deleteConfirmationModal">
-                        <i class="material-icons" th:data-id="${Ejemplar.id}" onclick="removeProvedor(this.getAttribute('data-id'))">delete</i>
+                    <button type="button" rel="tooltip" class="btn btn-danger btn-round">
+                        <i class="material-icons" th:data-id="${Ejemplar.id}" onclick="removeProveedor(this.getAttribute('data-id'))">delete</i>
                     </button>
                 </td>
             </tr>
@@ -104,93 +103,6 @@
     </div>
 </div>
 
-<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle2">Añadir moneda</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="/moneda" method="post">
-                    <div class="form-group">
-                        <label>Año de acuñación</label>
-                        <input class="form-control" name="valorFacia">
-                    </div>
-                    <div class="form-group">
-                        <label>Unidad monetaria</label>
-                        <input class="form-control" name="unidadMonetaria">
-                    </div>
-                    <div class="form-group">
-                        <label>Diametro</label>
-                        <input class="form-control" name="diamtro">
-                    </div>
-                    <div class="form-group">
-                        <label>Peso</label>
-                        <input class="form-control" name="peso">
-                    </div>
-                    <div class="form-group">
-                        <label>Composición</label>
-                        <input class="form-control" name="metales">
-                    </div>
-                    <div class="form-group">
-                        <label>Descripcion</label>
-                        <input class="form-control" name="descripcion">
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value="" name="disponibilidad">
-                            Disponible en museo
-                            <span class="form-check-sign"><span class="check"></span></span>
-                        </label>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Añadir</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="ejemplarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document" >
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle3">Ejemplar</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label>Año de acuñación:</label>                        
-                    </div>
-                    <div class="form-group">
-                        <label>Ciudad de acuñación:</label>
-                    </div>
-                    <div class="form-group">
-                        <label>Fecha de adquisición:</label>
-                    </div>
-                    <div class="form-group">
-                        <label>Estado de conservación:</label>
-                    </div>
-                    <div class="form-group">
-                        <label>Proveedor</label>
-                        <button type="button" rel="tooltip" class="btn btn-info btn-fab btn-round" data-toggle="modal" data-target="#proveedorModal">
-                            <i class="material-icons">info</i>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="modal fade" id="proveedorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
      aria-hidden="true">
@@ -260,5 +172,6 @@
 <script src="../assets/js/plugins/bootstrap-notify.js"></script>
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="../assets/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
+<script src="../assets/js/myJs.js"></script>
 </body>
 </html>

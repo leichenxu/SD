@@ -35,5 +35,7 @@ public class ControladorBaseDeDatos {
                 "Sin datos", p, mone));
         //Ejemplar e = repE.save(new Ejemplar("1634", "Valladolid", "01/01/2000", "Sin datos", p, mone));
         mone.getListaEjemplares().add(e);
+        e.setProveedor(p);
+        e=repE.save(e);
     }
 }

@@ -22,8 +22,7 @@ public class ControladorProveedor {
 
 	@RequestMapping("/{ejemplar}")
 	public String proveedorDeUnEjemplar(@PathVariable Ejemplar ejemplar, Model model) {
-		List<Proveedor> ejemplares = repP.findAllByEjemplar(ejemplar);
-		model.addAttribute("proveedor",ejemplares);
+		model.addAttribute("Proveedor",ejemplar.getProveedor());
 		model.addAttribute("Ejemplar",ejemplar);
 		return "ProveedorDeUnEjemplar";
 	}
