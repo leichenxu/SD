@@ -3,6 +3,7 @@ package com.example.demo.Model;
 import com.example.demo.Model.Proveedor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.sql.Date;
 
 @Entity
@@ -14,7 +15,7 @@ public class Ejemplar {
     private String ciudad;
     private Date fechaAdquisicion;
     private String conservacion;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.DETACH)
     private Proveedor proveedor;
 	@JoinColumn(nullable = false)
     @ManyToOne(cascade = CascadeType.DETACH)

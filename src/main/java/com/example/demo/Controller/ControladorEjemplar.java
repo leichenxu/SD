@@ -45,6 +45,12 @@ public class ControladorEjemplar {
         return ResponseEntity.noContent().build();
     }
 
+    @DeleteMapping("/delete/{ejemplar}")
+    public ResponseEntity<?> deleteEjemplar (@PathVariable Ejemplar ejemplar){
+        this.repE.delete(ejemplar);
+        return ResponseEntity.noContent().build();
+    }
+
     /*@RequestMapping(value = "/ejemplarAniadir", method = RequestMethod.POST)
     public String ejemplarAniadir(Model model, Ejemplar ejemplar, Moneda moneda) {
         ejemplar.setMoneda(moneda);

@@ -46,3 +46,17 @@ function removeProveedor(ejemplar_id) {
         "method": "DELETE",
     }).done(refreshPage);
 }
+
+function deleteEjemplar(ejemplar_id) {
+    $.ajax({
+        "url": "/" +"ejemplar/" + "delete/" +  ejemplar_id,
+        "method": "DELETE",
+    }).done(refreshPage);
+}
+
+function deleteProveedor(proveedor_id) {
+    $.ajax({
+        "url": "/" +"proveedor/" + "delete/" +  proveedor_id,
+        "method": "DELETE",
+    }).done(refreshPage);
+}

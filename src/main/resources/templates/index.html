@@ -34,16 +34,16 @@
 
 <div class="tab-content tab-space">
     <div class="tab-pane active" id="link1" aria-expanded="true">
-    <div class="row">
-    <button type="button" rel="tooltip" class="btn btn-success btn-round ml-auto" data-toggle="modal"
-            data-target="#searchModal">
-        <i class="material-icons">search</i>
-    </button>
-    <button type="button" rel="tooltip" class="btn btn-success btn-round mr-5" data-toggle="modal"
-            data-target="#addModal">
-        <i class="material-icons">add_circle</i>
-    </button>
-</div>
+        <div class="row">
+            <button type="button" rel="tooltip" class="btn btn-success btn-round ml-auto" data-toggle="modal"
+                    data-target="#searchModal">
+                <i class="material-icons">search</i>
+            </button>
+            <button type="button" rel="tooltip" class="btn btn-success btn-round mr-5" data-toggle="modal"
+                    data-target="#addModal">
+                <i class="material-icons">add_circle</i>
+            </button>
+        </div>
         <table class="table">
             <thead>
             <tr>
@@ -80,7 +80,8 @@
                         <i class="material-icons">edit</i>
                     </button>
                     <button type="button" rel="tooltip" class="btn btn-danger btn-round">
-                        <i class="material-icons" th:data_id="${moneda.id}" onclick="deleteMoneda(this.getAttribute('data_id'))">delete</i>
+                        <i class="material-icons" th:data_id="${moneda.id}"
+                           onclick="deleteMoneda(this.getAttribute('data_id'))">delete</i>
                     </button>
                 </td>
             </tr>
@@ -88,7 +89,7 @@
         </table>
     </div>
 
-    <div class="tab-pane" id="link2" aria-expanded="false">    
+    <div class="tab-pane" id="link2" aria-expanded="false">
         <table class="table">
             <thead>
             <tr>
@@ -119,7 +120,7 @@
                         <i class="material-icons">edit</i>
                     </button>
                     <button type="button" rel="tooltip" class="btn btn-danger btn-round">
-                        <i class="material-icons">delete</i>
+                        <i class="material-icons" th:data-id="${ejemplar.id}" onclick="deleteEjemplar(this.getAttribute('data-id'))">delete</i>
                     </button>
                 </td>
             </tr>
@@ -128,16 +129,16 @@
     </div>
 
     <div class="tab-pane" id="link3" aria-expanded="false">
-    <div class="row">
-    <button type="button" rel="tooltip" class="btn btn-success btn-round ml-auto" data-toggle="modal"
-            data-target="#searchModal">
-        <i class="material-icons">search</i>
-    </button>
-    <button type="button" rel="tooltip" class="btn btn-success btn-round mr-5" data-toggle="modal"
-            data-target="#addModal">
-        <i class="material-icons">add_circle</i>
-    </button>
-</div>
+        <div class="row">
+            <button type="button" rel="tooltip" class="btn btn-success btn-round ml-auto" data-toggle="modal"
+                    data-target="#searchModal">
+                <i class="material-icons">search</i>
+            </button>
+            <button type="button" rel="tooltip" class="btn btn-success btn-round mr-5" data-toggle="modal"
+                    data-target="#addModal">
+                <i class="material-icons">add_circle</i>
+            </button>
+        </div>
         <table class="table">
             <thead>
             <tr>
@@ -161,7 +162,7 @@
                         <i class="material-icons">edit</i>
                     </button>
                     <button type="button" rel="tooltip" class="btn btn-danger btn-round">
-                        <i class="material-icons">delete</i>
+                        <i class="material-icons" th:data-id="${proveedor.id}" onclick="deleteProveedor(this.getAttribute('data-id'))">delete</i>
                     </button>
                 </td>
             </tr>
@@ -259,7 +260,6 @@
         </div>
     </div>
 </div>
-
 
 
 <script src="../assets/js/core/jquery.min.js" type="text/javascript"></script>
