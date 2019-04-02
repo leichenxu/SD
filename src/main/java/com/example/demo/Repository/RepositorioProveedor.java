@@ -9,9 +9,14 @@ import java.util.List;
 public interface RepositorioProveedor extends JpaRepository<Proveedor,Long> {
     Proveedor findAllByNombre(String name);
     List<Proveedor> findAllByOrderByCodigoIdentificacionFiscalAsc();
-    List<Proveedor> findAllByOrderByCodigoIdentificacionFiscalDesc();
-    //List<Proveedor> findAllByOrderByCodigoPostalAsc();
-    List<Proveedor> findAllByOrderByEjemplarAsc();
-    List<Proveedor> findAllByOrderByNombreAsc();
+	List<Proveedor> findAllByOrderByCodigoIdentificacionFiscalDesc();
+	List<Proveedor> findAllByOrderByNombreAsc();
+	List<Proveedor> findAllByOrderByNombreDesc();
+	List<Proveedor> findAllByOrderByCodigoPostalAsc();
+	List<Proveedor> findAllByOrderByCodigoPostalDesc();
+	List<Proveedor> findAllByOrderByEmailAsc();
+	List<Proveedor> findAllByOrderByEmailDesc();
+	List<Proveedor> findAllByOrderByTelefonoAsc();
+	List<Proveedor> findAllByOrderByTelefonoDesc();
 
 }

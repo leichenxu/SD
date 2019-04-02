@@ -65,15 +65,63 @@ public class ControladorProveedor {
             CIFAscDes = false;
             model.addAttribute("Proveedor", this.repP.findAllByOrderByCodigoIdentificacionFiscalDesc());
         }
-        this.defecto(model, true, true, false);
-        return "index";
-    }
-
-    @RequestMapping(value = "nombre")
-    public String provResultNombre(Model model) {
-        model.addAttribute("Proveedor", repP.findAllByOrderByNombreAsc());
         return "search_result_proveedor";
     }
+    private boolean nomb=false;
+    @RequestMapping(value = "nombre")
+    public String provResultNombre(Model model) {
+    	if(!nomb) {
+    		nomb=true;
+    		model.addAttribute("Proveedor",this.repP.findAllByOrderByNombreAsc());
+    	}else {
+    		nomb=false;
+    		model.addAttribute("Proveedor",this.repP.findAllByOrderByNombreDesc());
+    	}    	
+        return "search_result_proveedor";
+
+    }
+    
+    private boolean codigoP=false;
+    @RequestMapping(value="/codigoPostal")
+    public String codPAsc(Model model) {
+    	if(!codigoP) {
+    		codigoP=true;
+    		model.addAttribute("Proveedor",this.repP.findAllByOrderByCodigoPostalAsc());
+    	}else {
+    		codigoP=false;
+    		model.addAttribute("Proveedor",this.repP.findAllByOrderByCodigoPostalDesc());
+    	}    
+    	return "search_result_proveedor";
+    }
+    
+    private boolean email=false;
+    @RequestMapping(value="/email")
+    public String emailAsc(Model model) {
+    	if(!email) {
+    		email=true;
+    		model.addAttribute("Proveedor",this.repP.findAllByOrderByEmailAsc());
+    	}else {
+    		email=false;
+    		model.addAttribute("Proveedor",this.repP.findAllByOrderByEmailDesc());
+    	}           
+    	return "search_result_proveedor";
+    }
+    
+    private boolean telefono=false;
+    @RequestMapping(value="/telefono")
+    public String telefAsc(Model model) {
+    	if(!telefono) {
+    		telefono=true;
+    		model.addAttribute("Proveedor",this.repP.findAllByOrderByTelefonoAsc());
+    	}else {
+    		telefono=false;
+    		model.addAttribute("Proveedor",this.repP.findAllByOrderByTelefonoDesc());
+    	}    
+    	return "search_result_proveedor";
+    }
+
+
+
 
     private void defecto(Model model, boolean a, boolean b, boolean c) {
         if (a)
