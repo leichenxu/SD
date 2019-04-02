@@ -64,7 +64,7 @@ function findByMonedaV() {
     $.ajax({
         "url": "/" +"moneda/" + "BusquedadV",
         "method": "POST",
-    }).done(refreshPage);
+    });
 }
 
 /*function findByCIF() {

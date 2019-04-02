@@ -116,7 +116,7 @@ public class ControladorMoneda {
     
     @PostMapping(value="/BusquedadV")
     public String valorFacial(Model model) {
-    	model.addAttribute("hola",repM.findAllByOrderByValorFacialAsc());
+    	model.addAttribute("Monedas",repM.findAllByOrderByValorFacialAsc());
     	return "search_result_moneda";
     }
     
