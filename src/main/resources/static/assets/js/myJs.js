@@ -60,3 +60,31 @@ function deleteProveedor(proveedor_id) {
         "method": "DELETE",
     }).done(refreshPage);
 }
+
+/*function findByCIF() {
+    $.ajax({
+        "url": "/" +"proveedor/" + "CIF",
+        "method": "POST",
+    }).done(refreshPage);
+}
+
+function findByMonedaID() {
+    $.ajax({
+        "url": "/" +"moneda/" + "ascDes",
+        "method": "POST",
+    }).done(refreshPage);
+}
+
+function findByMonedaValorFacial() {
+    $.ajax({
+        "url": "/" +"moneda/" + "val",
+        "method": "POST",
+    }).done(refreshPage);
+}
+
+function findByProveedorNombre() {
+    $.ajax({
+        "url": "/" +"proveedor/" + "nombre",
+        "method": "POST",
+    }).done(refreshPage);
+}*/
