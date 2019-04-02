@@ -8,4 +8,10 @@ import java.util.List;
 
 public interface RepositorioProveedor extends JpaRepository<Proveedor,Long> {
     Proveedor findAllByNombre(String name);
+    List<Proveedor> findAllByOrderByCodigoIdentificacionFiscalAsc();
+    List<Proveedor> findAllByOrderByCodigoIdentificacionFiscalDesc();
+    //List<Proveedor> findAllByOrderByCodigoPostalAsc();
+    List<Proveedor> findAllByOrderByEjemplarAsc();
+    List<Proveedor> findAllByOrderByNombreAsc();
+
 }
