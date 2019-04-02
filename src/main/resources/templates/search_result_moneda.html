@@ -19,19 +19,9 @@
         </div>
     </div>
     <div class="card-body">
-        <div class="row">
-            <button type="button" rel="tooltip" class="btn btn-secondary btn-round btn-fab ml-5">
-                <a href="/"><i class="material-icons">chevron_left</i></a>
-            </button>
-            <button type="button" rel="tooltip" class="btn btn-success btn-round ml-auto" data-toggle="modal"
-                    data-target="#searchModal">
-                <i class="material-icons">search</i>
-            </button>
-            <button type="button" rel="tooltip" class="btn btn-success btn-round" data-toggle="modal"
-                    data-target="#addModal">
-                <i class="material-icons">add_circle</i>
-            </button>
-        </div>
+        <button type="button" rel="tooltip" class="btn btn-secondary btn-round btn-fab ml-5">
+            <a href="/"><i class="material-icons">chevron_left</i></a>
+        </button>
         <table class="table">
             <thead>
             <tr>
@@ -62,15 +52,6 @@
                             <i class="material-icons">info</i>
                         </button>
                     </a>
-                </td>
-                <td class="td-actions text-right">
-                    <button type="button" rel="tooltip" class="btn btn-success btn-round">
-                        <i class="material-icons">edit</i>
-                    </button>
-                    <button type="button" rel="tooltip" class="btn btn-danger btn-round">
-                        <i class="material-icons" th:data_id="${moneda.id}"
-                           onclick="deleteMoneda(this.getAttribute('data_id'))">delete</i>
-                    </button>
                 </td>
             </tr>
             </tbody>
