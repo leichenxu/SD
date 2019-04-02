@@ -56,7 +56,7 @@ public class ControladorProveedor {
                             @RequestParam("email") String email,
                             @RequestParam("telefono") String telefono,
                             Model model) {
-        Proveedor proveedor = new Proveedor(codigoIdentificacionFiscal, nombre, codigoPostal, email, telefono);
+        Proveedor proveedor = new Proveedor(id,codigoIdentificacionFiscal, nombre, codigoPostal, email, telefono);
         repP.save(proveedor);
         return "index";
     }

@@ -163,7 +163,7 @@
                 <td><span th:text="${proveedor.telefono}"></span>
                 </td>
                 <td class="td-actions text-right">
-                    <button type="button" rel="tooltip" class="btn btn-success btn-round">
+                    <button type="button" rel="tooltip" class="btn btn-success btn-round" data-toggle="modal" data-target="#editProveedor">
                         <i class="material-icons">edit</i>
                     </button>
                     <button type="button" rel="tooltip" class="btn btn-danger btn-round">
@@ -426,6 +426,10 @@
             </div>
             <div class="modal-body">
                 <form action="/proveedor/editProveedor" method="post">
+                    <div class="form-group">
+                        <label>ID</label>
+                        <input class="form-control" type="text" name="id">
+                    </div>
                     <div class="form-group">
                         <label>Código de identificación fiscal</label>
                         <input class="form-control" type="text" name="codigoIdentificacionFiscal">
