@@ -33,6 +33,7 @@ public class ControladorBaseDeDatos {
         		1, 6.77f, l, "Ninguna descripción"));
         Ejemplar e=repE.save(new Ejemplar(new java.sql.Date(1634,1,1), "Valladolid", new java.sql.Date(2000, 1, 1),
                 "Sin datos", p, mone));
+        //Ejemplar e = repE.save(new Ejemplar("1634", "Valladolid", "01/01/2000", "Sin datos", p, mone));
         mone.getListaEjemplares().add(e);
     }
 }
