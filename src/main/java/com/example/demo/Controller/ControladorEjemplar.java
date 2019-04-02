@@ -37,7 +37,7 @@ public class ControladorEjemplar {
         Moneda m = repM.findById(id).get();
         List<Ejemplar> e = repE.findByMoneda(m);
         model.addAttribute("Ejemplares", e);
-        model.addAttribute("Moneda", m);
+        model.addAttribute("Moneda", id);
         return "Ejemplares";
     }
 
@@ -129,9 +129,9 @@ public class ControladorEjemplar {
                                   @RequestParam("fechaAdquisicion") Date fechaA,
                                   @RequestParam("conservacion") String conservacion,
                                   @RequestParam("proveedor") String prov,
-                                  @RequestParam("moneda") Moneda m, Model model) {
+                                  @RequestParam("Moneda") String m, Model model) {
         Ejemplar e = new Ejemplar(new java.sql.Date(Integer.valueOf(anio), 1, 1), ciudad, fechaA, conservacion,
-                repP.findById((long) prov.hashCode()).get(), m);
+                repP.findById((long) prov.hashCode()).get(),repM.findById(Long.valueOf(m)).get());
         repE.save(e);
         return "index";
     }

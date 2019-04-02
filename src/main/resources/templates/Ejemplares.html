@@ -141,53 +141,16 @@
                     <div class="form-group">
                         <label>NIF proveedor</label>
                         <input class="form-control" name="proveedor">
-                    </div>
+                    </div>                    
+                    <input type="hidden" name="Moneda" th:value="${Moneda}" id="moneda">
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Añadir</button>
                     </div>
-                    <input type="hidden" name="moneda" th:value="${Moneda}">
                 </form>
             </div>
         </div>
     </div>
 </div>
-
-<!--<div class="modal fade" id="ejemplarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document" >
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle3">Ejemplar</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label>Año de acuñación:</label>                        
-                    </div>
-                    <div class="form-group">
-                        <label>Ciudad de acuñación:</label>
-                    </div>
-                    <div class="form-group">
-                        <label>Fecha de adquisición:</label>
-                    </div>
-                    <div class="form-group">
-                        <label>Estado de conservación:</label>
-                    </div>
-                    <div class="form-group">
-                        <label>Proveedor</label>
-                        <button type="button" rel="tooltip" class="btn btn-info btn-fab btn-round" data-toggle="modal" data-target="#proveedorModal">
-                            <i class="material-icons">info</i>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<!-->
 
 <div class="modal fade" id="proveedorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
      aria-hidden="true">
