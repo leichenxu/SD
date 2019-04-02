@@ -84,7 +84,7 @@ public class ControladorEjemplar {
             model.addAttribute("Ejemplares", this.repE.findAllByOrderByAnioDesc());
         }
         this.defecto(model, true, false, true);
-        return "index";
+        return "search_result_ejemplar";
     }
 
     private boolean ciud = false;
@@ -99,7 +99,7 @@ public class ControladorEjemplar {
             model.addAttribute("Ejemplares", this.repE.findAllByOrderByCiudadDesc());
         }
         this.defecto(model, true, false, true);
-        return "index";
+        return "search_result_ejemplar";
     }
 
     private boolean prov = false;
@@ -114,7 +114,7 @@ public class ControladorEjemplar {
             model.addAttribute("Ejemplares", this.repE.findAllByOrderByProveedorDesc());
         }
         this.defecto(model, true, false, true);
-        return "index";
+        return "search_result_ejemplar";
     }
 
     private boolean fechaAd = false;
@@ -129,7 +129,7 @@ public class ControladorEjemplar {
             model.addAttribute("Ejemplares", this.repE.findAllByOrderByFechaAdquisicionDesc());
         }
         this.defecto(model, true, false, true);
-        return "index";
+        return "search_result_ejemplar";
     }
 
 

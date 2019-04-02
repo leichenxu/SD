@@ -35,23 +35,37 @@
         <table class="table">
             <thead>
             <tr>
-                <th>Identificación fiscal</th>
-                <th>Nombre</th>
-                <th>Codigo postal</th>
-                <th>Email</th>
-                <th>Telefono</th>
+                <th>Año de acuñación</th>
+                <th>Ciudad de acuñación</th>
+                <th>Fecha de adquisición</th>
+                <th>Estado de conservación</th>
+                <th>Proveedor</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="proveedor : ${Proveedor}">
-                <td><span th:text="${proveedor.codigoIdentificacionFiscal}"></span></td>
-                <td><span th:text="${proveedor.nombre}"></span></td>
-                <td><span th:text="${proveedor.codigoPostal}"></span></td>
-                <td><span th:text="${proveedor.email}"></span></td>
-                <td><span th:text="${proveedor.telefono}"></span>
+            <tr th:each="ejemplar : ${Ejemplares}">
+                <td><span th:text="${ejemplar.anio}"></span></td>
+                <td><span th:text="${ejemplar.ciudad}"></span></td>
+                <td><span th:text="${ejemplar.fechaAdquisicion}"></span></td>
+                <td><span th:text="${ejemplar.conservacion}"></span></td>
+                <td><span th:text="${ejemplar.proveedor}"></span>
+                    <!--boton de info -->
+                    <a th:href="@{'/proveedor/' + ${ejemplar.id}}">
+                        <button type="submit" class="btn btn-info btn-fab btn-round"
+                                data-toggle="modal">
+                            <i class="material-icons">info</i>
+                        </button>
+                    </a>
+                </td>
+                <td class="td-actions text-right">
+                    <button type="button" rel="tooltip" class="btn btn-success btn-round">
+                        <i class="material-icons">edit</i>
+                    </button>
+                    <button type="button" rel="tooltip" class="btn btn-danger btn-round">
+                        <i class="material-icons" th:data-id="${ejemplar.id}" onclick="deleteEjemplar(this.getAttribute('data-id'))">delete</i>
+                    </button>
                 </td>
             </tr>
-            </tbody>
         </table>
     </div>
 </div>

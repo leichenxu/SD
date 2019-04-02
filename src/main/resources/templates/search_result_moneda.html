@@ -35,20 +35,42 @@
         <table class="table">
             <thead>
             <tr>
-                <th>Identificación fiscal</th>
-                <th>Nombre</th>
-                <th>Codigo postal</th>
-                <th>Email</th>
-                <th>Telefono</th>
+                <th>ID</th>
+                <th>Valor facial</th>
+                <th>Unidad monetaria</th>
+                <th>Diametro</th>
+                <th>Peso</th>
+                <th>Composicion</th>
+                <th>Descripción</th>
+                <th>Ejemplares</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="moneda : ${Moneda}">
-                <td><span th:text="${proveedor.codigoIdentificacionFiscal}"></span></td>
-                <td><span th:text="${proveedor.nombre}"></span></td>
-                <td><span th:text="${proveedor.codigoPostal}"></span></td>
-                <td><span th:text="${proveedor.email}"></span></td>
-                <td><span th:text="${proveedor.telefono}"></span>
+            <tr th:each="moneda : ${Monedas}">
+                <td><span th:text="${moneda.id}"></span></td>
+                <td><span th:text="${moneda.valorFacial}"></span></td>
+                <td><span th:text="${moneda.unidadMonetaria}"></span></td>
+                <td><span th:text="${moneda.diametro}"></span></td>
+                <td><span th:text="${moneda.peso}"></span></td>
+                <td><span th:text="${moneda.metales}"></span></td>
+                <td><span th:text="${moneda.descripcion}"></span></td>
+                <!--boton de info -->
+                <td>
+                    <a th:href="@{'/ejemplar/' + ${moneda.id}}">
+                        <button type="submit" class="btn btn-info btn-fab btn-round"
+                                data-toggle="modal">
+                            <i class="material-icons">info</i>
+                        </button>
+                    </a>
+                </td>
+                <td class="td-actions text-right">
+                    <button type="button" rel="tooltip" class="btn btn-success btn-round">
+                        <i class="material-icons">edit</i>
+                    </button>
+                    <button type="button" rel="tooltip" class="btn btn-danger btn-round">
+                        <i class="material-icons" th:data_id="${moneda.id}"
+                           onclick="deleteMoneda(this.getAttribute('data_id'))">delete</i>
+                    </button>
                 </td>
             </tr>
             </tbody>
