@@ -48,6 +48,17 @@ public class Moneda {
 				+ this.metales.hashCode());
 	}
 
+    public Moneda(Long id,double valorFacial, String unidadMonetaria, float diametro, float peso, List<String> metales,
+                  String descripcion) {
+        this.valorFacial = valorFacial;
+        this.unidadMonetaria = unidadMonetaria;
+        this.diametro = diametro;
+        this.peso = peso;
+        this.metales = metales;
+        this.descripcion = descripcion;
+        this.id = id;
+    }
+
 	@Override
 	public String toString() {
 		return this.unidadMonetaria;

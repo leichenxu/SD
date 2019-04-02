@@ -42,6 +42,19 @@ public class ControladorMoneda {
         return "index";
     }
 
+	@RequestMapping(value = "/editMoneda",method=RequestMethod.POST)
+	public String monedaAniadir(@RequestParam("id") Long id,
+								@RequestParam("valorFacial") String valorFacial,
+								@RequestParam("unidadMonetaria") String unidadMonetaria,
+								@RequestParam("diametro") String diametro,@RequestParam("peso") String peso,
+								@RequestParam("metales") String metales,@RequestParam("descripcion") String descripcion
+			,Model model) {
+		Moneda moneda=new Moneda(id,Double.valueOf(valorFacial),unidadMonetaria,Float.valueOf(diametro),
+				Float.valueOf(peso),Arrays.asList(metales.split(",")),descripcion);
+		repM.save(moneda);
+		return "index";
+	}
+
     @RequestMapping(value = "/monedaModificar")
     public String monedaModificar(Model model, Moneda moneda) {
         return "index";

@@ -48,6 +48,19 @@ public class ControladorProveedor {
         return "index";
     }
 
+    @RequestMapping(value = "/editProveedor", method = RequestMethod.POST)
+    public String proveedor(@RequestParam("id")Long id,
+                            @RequestParam("codigoIdentificacionFiscal") String codigoIdentificacionFiscal,
+                            @RequestParam("nombre") String nombre,
+                            @RequestParam("codigoPostal") String codigoPostal,
+                            @RequestParam("email") String email,
+                            @RequestParam("telefono") String telefono,
+                            Model model) {
+        Proveedor proveedor = new Proveedor(codigoIdentificacionFiscal, nombre, codigoPostal, email, telefono);
+        repP.save(proveedor);
+        return "index";
+    }
+
     @DeleteMapping("/delete/{proveedor}")
     public ResponseEntity<?> removeEjemplar(@PathVariable Proveedor proveedor) {
         this.repP.delete(proveedor);
