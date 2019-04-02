@@ -154,7 +154,8 @@ public class ControladorEjemplar {
                                   @RequestParam("conservacion") String conservacion,
                                   @RequestParam("proveedor") String prov,
                                   @RequestParam("moneda") Moneda m, Model model) {
-        Ejemplar e = new Ejemplar(id,new java.sql.Date(Integer.valueOf(anio), 1, 1), ciudad, fechaA, conservacion,
+    	java.sql.Date aux=new java.sql.Date(fechaA.getYear(),fechaA.getMonth(),fechaA.getDay());
+        Ejemplar e = new Ejemplar(id,new java.sql.Date(Integer.valueOf(anio), 1, 1), ciudad, aux, conservacion,
                 repP.findById((long) prov.hashCode()).get(), m);
         repE.save(e);
         return "index";
