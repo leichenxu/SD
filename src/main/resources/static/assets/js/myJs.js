@@ -39,3 +39,10 @@ function removeEjemplar(moneda_id,ejemplar_id) {
         "method": "DELETE",
     }).done(refreshPage);
 }
+
+function removeProveedor(ejemplar_id) {
+    $.ajax({
+        "url": "/" +"ejemplar/" + "remove/" +  ejemplar_id,
+        "method": "DELETE",
+    }).done(refreshPage);
+}

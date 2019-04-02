@@ -54,7 +54,7 @@
                     </button>
                     <button type="button" rel="tooltip" class="btn btn-danger btn-round" 
                     data-toggle="modal" data-target="#deleteConfirmationModal">
-                        <i class="material-icons">delete</i>
+                        <i class="material-icons" th:data-id="${Ejemplar.id}" onclick="removeProvedor(this.getAttribute('data-id'))">delete</i>
                     </button>
                 </td>
             </tr>

@@ -73,5 +73,6 @@ public class Ejemplar {
 	public void setMoneda(Moneda moneda) {
 		this.moneda = moneda;
 	}
-	
+
+
 }

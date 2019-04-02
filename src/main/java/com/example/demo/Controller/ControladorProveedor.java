@@ -3,9 +3,11 @@ package com.example.demo.Controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.demo.Model.Ejemplar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -13,13 +15,16 @@ import com.example.demo.Model.Proveedor;
 import com.example.demo.Repository.RepositorioProveedor;
 
 @Controller
+@RequestMapping("proveedor")
 public class ControladorProveedor {
 	@Autowired
 	private RepositorioProveedor repP;
 
-	@RequestMapping(value = "/proveedor")
-	public String proveedorDeUnEjemplar(@RequestParam Long id,Model model) {
-		model.addAttribute("proveedor",repP.findById(id).get());
+	@RequestMapping("/{ejemplar}")
+	public String proveedorDeUnEjemplar(@PathVariable Ejemplar ejemplar, Model model) {
+		List<Proveedor> ejemplares = repP.findAllByEjemplar(ejemplar);
+		model.addAttribute("proveedor",ejemplares);
+		model.addAttribute("Ejemplar",ejemplar);
 		return "ProveedorDeUnEjemplar";
 	}
 	@RequestMapping(value = "/proveedorAniadir")
