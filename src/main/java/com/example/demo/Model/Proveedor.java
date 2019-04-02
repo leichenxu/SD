@@ -6,7 +6,6 @@ import javax.persistence.Id;
 @Entity
 public class Proveedor {
     @Id
-    @GeneratedValue
     private long id;
     private String codigoIdentificacionFiscal;
     private String nombre;
@@ -37,16 +36,20 @@ public class Proveedor {
     public void setCodigoIdentificacionFiscal(String codigoIdentificacionFiscal) {
         this.codigoIdentificacionFiscal = codigoIdentificacionFiscal;
     }
+
     @Override
     public String toString() {
-    	return this.nombre;
+        return this.nombre;
     }
+
     public String getNombre() {
         return nombre;
     }
+
     public long getId() {
-    	return this.id;
+        return this.id;
     }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
