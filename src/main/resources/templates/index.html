@@ -147,11 +147,11 @@
         <table class="table">
             <thead>
             <tr>
-                <th>Identificación fiscal</th>
-                <th>Nombre</th>
-                <th>Codigo postal</th>
-                <th>Email</th>
-                <th>Telefono</th>
+                <th><a href="/proveedor/CIF">Identificación fiscal</a></th>
+                <th><a href="/proveedor/nombre">Nombre</a></th>
+                <th><a href="/proveedor/codigoPostal">Codigo postal</a></th>
+                <th><a href="/proveedor/email">Email</a></th>
+                <th><a href="/proveedor/telefono">Telefono</a></th>
             </tr>
             </thead>
             <tbody>
@@ -195,7 +195,7 @@
                             Buscar
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                            <a class="dropdown-item">Valor facial</a>
+                            <a class="dropdown-item" onclick="findByMonedaValorFacial()">Valor facial</a>
                             <a class="dropdown-item">Unidad monetaria</a>
                             <a class="dropdown-item">Diámetro</a>
                             <a class="dropdown-item">Peso</a>
@@ -260,8 +260,8 @@
                             Buscar
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                            <a class="dropdown-item">CIF</a>
-                            <a class="dropdown-item">Nombre</a>
+                            <a class="dropdown-item" onclick="findByCIF()">CIF</a>
+                            <a class="dropdown-item" onclick="findByProveedorNombre()">Nombre</a>
                             <a class="dropdown-item">Código postal</a>
                             <a class="dropdown-item">Email</a>
                             <a class="dropdown-item">Teléfono</a>
