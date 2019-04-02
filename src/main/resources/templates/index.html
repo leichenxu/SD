@@ -40,7 +40,7 @@
                 <i class="material-icons">search</i>
             </button>
             <button type="button" rel="tooltip" class="btn btn-success btn-round mr-5" data-toggle="modal"
-                    data-target="#addModal">
+                    data-target="#addModalMoneda">
                 <i class="material-icons">add_circle</i>
             </button>
         </div>
@@ -135,7 +135,7 @@
                 <i class="material-icons">search</i>
             </button>
             <button type="button" rel="tooltip" class="btn btn-success btn-round mr-5" data-toggle="modal"
-                    data-target="#addModal">
+                    data-target="#addModalProveedor">
                 <i class="material-icons">add_circle</i>
             </button>
         </div>
@@ -215,12 +215,12 @@
     </div>
 </div>
 
-<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+<div class="modal fade" id="addModalMoneda" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle2">Añadir moneda</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle2">Añadir proveedor</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -253,7 +253,49 @@
                     </div>
                     <input type="hidden" name="listaEjemplares" value="">
                     <div class="modal-footer td-actions">
-                        <button type="submit" class="btn btn-primary">Añadir</button>
+                        <button type="submit" class="btn btn-primary">Añadir moneda</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addModalProveedor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle3">Añadir moneda</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/proveedor/proveedorAniadir" method="post">
+                    <div class="form-group">
+                        <label>Código de identificación fiscal</label>
+                        <input class="form-control" type="text" name="codigoIdentificacionFiscal">
+                    </div>
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input class="form-control" type="text" name="nombre">
+                    </div>
+                    <div class="form-group">
+                        <label>Código postal</label>
+                        <input class="form-control" type="text" name="codigoPostal">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input class="form-control" type="text" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label>Teléfono</label>
+                        <input class="form-control" type="text" name="telefono">
+                    </div>
+                    <input type="hidden" name="listaEjemplares" value="">
+                    <div class="modal-footer td-actions">
+                        <button type="submit" class="btn btn-primary">Añadir proveedor</button>
                     </div>
                 </form>
             </div>
