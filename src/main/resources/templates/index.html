@@ -68,7 +68,7 @@
                 <td><span th:text="${moneda.descripcion}"></span></td>
                 <!--boton de info -->
                 <td>
-                    <a th:href="@{/ejemplar/(id=${moneda.id})}">
+                    <a th:href="@{'/ejemplar/' + ${moneda.id}}">
                         <button type="submit" class="btn btn-info btn-fab btn-round"
                                 data-toggle="modal">
                             <i class="material-icons">info</i>

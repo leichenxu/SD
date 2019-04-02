@@ -30,12 +30,6 @@ public class ControladorMoneda {
 	@Autowired
 	private RepositorioEjemplar repE;
 
-    @PostMapping
-    public ResponseEntity<?> addMoneda (@ModelAttribute Moneda moneda){
-        this.repM.save(moneda);
-        return ResponseEntity.noContent().build();
-    }
-    
     @RequestMapping(value = "/monedaAniadir",method=RequestMethod.POST)
     public String monedaAniadir(@RequestParam("valorFacial") String valorFacial,
     		@RequestParam("unidadMonetaria") String unidadMonetaria,
@@ -48,77 +42,77 @@ public class ControladorMoneda {
         return "index";
     }
 
-    @RequestMapping(value = "/monedaModificar")
-    public String monedaModificar(Model model, Moneda moneda) {
-        return "index";
-    }
-    private boolean asc=false;
-    @RequestMapping(value="/ascDes")
-    public String modenaAsc(Model model) {
-    	if(!asc) {
-    		asc=true;
-    		model.addAttribute("Monedas",this.repM.findAllByOrderByIdAsc());
-    	}else {
-    		asc=false;
-    		model.addAttribute("Monedas",this.repM.findAllByOrderByIdDesc());
-    	}    
-        this.defecto(model,false,true,true);	
-    	return "index";
-    }
-    
-    private boolean val=false;
-    @RequestMapping(value="/val")
-    public String modenaVal(Model model) {
-    	if(!val) {
-    		val=true;
-    		model.addAttribute("Monedas",this.repM.findAllByOrderByValorFacialAsc());
-    	}else {
-    		val=false;
-    		model.addAttribute("Monedas",this.repM.findAllByOrderByValorFacialDesc());
-    	}    
-    	this.defecto(model,false,true,true);
-    	return "index";
-    }
-    private boolean uni=false;
-    @RequestMapping(value="/uni")
-    public String modenaUni(Model model) {
-    	if(!uni) {
-    		uni=true;
-    		model.addAttribute("Monedas",this.repM.findAllByOrderByUnidadMonetariaAsc());
-    	}else {
-    		uni=false;
-    		model.addAttribute("Monedas",this.repM.findAllByOrderByUnidadMonetariaDesc());
-    	}            	
-    	this.defecto(model,false,true,true);
-    	return "index";
-    }
-    
-    private boolean diam=false;
-    @RequestMapping(value="/diam")
-    public String modenaDiam(Model model) {
-    	if(!diam) {
-    		diam=true;
-    		model.addAttribute("Monedas",this.repM.findAllByOrderByDiametroAsc());
-    	}else {
-    		diam=false;
-    		model.addAttribute("Monedas",this.repM.findAllByOrderByDiametroDesc());
-    	}            	
-    	this.defecto(model,false,true,true);
-    	return "index";
-    }
-    private boolean peso=false;
-    @RequestMapping(value="/peso")
-    public String modenaPeso(Model model) {
-    	if(!peso) {
-    		peso=true;
-    		model.addAttribute("Monedas",this.repM.findAllByOrderByPesoAsc());
-    	}else {
-    		peso=false;
-    		model.addAttribute("Monedas",this.repM.findAllByOrderByPesoDesc());
-    	}            
-    	this.defecto(model,false,true,true);
-    	return "index";
-    }
+//    @RequestMapping(value = "/monedaModificar")
+//    public String monedaModificar(Model model, Moneda moneda) {
+//        return "index";
+//    }
+//    private boolean asc=false;
+//    @RequestMapping(value="/ascDes")
+//    public String modenaAsc(Model model) {
+//    	if(!asc) {
+//    		asc=true;
+//    		model.addAttribute("Monedas",this.repM.findAllByOrderByIdAsc());
+//    	}else {
+//    		asc=false;
+//    		model.addAttribute("Monedas",this.repM.findAllByOrderByIdDesc());
+//    	}
+//        this.defecto(model,false,true,true);
+//    	return "index";
+//    }
+//
+//    private boolean val=false;
+//    @RequestMapping(value="/val")
+//    public String modenaVal(Model model) {
+//    	if(!val) {
+//    		val=true;
+//    		model.addAttribute("Monedas",this.repM.findAllByOrderByValorFacialAsc());
+//    	}else {
+//    		val=false;
+//    		model.addAttribute("Monedas",this.repM.findAllByOrderByValorFacialDesc());
+//    	}
+//    	this.defecto(model,false,true,true);
+//    	return "index";
+//    }
+//    private boolean uni=false;
+//    @RequestMapping(value="/uni")
+//    public String modenaUni(Model model) {
+//    	if(!uni) {
+//    		uni=true;
+//    		model.addAttribute("Monedas",this.repM.findAllByOrderByUnidadMonetariaAsc());
+//    	}else {
+//    		uni=false;
+//    		model.addAttribute("Monedas",this.repM.findAllByOrderByUnidadMonetariaDesc());
+//    	}
+//    	this.defecto(model,false,true,true);
+//    	return "index";
+//    }
+//
+//    private boolean diam=false;
+//    @RequestMapping(value="/diam")
+//    public String modenaDiam(Model model) {
+//    	if(!diam) {
+//    		diam=true;
+//    		model.addAttribute("Monedas",this.repM.findAllByOrderByDiametroAsc());
+//    	}else {
+//    		diam=false;
+//    		model.addAttribute("Monedas",this.repM.findAllByOrderByDiametroDesc());
+//    	}
+//    	this.defecto(model,false,true,true);
+//    	return "index";
+//    }
+//    private boolean peso=false;
+//    @RequestMapping(value="/peso")
+//    public String modenaPeso(Model model) {
+//    	if(!peso) {
+//    		peso=true;
+//    		model.addAttribute("Monedas",this.repM.findAllByOrderByPesoAsc());
+//    	}else {
+//    		peso=false;
+//    		model.addAttribute("Monedas",this.repM.findAllByOrderByPesoDesc());
+//    	}
+//    	this.defecto(model,false,true,true);
+//    	return "index";
+//    }
 
     @DeleteMapping("/delete/{moneda}")
     public ResponseEntity<?> deleteMoneda (@PathVariable Moneda moneda){
@@ -127,8 +121,9 @@ public class ControladorMoneda {
     }
 
     @DeleteMapping("/remove/{moneda}/{ejemplar}")
-    public ResponseEntity<?> removeRequest (@PathVariable Moneda moneda, @PathVariable Ejemplar ejemplar){
+    public ResponseEntity<?> removeEjemplar (@PathVariable Moneda moneda, @PathVariable Ejemplar ejemplar){
         moneda.removeEjemplar(ejemplar);
+        this.repE.delete(ejemplar);
         this.repM.save(moneda);
         return ResponseEntity.noContent().build();
     }
