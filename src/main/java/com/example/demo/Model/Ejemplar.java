@@ -32,6 +32,18 @@ public class Ejemplar {
 		this.proveedor = proveedor;
 		this.moneda=moneda;
 	}
+
+	public Ejemplar(Long id,Date anio, String ciudad, Date fechaAdquisicion, String conservacion,
+					Proveedor proveedor,Moneda moneda) {
+		this.anio = anio;
+		this.ciudad = ciudad;
+		this.fechaAdquisicion = fechaAdquisicion;
+		this.conservacion = conservacion;
+		this.proveedor = proveedor;
+		this.moneda=moneda;
+		this.id=id;
+	}
+
 	public Long getId() {
 		return id;
 	}

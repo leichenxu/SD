@@ -49,7 +49,7 @@
                 <td><span th:text="${proveedor.telefono}"></span>
                 </td>
                 <td class="td-actions text-right">
-                    <button type="button" rel="tooltip" class="btn btn-success btn-round">
+                    <button type="button" rel="tooltip" class="btn btn-success btn-round" data-toggle="modal" data-target="#editProveedor">
                         <i class="material-icons">edit</i>
                     </button>
                     <button type="button" rel="tooltip" class="btn btn-danger btn-round">
@@ -101,6 +101,52 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="modal fade" id="editProveedor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle6">Añadir proveedor</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form action="/proveedor/editProveedor" method="post">
+                <div class="form-group">
+                    <label>ID</label>
+                    <input class="form-control" type="text" name="id">
+                </div>
+                <div class="form-group">
+                    <label>Código de identificación fiscal</label>
+                    <input class="form-control" type="text" name="codigoIdentificacionFiscal">
+                </div>
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input class="form-control" type="text" name="nombre">
+                </div>
+                <div class="form-group">
+                    <label>Código postal</label>
+                    <input class="form-control" type="text" name="codigoPostal">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input class="form-control" type="text" name="email">
+                </div>
+                <div class="form-group">
+                    <label>Teléfono</label>
+                    <input class="form-control" type="text" name="telefono">
+                </div>
+                <input type="hidden" name="ejemplar" value="">
+                <div class="modal-footer td-actions">
+                    <button type="submit" class="btn btn-primary">Añadir proveedor</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 </div>
 
 
