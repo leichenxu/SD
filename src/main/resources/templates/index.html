@@ -35,7 +35,7 @@
     <div class="tab-pane active" id="link1" aria-expanded="true">
         <div class="row">
             <button type="button" rel="tooltip" class="btn btn-success btn-round ml-auto" data-toggle="modal"
-                    data-target="#searchModal">
+                    data-target="#searchModalMoneda">
                 <i class="material-icons">search</i>
             </button>
             <button type="button" rel="tooltip" class="btn btn-success btn-round mr-5" data-toggle="modal"
@@ -89,6 +89,12 @@
     </div>
 
     <div class="tab-pane" id="link2" aria-expanded="false">
+        <div class="row">
+            <button type="button" rel="tooltip" class="btn btn-success btn-round ml-auto mr-5" data-toggle="modal"
+                    data-target="#searchModalEjemplar">
+                <i class="material-icons">search</i>
+            </button>
+        </div>
         <table class="table">
             <thead>
             <tr>
@@ -130,7 +136,7 @@
     <div class="tab-pane" id="link3" aria-expanded="false">
         <div class="row">
             <button type="button" rel="tooltip" class="btn btn-success btn-round ml-auto" data-toggle="modal"
-                    data-target="#searchModal">
+                    data-target="#searchModalProveedor">
                 <i class="material-icons">search</i>
             </button>
             <button type="button" rel="tooltip" class="btn btn-success btn-round mr-5" data-toggle="modal"
@@ -171,7 +177,7 @@
 </div>
 
 
-<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+<div class="modal fade" id="searchModalMoneda" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -184,25 +190,81 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Buscar
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <a class="dropdown-item">Moneda</a>
-                            <a class="dropdown-item">Ejemplar</a>
-                            <a class="dropdown-item">Proveedor</a>
-                        </div>
-                    </div>
-                    <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Buscar
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                            <a class="dropdown-item">UnidadMonetaria</a>
+                            <a class="dropdown-item">Valor facial</a>
+                            <a class="dropdown-item">Unidad monetaria</a>
+                            <a class="dropdown-item">Diámetro</a>
+                            <a class="dropdown-item">Peso</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="searchModalEjemplar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Busqueda por criterio</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Buscar
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                            <a class="dropdown-item">Año de acuñación</a>
+                            <a class="dropdown-item">Ciudad</a>
                             <a class="dropdown-item">Fecha de adquisición</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="searchModalProveedor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Busqueda por criterio</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Buscar
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                            <a class="dropdown-item">CIF</a>
                             <a class="dropdown-item">Nombre</a>
+                            <a class="dropdown-item">Código postal</a>
+                            <a class="dropdown-item">Email</a>
+                            <a class="dropdown-item">Teléfono</a>
                         </div>
                     </div>
                 </div>
