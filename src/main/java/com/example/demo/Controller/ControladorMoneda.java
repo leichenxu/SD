@@ -100,6 +100,13 @@ public class ControladorMoneda {
     	this.defecto(model,false,true,true);
     	return "index";
     }
+    
+    @PostMapping(value="/BusquedadV")
+    public String valorFacial(Model model) {
+    	model.addAttribute("hola",repM.findAllByOrderByValorFacialAsc());
+    	return "search_result_moneda";
+    }
+    
     private boolean peso=false;
     @RequestMapping(value="/peso")
     public String modenaPeso(Model model) {

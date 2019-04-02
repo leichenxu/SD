@@ -60,6 +60,12 @@ function deleteProveedor(proveedor_id) {
         "method": "DELETE",
     }).done(refreshPage);
 }
+function findByMonedaV() {
+    $.ajax({
+        "url": "/" +"moneda/" + "BusquedadV",
+        "method": "POST",
+    }).done(refreshPage);
+}
 
 /*function findByCIF() {
     $.ajax({
