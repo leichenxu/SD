@@ -67,6 +67,17 @@ function findByMonedaV() {
     });
 }
 
+function llenarEditarEjemplar(element) {
+    var tds = $($(element).parents("tr")[0]).children("td");
+    $("#editMoneda").find("[name='id']").val($(tds[0]).text());
+    $("#editMoneda").find("[name='valorFacial']").val($(tds[1]).text());
+    $("#editMoneda").find("[name='unidadMonetaria']").val($(tds[2]).text());
+    $("#editMoneda").find("[name='diametro']").val($(tds[3]).text());
+    $("#editMoneda").find("[name='peso']").val($(tds[4]).text());
+    $("#editMoneda").find("[name='metales']").val($(tds[5]).text());
+    $("#editMoneda").find("[name='descripcion']").val($(tds[6]).text());
+}
+
 /*function findByCIF() {
     $.ajax({
         "url": "/" +"proveedor/" + "CIF",
