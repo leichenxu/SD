@@ -34,7 +34,8 @@
 <div class="tab-content tab-space">
     <div class="tab-pane active" aria-expanded="false">
         <div class="row">
-            <button type="button" rel="tooltip" class="btn btn-success btn-round ml-auto mr-5" data-toggle="modal"
+            <button type="button" onclick="window.location.href = '/paginaAddEjemplar';"
+             rel="tooltip" class="btn btn-success btn-round ml-auto mr-5" data-toggle="modal"
                     data-target="#addModal">
                 <i class="material-icons">add_circle</i>
             </button>
@@ -69,8 +70,7 @@
                         <i class="material-icons">edit</i>
                     </button>
                     <button type="button" rel="tooltip" class="btn btn-danger btn-round">
-                        <i class="material-icons" th:data-id="${ejemplar.id}"
-                           onclick="deleteEjemplar(this.getAttribute('data-id'))">delete</i>
+                        <i class="material-icons" th:data-id="${ejemplar.id}">delete</i>
                     </button>
                 </td>
             </tr>

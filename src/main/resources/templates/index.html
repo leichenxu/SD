@@ -33,10 +33,10 @@
 
 <div class="tab-content tab-space">
     <div class="tab-pane active" id="link1" aria-expanded="true">
-        <div class="row">
-            <button type="button" rel="tooltip" class="btn btn-success btn-round ml-auto mr-5" data-toggle="modal"
-                    data-target="#addModalMoneda">
-                <i class="material-icons">add_circle</i>
+        <div class="row" >
+            <button type="button" onclick="window.location.href = '/paginaAddMoneda';" class="btn btn-success btn-round ml-auto mr-5" data-toggle="modal"
+                    data-target="#addModalMoneda" >
+                <i class="material-icons" >add_circle</i>
             </button>
         </div>
         <table class="table">
@@ -71,8 +71,7 @@
                 </td>
                 <td class="td-actions text-right">
                     <button type="button" rel="tooltip" class="btn btn-success btn-round" data-toggle="modal"
-                            data-target="#editMoneda"
-                            onclick="llenarEditarEjemplar(this)">
+                            data-target="#editMoneda">
                         <i class="material-icons">edit</i>
                     </button>
                     <button type="button" rel="tooltip" class="btn btn-danger btn-round">
@@ -88,51 +87,6 @@
 
 </div>
 
-<div class="modal fade" id="addModalMoneda" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle2">Añadir moneda</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="/moneda/monedaAniadir" method="post">
-                    <div class="form-group">
-                        <label>Valor facial</label>
-                        <input class="form-control" type="text" name="valorFacial">
-                    </div>
-                    <div class="form-group">
-                        <label>Unidad monetaria</label>
-                        <input class="form-control" type="text" name="unidadMonetaria">
-                    </div>
-                    <div class="form-group">
-                        <label>Diametro</label>
-                        <input class="form-control" type="text" name="diametro">
-                    </div>
-                    <div class="form-group">
-                        <label>Peso(G)</label>
-                        <input class="form-control" type="text" name="peso">
-                    </div>
-                    <div class="form-group">
-                        <label>Composición</label>
-                        <input class="form-control" type="text" name="metales">
-                    </div>
-                    <div class="form-group">
-                        <label>Descripción</label>
-                        <input class="form-control" type="text" name="descripcion">
-                    </div>
-                    <input type="hidden" name="listaEjemplares" value="">
-                    <div class="modal-footer td-actions">
-                        <button type="submit" class="btn btn-primary">Añadir moneda</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="modal fade" id="addModalProveedor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
      aria-hidden="true">

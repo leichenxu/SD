@@ -1,70 +1,60 @@
 <!DOCTYPE html>
-<html xmlns:th=http://www.thymeleaf.org xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance
-      xsi:schemaLocation=http://www.thymeleaf.org>
+<html xmlns:th=http://www.thymeleaf.org
+	xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance
+	xsi:schemaLocation=http://www.thymeleaf.org>
 <head>
-    <meta charset="UTF-8">
-    <title>Museo</title>
-    <link rel="stylesheet" type="text/css"
-          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/material-dashboard.css"/>
-    <link rel="stylesheet" type="text/css" href="/assets/css/MyCSS.css">
+<meta charset="UTF-8">
+<title>Museo</title>
+<link rel="stylesheet" type="text/css"
+	href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css"
+	href="/assets/css/material-dashboard.css" />
+<link rel="stylesheet" type="text/css" href="/assets/css/MyCSS.css">
 </head>
 <body>
-<h1><i>Museo numismatica</i></h1>
-<div class="card">
-    <div class="card-header card-header-text card-header-primary">
-        <div class="card-text">
-            <h1 class="card-title">Resultado de la búsqueda</h1>
-        </div>
-    </div>
-    <div class="card-body">
-        <button type="button" rel="tooltip" class="btn btn-secondary btn-round btn-fab ml-5">
-            <a href="/"><i class="material-icons">chevron_left</i></a>
-        </button>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Año de acuñación</th>
-                <th>Ciudad de acuñación</th>
-                <th>Fecha de adquisición</th>
-                <th>Estado de conservación</th>
-                <th>Proveedor</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="ejemplar : ${Ejemplares}">
-                <td><span th:text="${ejemplar.anio}"></span></td>
-                <td><span th:text="${ejemplar.ciudad}"></span></td>
-                <td><span th:text="${ejemplar.fechaAdquisicion}"></span></td>
-                <td><span th:text="${ejemplar.conservacion}"></span></td>
-                <td><span th:text="${ejemplar.proveedor}"></span>
-                    <!--boton de info -->
-                    <a th:href="@{'/proveedor/' + ${ejemplar.id}}">
-                        <button type="submit" class="btn btn-info btn-fab btn-round"
-                                data-toggle="modal">
-                            <i class="material-icons">info</i>
-                        </button>
-                    </a>
-                </td>
-            </tr>
-        </table>
-    </div>
-</div>
+	<h1>
+		<i>Museo numismatica</i>
+	</h1>
+	<div class="card">
+		<div class="card-header card-header-text card-header-primary">
+			<div class="card-text">
+				<h1 class="card-title">Resultado de la búsqueda</h1>
+			</div>
+		</div>
+		<div class="card-body">
+			<button type="button" rel="tooltip"
+				class="btn btn-secondary btn-round btn-fab ml-5">
+				<a href="/"><i class="material-icons">chevron_left</i></a>
+			</button>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Año de acuñación</th>
+						<th>Ciudad de acuñación</th>
+						<th>Fecha de adquisición</th>
+						<th>Estado de conservación</th>
+						<th>Proveedor</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="ejemplar : ${Ejemplares}">
+						<td><span th:text="${ejemplar.anio}"></span></td>
+						<td><span th:text="${ejemplar.ciudad}"></span></td>
+						<td><span th:text="${ejemplar.fechaAdquisicion}"></span></td>
+						<td><span th:text="${ejemplar.conservacion}"></span></td>
+						<td><span th:text="${ejemplar.proveedor}"></span> <!--boton de info -->
+							<a th:href="@{'/proveedor/' + ${ejemplar.id}}">
+								<button type="submit" class="btn btn-info btn-fab btn-round"
+									data-toggle="modal">
+									<i class="material-icons">info</i>
+								</button>
+						</a></td>
+					</tr>
+			</table>
+		</div>
+	</div>
 
-
-<script src="../assets/js/core/jquery.min.js" type="text/javascript"></script>
-<script src="../assets/js/core/popper.min.js" type="text/javascript"></script>
-<script src="../assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
-<script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-<!--  Google Maps Plugin    -->
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-<!-- Chartist JS -->
-<script src="../assets/js/plugins/chartist.min.js"></script>
-<!--  Notifications Plugin    -->
-<script src="../assets/js/plugins/bootstrap-notify.js"></script>
-<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="../assets/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
-<script src="../assets/js/myJs.js"></script>
 </body>
 </html>

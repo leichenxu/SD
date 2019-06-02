@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.example.demo.Model.Ejemplar;
 import com.example.demo.Model.Moneda;
@@ -134,7 +135,7 @@ public class ControladorEjemplar {
 
 
     @RequestMapping(value = "/ejemplarAniadir", method = RequestMethod.POST)
-    public String ejemplarAniadir(@RequestParam("anio") String anio,
+    public RedirectView ejemplarAniadir(@RequestParam("anio") String anio,
                                   @RequestParam("ciudad") String ciudad,
                                   @RequestParam("fechaAdquisicion") Date fechaA,
                                   @RequestParam("conservacion") String conservacion,
@@ -143,7 +144,8 @@ public class ControladorEjemplar {
         Ejemplar e = new Ejemplar(new java.sql.Date(Integer.valueOf(anio), 1, 1), ciudad, fechaA, conservacion,
                 repP.findByNombre(prov), m);
         repE.save(e);
-        return "index";
+		return new RedirectView("/PaginaEjemplar");
+
     }
 
     @RequestMapping(value = "/editEjemplar", method = RequestMethod.POST)

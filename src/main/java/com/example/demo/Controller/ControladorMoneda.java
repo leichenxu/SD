@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.example.demo.Model.Moneda;
 import com.example.demo.Model.Proveedor;
@@ -43,7 +44,7 @@ public class ControladorMoneda {
     }
 
 	@RequestMapping(value = "/editMoneda",method=RequestMethod.POST)
-	public String monedaAniadir(@RequestParam("id") Long id,
+	public RedirectView monedaAniadir(@RequestParam("id") Long id,
 								@RequestParam("valorFacial") String valorFacial,
 								@RequestParam("unidadMonetaria") String unidadMonetaria,
 								@RequestParam("diametro") String diametro,@RequestParam("peso") String peso,
@@ -52,7 +53,7 @@ public class ControladorMoneda {
 		Moneda moneda=new Moneda(id,Double.valueOf(valorFacial),unidadMonetaria,Float.valueOf(diametro),
 				Float.valueOf(peso),Arrays.asList(metales.split(",")),descripcion);
 		repM.save(moneda);
-		return "index";
+		return new RedirectView("/");
 	}
 
     @RequestMapping(value = "/monedaModificar")

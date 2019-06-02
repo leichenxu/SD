@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.example.demo.Model.Proveedor;
 import com.example.demo.Repository.RepositorioProveedor;
@@ -37,7 +38,7 @@ public class ControladorProveedor {
     }
 
     @RequestMapping(value = "/proveedorAniadir", method = RequestMethod.POST)
-    public String proveedor(@RequestParam("codigoIdentificacionFiscal") String codigoIdentificacionFiscal,
+    public RedirectView proveedor(@RequestParam("codigoIdentificacionFiscal") String codigoIdentificacionFiscal,
                             @RequestParam("nombre") String nombre,
                             @RequestParam("codigoPostal") String codigoPostal,
                             @RequestParam("email") String email,
@@ -45,7 +46,7 @@ public class ControladorProveedor {
                             Model model) {
         Proveedor proveedor = new Proveedor(codigoIdentificacionFiscal, nombre, codigoPostal, email, telefono);
         repP.save(proveedor);
-        return "index";
+		return new RedirectView("/PaginaProveedor");
     }
 
     @RequestMapping(value = "/editProveedor", method = RequestMethod.POST)
