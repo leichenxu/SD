@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    ...
+</head>
+<body>
+
+<div th:fragment="addModal" class="modal fade" id="addModal" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLongTitle"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle2">Añadir ejemplar</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/ejemplar/ejemplarAniadir" method="post">
+                    <div class="form-group" th:if="${Moneda == null}">
+                        <label>Moneda</label>
+                        <input class="form-control" name="moneda" type="number">
+                    </div>
+                    <div class="form-group">
+                        <label>Año de acuñación</label>
+                        <input class="form-control" name="anio" type="number">
+                    </div>
+                    <div class="form-group">
+                        <label>Ciudad de acuñación</label>
+                        <input class="form-control" name="ciudad">
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha de adquisición</label>
+                        <input class="form-control" name="fechaAdquisicion" type="date">
+                    </div>
+                    <div class="form-group">
+                        <label>Estado de conservación</label>
+                        <input class="form-control" name="conservacion">
+                    </div>
+                    <div class="form-group">
+                        <label>NIF proveedor</label>
+                        <input class="form-control" name="proveedor">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Añadir</button>
+                    </div>
+                    <input type="hidden" th:if="${Moneda != null}" name="moneda" th:value="${Moneda.id}">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
