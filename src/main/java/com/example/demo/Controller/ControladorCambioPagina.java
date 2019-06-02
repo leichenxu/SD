@@ -28,6 +28,20 @@ public class ControladorCambioPagina {
 		model.addAttribute("Ejemplares",repE.findAll());
 		model.addAttribute("Proveedores",repP.findAll());
 		return "index";
+	}	
+	@GetMapping("/PaginaEjemplar")
+	public String paginaEjemplar(Model model) {
+		model.addAttribute("Monedas",repM.findAll());
+		model.addAttribute("Ejemplares",repE.findAll());
+		model.addAttribute("Proveedores",repP.findAll());
+		return "PaginaTodosLosEjemplares";
+	}
+	@GetMapping("/PaginaProveedor")
+	public String paginaProveedor(Model model) {
+		model.addAttribute("Monedas",repM.findAll());
+		model.addAttribute("Ejemplares",repE.findAll());
+		model.addAttribute("Proveedores",repP.findAll());
+		return "PaginaTodosLosProveedores";
 	}
 
 }

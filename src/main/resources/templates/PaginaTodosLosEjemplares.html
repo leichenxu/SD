@@ -15,12 +15,12 @@
 
 <ul class="nav nav-pills nav-pills-primary" role="tablist">
     <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="/" role="tablist" aria-expanded="true">
+        <a class="nav-link" data-toggle="tab" href="/" role="tablist" aria-expanded="false">
             Moneda
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="PaginaEjemplar" role="tablist" aria-expanded="false">
+        <a class="nav-link active" data-toggle="tab" href="PaginaEjemplar" role="tablist" aria-expanded="true">
             Ejemplar
         </a>
     </li>
@@ -32,59 +32,51 @@
 </ul>
 
 <div class="tab-content tab-space">
-    <div class="tab-pane active" id="link1" aria-expanded="true">
+    <div class="tab-pane active" aria-expanded="false">
         <div class="row">
             <button type="button" rel="tooltip" class="btn btn-success btn-round ml-auto mr-5" data-toggle="modal"
-                    data-target="#addModalMoneda">
+                    data-target="#addModal">
                 <i class="material-icons">add_circle</i>
             </button>
         </div>
         <table class="table">
+            <br>
             <thead>
             <tr>
-                <th><a href="/moneda/ascDes">ID</a></th>
-                <th><a href="/moneda/val">Valor facial</a></th>
-                <th><a href="/moneda/uni">Unidad monetaria</a></th>
-                <th><a href="/moneda/diam">Diametro</a></th>
-                <th><a href="/moneda/peso">Peso</a></th>
-                <th>Composicion</th>
-                <th>Descripción</th>
-                <th>Ejemplares</th>
+                <th><a href="/ejemplar/acun">Año de acuñación</a></th>
+                <th><a href="/ejemplar/ciud">Ciudad de acuñación</a></th>
+                <th><a href="/ejemplar/fechaAd">Fecha de adquisición</a></th>
+                <th>Estado de conservación</th>
+                <th><a href="/ejemplar/prov">Proveedor</a></th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="moneda : ${Monedas}">
-                <td><span th:text="${moneda.id}"></span></td>
-                <td><span th:text="${moneda.valorFacial}"></span></td>
-                <td><span th:text="${moneda.unidadMonetaria}"></span></td>
-                <td><span th:text="${moneda.diametro}"></span></td>
-                <td><span th:text="${moneda.peso}"></span></td>
-                <td><span th:text="${moneda.metales}"></span></td>
-                <td><span th:text="${moneda.descripcion}"></span></td>
-                <!--boton de info -->
-                <td>
-                    <a th:href="@{'/ejemplar/' + ${moneda.id}}">
+            <tr th:each="ejemplar : ${Ejemplares}">
+                <td><span th:text="${ejemplar.anio}"></span></td>
+                <td><span th:text="${ejemplar.ciudad}"></span></td>
+                <td><span th:text="${ejemplar.fechaAdquisicion}"></span></td>
+                <td><span th:text="${ejemplar.conservacion}"></span></td>
+                <td><span th:text="${ejemplar.proveedor}"></span>
+                    <!--boton de info -->
+                    <a th:href="@{'/proveedor/' + ${ejemplar.id}}">
                         <button type="submit" class="btn btn-info btn-fab btn-round">
                             <i class="material-icons">info</i>
                         </button>
                     </a>
                 </td>
                 <td class="td-actions text-right">
-                    <button type="button" rel="tooltip" class="btn btn-success btn-round" data-toggle="modal"
-                            data-target="#editMoneda"
-                            onclick="llenarEditarEjemplar(this)">
+                    <button type="button" rel="tooltip" class="btn btn-success btn-round">
                         <i class="material-icons">edit</i>
                     </button>
                     <button type="button" rel="tooltip" class="btn btn-danger btn-round">
-                        <i class="material-icons" th:data_id="${moneda.id}"
-                           onclick="deleteMoneda(this.getAttribute('data_id'))">delete</i>
+                        <i class="material-icons" th:data-id="${ejemplar.id}"
+                           onclick="deleteEjemplar(this.getAttribute('data-id'))">delete</i>
                     </button>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
-
 
 </div>
 
@@ -273,7 +265,5 @@
 </div>
 
 <div th:insert="fragments/general.html :: addModal"></div>
-<!--  Notifications Plugin    -->
-<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 </body>
 </html>
