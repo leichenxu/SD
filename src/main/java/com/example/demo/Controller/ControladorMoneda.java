@@ -49,23 +49,6 @@ public class ControladorMoneda {
 		return "redirect:/";
 	}
 
-	/*
-	 * @RequestMapping(value = "/editMoneda",method=RequestMethod.POST) public
-	 * RedirectView monedaAniadir(@RequestParam("id") Long id,
-	 * 
-	 * @RequestParam("valorFacial") String valorFacial,
-	 * 
-	 * @RequestParam("unidadMonetaria") String unidadMonetaria,
-	 * 
-	 * @RequestParam("diametro") String diametro,@RequestParam("peso") String peso,
-	 * 
-	 * @RequestParam("metales") String metales,@RequestParam("descripcion") String
-	 * descripcion ,Model model) { Moneda moneda=new
-	 * Moneda(id,Double.valueOf(valorFacial),unidadMonetaria,Float.valueOf(diametro)
-	 * , Float.valueOf(peso),Arrays.asList(metales.split(",")),descripcion);
-	 * repM.save(moneda); return new RedirectView("/"); }
-	 */
-
 	@RequestMapping(value = "/edit/{id}")
 	public String monedaModificar(@PathVariable long id, Model model) {
 		model.addAttribute("moneda", this.repM.findById(id).get());
@@ -157,19 +140,6 @@ public class ControladorMoneda {
 	public String deleteMoneda(@PathVariable Long id, Model model) {
 		this.repM.deleteById(id);
 		return "redirect:/";
-	}
-	/*
-	 * @DeleteMapping("/delete/{moneda}") public ResponseEntity<?> deleteMoneda
-	 * (@PathVariable Moneda moneda){ this.repM.delete(moneda); return
-	 * ResponseEntity.noContent().build(); }
-	 */
-
-	@DeleteMapping("/remove/{moneda}/{ejemplar}")
-	public ResponseEntity<?> removeEjemplar(@PathVariable Moneda moneda, @PathVariable Ejemplar ejemplar) {
-		moneda.removeEjemplar(ejemplar);
-		this.repE.delete(ejemplar);
-		this.repM.save(moneda);
-		return ResponseEntity.noContent().build();
 	}
 
 	private void defecto(Model model, boolean a, boolean b, boolean c) {

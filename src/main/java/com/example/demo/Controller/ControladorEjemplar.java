@@ -39,13 +39,6 @@ public class ControladorEjemplar {
 		return "Ejemplares";
 	}
 
-	@DeleteMapping("/remove/{ejemplar}")
-	public ResponseEntity<?> removeEjemplar(@PathVariable Ejemplar ejemplar) {
-		ejemplar.setProveedor(null);
-		this.repE.save(ejemplar);
-		return ResponseEntity.noContent().build();
-	}
-
 	@RequestMapping(value = "/delete/{id}")
 	public String deleteEjemplar(@PathVariable Long id, Model model) {
 		this.repE.deleteById(id);
@@ -59,18 +52,6 @@ public class ControladorEjemplar {
 		model.addAttribute("Proveedores", this.repP.findAll());
 		return "PaginaEditEjemplar";
 	}
-
-	/*@RequestMapping(value = "/ejemplarModificar")
-	public String ejemplaModificar(Model model, Ejemplar ejemplar, Ejemplar ejemplarNuevo) {
-		List<Ejemplar> e = repE.findByAnioAndCiudadAndFechaAdquisicionAndConservacionAndProveedorAndMoneda(
-				ejemplar.getAnio(), ejemplar.getCiudad(), ejemplar.getFechaAdquisicion(), ejemplar.getConservacion(),
-				ejemplar.getProveedor(), ejemplar.getMoneda());
-		if (!e.isEmpty()) {
-			repE.delete(e.get(0));
-			repE.save(ejemplarNuevo);
-		}
-		return "";
-	}*/
 
 	private boolean acun = false;
 
@@ -149,18 +130,6 @@ public class ControladorEjemplar {
 		}
 		return new RedirectView("/PaginaEjemplar");
 
-	}
-
-	@RequestMapping(value = "/editEjemplar", method = RequestMethod.POST)
-	public String ejemplarAniadir(@RequestParam("id") Long id, @RequestParam("anio") String anio,
-			@RequestParam("ciudad") String ciudad, @RequestParam("fechaAdquisicion") Date fechaA,
-			@RequestParam("conservacion") String conservacion, @RequestParam("proveedor") String prov,
-			@RequestParam("moneda") Moneda m, Model model) {
-		java.sql.Date aux = new java.sql.Date(fechaA.getYear(), fechaA.getMonth(), fechaA.getDay());
-		Ejemplar e = new Ejemplar(id, Integer.valueOf(anio), ciudad, aux, conservacion,
-				repP.findById((long) prov.hashCode()).get(), m);
-		repE.save(e);
-		return "index";
 	}
 
 	private void defecto(Model model, boolean a, boolean b, boolean c) {

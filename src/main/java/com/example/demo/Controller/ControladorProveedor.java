@@ -54,16 +54,6 @@ public class ControladorProveedor {
 		return new RedirectView("/PaginaProveedor");
 	}
 
-	@RequestMapping(value = "/editProveedor", method = RequestMethod.POST)
-	public String proveedor(@RequestParam("id") Long id,
-			@RequestParam("codigoIdentificacionFiscal") String codigoIdentificacionFiscal,
-			@RequestParam("nombre") String nombre, @RequestParam("codigoPostal") String codigoPostal,
-			@RequestParam("email") String email, @RequestParam("telefono") String telefono, Model model) {
-		Proveedor proveedor = new Proveedor(id, codigoIdentificacionFiscal, nombre, codigoPostal, email, telefono);
-		repP.save(proveedor);
-		return "index";
-	}
-
 	@RequestMapping(value = "/edit/{id}")
 	public String proveedorModificar(@PathVariable long id, Model model) {
 		model.addAttribute("proveedor", this.repP.findById(id).get());
