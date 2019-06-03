@@ -5,17 +5,19 @@ import com.example.demo.Model.Proveedor;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 @Entity
 public class Ejemplar {
     @Id
     @GeneratedValue
     private Long id;
-    private Date anio;
+    private int anio;
     private String ciudad;
     private Date fechaAdquisicion;
     private String conservacion;
-    @OneToOne(cascade = CascadeType.DETACH)
+    @JoinColumn(nullable=false)
+    @ManyToOne(cascade = CascadeType.DETACH)    
     private Proveedor proveedor;
 	@JoinColumn(nullable = false)
     @ManyToOne(cascade = CascadeType.DETACH)
@@ -23,7 +25,16 @@ public class Ejemplar {
     public Ejemplar(){
 
     }
-	public Ejemplar(Date anio, String ciudad, Date fechaAdquisicion, String conservacion,
+	public Ejemplar(int anio, String ciudad, Date fechaAdquisicion, String conservacion,
+			Proveedor proveedor,Moneda moneda) {
+		this.anio = anio;
+		this.ciudad = ciudad;
+		this.fechaAdquisicion = fechaAdquisicion;
+		this.conservacion = conservacion;
+		this.proveedor = proveedor;
+		this.moneda=moneda;
+	}
+	public void modificarEjemplar(int anio, String ciudad, Date fechaAdquisicion, String conservacion,
 			Proveedor proveedor,Moneda moneda) {
 		this.anio = anio;
 		this.ciudad = ciudad;
@@ -33,7 +44,7 @@ public class Ejemplar {
 		this.moneda=moneda;
 	}
 
-	public Ejemplar(Long id,Date anio, String ciudad, Date fechaAdquisicion, String conservacion,
+	public Ejemplar(Long id,int anio, String ciudad, Date fechaAdquisicion, String conservacion,
 					Proveedor proveedor,Moneda moneda) {
 		this.anio = anio;
 		this.ciudad = ciudad;
@@ -51,9 +62,9 @@ public class Ejemplar {
 		this.id = id;
 	}
 	public int getAnio() {
-		return anio.getYear();
+		return anio;
 	}
-	public void setAnio(Date anio) {
+	public void setAnio(int anio) {
 		this.anio = anio;
 	}
 	public String getCiudad() {
@@ -62,8 +73,11 @@ public class Ejemplar {
 	public void setCiudad(String ciudad) {
 		this.ciudad = ciudad;
 	}
-	public String getFechaAdquisicion() {
-		return fechaAdquisicion.getDay()+"/"+fechaAdquisicion.getMonth()+"/"+fechaAdquisicion.getYear();
+	public Date getFechaAdquisicion() {
+		return this.fechaAdquisicion;
+	}
+	public String getFechaAdquisicionText() {
+		return new SimpleDateFormat("dd/MM/yyyy").format(this.fechaAdquisicion);
 	}
 	public void setFechaAdquisicion(Date fechaAdquisicion) {
 		this.fechaAdquisicion = fechaAdquisicion;

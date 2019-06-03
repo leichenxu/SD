@@ -45,15 +45,17 @@ public class ControladorCambioPagina {
 	}
 	@GetMapping("/paginaAddMoneda")
 	public String paginaAddMoneda(Model model) {
-		return "PaginaAddMoneda";
+		return "PaginaEditMoneda";
 	}
 	@GetMapping("/paginaAddEjemplar")
 	public String paginaAddEjemplar(Model model) {
-		return "PaginaAddEjemplar";
+		model.addAttribute("Monedas",repM.findAll());
+		model.addAttribute("Proveedores",repP.findAll());
+		return "PaginaEditEjemplar";
 	}
 	@GetMapping("/paginaAddProveedor")
 	public String paginaAddProveedor(Model model) {
-		return "PaginaAddProveedor";
+		return "PaginaEditProveedor";
 	}
 
 }

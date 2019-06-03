@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th=http://www.thymeleaf.org
+	xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance
+	xsi:schemaLocation=http://www.thymeleaf.org>
+<head>
+<meta charset="UTF-8">
+<title>Museo</title>
+<link rel="stylesheet" type="text/css"
+	href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css"
+	href="/assets/css/material-dashboard.css" />
+<link rel="stylesheet" type="text/css" href="/assets/css/MyCSS.css">
+</head>
+<body>
+	<h1>
+		<i>Museo numismatica</i>
+	</h1>
+
+	<ul class="nav nav-pills nav-pills-primary" role="tablist">
+		<li class="nav-item"><a class="nav-link active" data-toggle="tab"
+			role="tablist" aria-expanded="true"> Moneda </a></li>
+	</ul>
+
+	<div class="tab-content tab-space">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle5">Añadir
+					moneda</h5>
+				<button type="button" onclick="window.location.href = '/';"
+					class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+
+			</div>
+			<div class="modal-body">
+
+				<form action="/moneda/monedaAniadir" method="post">
+					<input type="hidden" name="id" th:if="${moneda != null}"
+						th:value="${moneda.id}" /> 
+						<input type="hidden" name="id"
+						th:if="${moneda == null}" value="" />
+					<div class="form-group">
+						<label>Valor facial</label> <input type="text"
+							class="form-control" name="valorFacial" required
+							th:value="${(moneda != null) ? moneda.valorFacial : ''}">
+					</div>
+					<div class="form-group">
+						<label>Unidad monetaria</label> <input type="text"
+							class="form-control" name="unidadMonetaria" required
+							th:value="${(moneda != null) ? moneda.unidadMonetaria : ''}">
+					</div>
+					<div class="form-group">
+						<label>Diametro</label> <input type="text" class="form-control"
+							name="diametro" required
+							th:value="${(moneda != null) ? moneda.diametro : ''}">
+					</div>
+					<div class="form-group">
+						<label>Peso(G)</label> <input type="text" class="form-control"
+							name="peso" required
+							th:value="${(moneda != null) ? moneda.peso : ''}">
+					</div>
+					<div class="form-group">
+						<label>Composición</label> <input type="text" class="form-control"
+							name="metales" required
+							th:value="${(moneda != null) ? moneda.metales : ''}">
+					</div>
+					<div class="form-group">
+						<label>Descripción</label> <input type="text" class="form-control"
+							name="descripcion" required
+							th:value="${(moneda != null) ? moneda.descripcion: ''}">
+					</div>
+					<input th:if="${moneda == null}" type="hidden"
+						name="listaEjemplares" value=""> <input type="hidden"
+						name="listaEjemplares" th:if="${moneda != null}"
+						th:value="${moneda.listaEjemplares}">
+					<div class="modal-footer td-actions">
+							<button th:if="${moneda==null}" type="submit" class="btn btn-primary">Añadir
+							moneda</button>
+						<button th:if="${moneda!=null}" type="submit" class="btn btn-primary">Modificar
+							moneda</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div th:insert="fragments/general.html :: addModal"></div>
+</body>
+</html>

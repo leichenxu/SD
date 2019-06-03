@@ -37,30 +37,38 @@
 			</div>
 			<div class="modal-body">
 				<form action="/proveedor/proveedorAniadir" method="post">
+					<input type="hidden" name="id" th:if="${proveedor != null}"
+						th:value="${proveedor.id}" /> <input type="hidden" name="id"
+						th:if="${proveedor == null}" value="" />
 					<div class="form-group">
-						<label>Código de identificación fiscal</label> <input
-							class="form-control" type="text"
-							name="codigoIdentificacionFiscal">
+						<label>Código de identificación fiscal</label><input type="text"
+							class="form-control" name="codigoIdentificacionFiscal" required
+							th:value="${(proveedor != null) ? proveedor.codigoIdentificacionFiscal : ''}">
 					</div>
 					<div class="form-group">
-						<label>Nombre</label> <input class="form-control" type="text"
-							name="nombre">
+						<label>Nombre</label> <input type="text" class="form-control"
+							name="nombre" required
+							th:value="${(proveedor != null) ? proveedor.nombre : ''}">
 					</div>
 					<div class="form-group">
-						<label>Código postal</label> <input class="form-control"
-							type="text" name="codigoPostal">
+						<label>Código postal</label> <input type="text"
+							class="form-control" name="codigoPostal" required
+							th:value="${(proveedor != null) ? proveedor.codigoPostal : ''}">
 					</div>
 					<div class="form-group">
-						<label>Email</label> <input class="form-control" type="text"
-							name="email">
+						<label>Email</label> <input type="text" class="form-control"
+							name="email" required
+							th:value="${(proveedor != null) ? proveedor.email : ''}">
 					</div>
 					<div class="form-group">
-						<label>Teléfono</label> <input class="form-control" type="text"
-							name="telefono">
+						<label>Teléfono</label> <input type="text" class="form-control"
+							name="telefono" required
+							th:value="${(proveedor != null) ? proveedor.telefono : ''}">
 					</div>
-					<input type="hidden" name="ejemplar" value="">
 					<div class="modal-footer td-actions">
-						<button type="submit" class="btn btn-primary">Añadir
+							<button th:if="${proveedor==null}" type="submit" class="btn btn-primary">Añadir
+							proveedor</button>
+						<button th:if="${proveedor!=null}" type="submit" class="btn btn-primary">Modificar
 							proveedor</button>
 					</div>
 				</form>

@@ -32,7 +32,8 @@
 	<div class="tab-content tab-space">
 		<div class="tab-pane active" aria-expanded="false">
 			<div class="row">
-				<button type="button" rel="tooltip" onclick="window.location.href = '/paginaAddProveedor';"
+				<button type="button" rel="tooltip"
+					onclick="window.location.href = '/paginaAddProveedor';"
 					class="btn btn-success btn-round ml-auto mr-5" data-toggle="modal"
 					data-target="#addModalProveedor">
 					<i class="material-icons">add_circle</i>
@@ -58,12 +59,13 @@
 						<td class="td-actions text-right">
 							<button type="button" rel="tooltip"
 								class="btn btn-success btn-round" data-toggle="modal"
-								data-target="#editProveedor">
+								th:onclick="'window.location.href =\''+@{/proveedor/edit/{id}(id=${proveedor.id})}+'\''">
 								<i class="material-icons">edit</i>
 							</button>
 							<button type="button" rel="tooltip"
-								class="btn btn-danger btn-round">
-								<i class="material-icons" th:data-id="${proveedor.id}">delete</i>
+								class="btn btn-danger btn-round"
+								th:onclick="'window.location.href =\''+@{/proveedor/delete/{id}(id=${proveedor.id})}+'\''">
+								<i class="material-icons">delete</i>
 							</button>
 						</td>
 					</tr>
@@ -136,109 +138,6 @@
 				</div>
 				<div class="modal-body">
 					<form action="/proveedor/proveedorAniadir" method="post">
-						<div class="form-group">
-							<label>Código de identificación fiscal</label> <input
-								class="form-control" type="text"
-								name="codigoIdentificacionFiscal">
-						</div>
-						<div class="form-group">
-							<label>Nombre</label> <input class="form-control" type="text"
-								name="nombre">
-						</div>
-						<div class="form-group">
-							<label>Código postal</label> <input class="form-control"
-								type="text" name="codigoPostal">
-						</div>
-						<div class="form-group">
-							<label>Email</label> <input class="form-control" type="text"
-								name="email">
-						</div>
-						<div class="form-group">
-							<label>Teléfono</label> <input class="form-control" type="text"
-								name="telefono">
-						</div>
-						<input type="hidden" name="ejemplar" value="">
-						<div class="modal-footer td-actions">
-							<button type="submit" class="btn btn-primary">Añadir
-								proveedor</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="modal fade" id="editMoneda" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLongTitle5">Modificar
-						moneda</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form action="/moneda/editMoneda" method="post">
-						<div class="form-group">
-							<label>Id</label> <input class="form-control" type="text"
-								name="id">
-						</div>
-						<div class="form-group">
-							<label>Valor facial</label> <input class="form-control"
-								type="text" name="valorFacial">
-						</div>
-						<div class="form-group">
-							<label>Unidad monetaria</label> <input class="form-control"
-								type="text" name="unidadMonetaria">
-						</div>
-						<div class="form-group">
-							<label>Diametro</label> <input class="form-control" type="text"
-								name="diametro">
-						</div>
-						<div class="form-group">
-							<label>Peso(G)</label> <input class="form-control" type="text"
-								name="peso">
-						</div>
-						<div class="form-group">
-							<label>Composición</label> <input class="form-control"
-								type="text" name="metales">
-						</div>
-						<div class="form-group">
-							<label>Descripción</label> <input class="form-control"
-								type="text" name="descripcion">
-						</div>
-						<input type="hidden" name="listaEjemplares" value="">
-						<div class="modal-footer td-actions">
-							<button type="submit" class="btn btn-primary">Añadir
-								moneda</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="modal fade" id="editProveedor" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLongTitle6">Modificar
-						proveedor</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form action="/proveedor/editProveedor" method="post">
-						<div class="form-group">
-							<label>ID</label> <input class="form-control" type="text"
-								name="id">
-						</div>
 						<div class="form-group">
 							<label>Código de identificación fiscal</label> <input
 								class="form-control" type="text"

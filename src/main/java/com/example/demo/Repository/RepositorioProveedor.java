@@ -3,6 +3,7 @@ package com.example.demo.Repository;
 import com.example.demo.Model.Ejemplar;
 import com.example.demo.Model.Proveedor;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -18,6 +19,5 @@ public interface RepositorioProveedor extends JpaRepository<Proveedor,Long> {
 	List<Proveedor> findAllByOrderByEmailDesc();
 	List<Proveedor> findAllByOrderByTelefonoAsc();
 	List<Proveedor> findAllByOrderByTelefonoDesc();
-
 	Proveedor findByNombre(String nombre);
 }
