@@ -40,15 +40,7 @@ public class Proveedor {
 		this.telefono = telefono;
 	}
 
-	public Proveedor(Long id, String codigoIdentificacionFiscal, String nombre, String codigoPostal, String email,
-			String telefono) {
-		this.codigoIdentificacionFiscal = codigoIdentificacionFiscal;
-		this.nombre = nombre;
-		this.codigoPostal = codigoPostal;
-		this.email = email;
-		this.telefono = telefono;
-		this.id = id;
-	}
+
 
 	public String getCodigoIdentificacionFiscal() {
 		return codigoIdentificacionFiscal;
