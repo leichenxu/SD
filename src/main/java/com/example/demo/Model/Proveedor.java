@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
-import javax.persistence.Id;
 
 @Entity
 public class Proveedor {
 	@Id
+	@GeneratedValue
 	private long id;
 	private String codigoIdentificacionFiscal;
 	private String nombre;
@@ -29,8 +29,6 @@ public class Proveedor {
 		this.codigoPostal = codigoPostal;
 		this.email = email;
 		this.telefono = telefono;
-		// casting eliminado
-		this.id = codigoIdentificacionFiscal.hashCode();
 	}
 
 	public void modificarProveedor(String codigoIdentificacionFiscal, String nombre, String codigoPostal, String email,
@@ -40,7 +38,6 @@ public class Proveedor {
 		this.codigoPostal = codigoPostal;
 		this.email = email;
 		this.telefono = telefono;
-		this.id = codigoIdentificacionFiscal.hashCode();
 	}
 
 	public Proveedor(Long id, String codigoIdentificacionFiscal, String nombre, String codigoPostal, String email,
