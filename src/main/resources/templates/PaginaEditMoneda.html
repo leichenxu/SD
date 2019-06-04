@@ -42,7 +42,7 @@
 						<input type="hidden" name="id"
 						th:if="${moneda == null}" value="" />
 					<div class="form-group">
-						<label>Valor facial</label> <input type="text"
+						<label>Valor facial</label> <input type="number" step="any"
 							class="form-control" name="valorFacial" required
 							th:value="${(moneda != null) ? moneda.valorFacial : ''}">
 					</div>
@@ -52,12 +52,12 @@
 							th:value="${(moneda != null) ? moneda.unidadMonetaria : ''}">
 					</div>
 					<div class="form-group">
-						<label>Diametro</label> <input type="text" class="form-control"
+						<label>Diametro</label> <input type="number" step="any" class="form-control"
 							name="diametro" required
 							th:value="${(moneda != null) ? moneda.diametro : ''}">
 					</div>
 					<div class="form-group">
-						<label>Peso(G)</label> <input type="text" class="form-control"
+						<label>Peso(G)</label> <input type="number" step="any" class="form-control"
 							name="peso" required
 							th:value="${(moneda != null) ? moneda.peso : ''}">
 					</div>

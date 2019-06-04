@@ -32,18 +32,18 @@ public class ControladorMoneda {
 	private RepositorioEjemplar repE;
 
 	@RequestMapping(value = "/monedaAniadir", method = RequestMethod.POST)
-	public String monedaAniadir(@RequestParam("id") String id, @RequestParam("valorFacial") String valorFacial,
-			@RequestParam("unidadMonetaria") String unidadMonetaria, @RequestParam("diametro") String diametro,
-			@RequestParam("peso") String peso, @RequestParam("metales") String metales,
+	public String monedaAniadir(@RequestParam("id") String id, @RequestParam("valorFacial") Double valorFacial,
+			@RequestParam("unidadMonetaria") String unidadMonetaria, @RequestParam("diametro") float diametro,
+			@RequestParam("peso") float peso, @RequestParam("metales") String metales,
 			@RequestParam("descripcion") String descripcion, Model model) {
 		if (id.equals("")) {
-			Moneda moneda = new Moneda(Double.valueOf(valorFacial), unidadMonetaria, Float.valueOf(diametro),
-					Float.valueOf(peso), metales, descripcion);
+			Moneda moneda = new Moneda(valorFacial, unidadMonetaria, diametro,
+					peso, metales, descripcion);
 			repM.save(moneda);
 		} else {
 			Moneda m = this.repM.findById(Long.parseLong(id)).get();			
-			m.modificarMoneda(Double.valueOf(valorFacial), unidadMonetaria, Float.valueOf(diametro),
-					Float.valueOf(peso), metales, descripcion);
+			m.modificarMoneda(valorFacial, unidadMonetaria, diametro,
+					peso, metales, descripcion);
 			this.repM.save(m);
 		}
 		return "redirect:/";
