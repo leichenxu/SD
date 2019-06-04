@@ -41,7 +41,8 @@
 						th:value="${proveedor.id}" /> <input type="hidden" name="id"
 						th:if="${proveedor == null}" value="" />
 					<div class="form-group">
-						<label>Código de identificación fiscal</label><input type="text"
+						<label>Código de identificación fiscal</label><input type="text" pattern="B.{8,8}"
+							oninvalid="this.setCustomValidity('Empieza por B y 8 números')"
 							class="form-control" name="codigoIdentificacionFiscal" required
 							th:value="${(proveedor != null) ? proveedor.codigoIdentificacionFiscal : ''}">
 					</div>
@@ -51,17 +52,18 @@
 							th:value="${(proveedor != null) ? proveedor.nombre : ''}">
 					</div>
 					<div class="form-group">
-						<label>Código postal</label> <input type="text"
+						<label>Código postal</label> <input type="number" min="10000" max="99999"
 							class="form-control" name="codigoPostal" required
 							th:value="${(proveedor != null) ? proveedor.codigoPostal : ''}">
 					</div>
 					<div class="form-group">
 						<label>Email</label> <input type="text" class="form-control"
-							name="email" required
+							name="email" required pattern=".{1,}@.{3,}"
 							th:value="${(proveedor != null) ? proveedor.email : ''}">
 					</div>
 					<div class="form-group">
-						<label>Teléfono</label> <input type="text" class="form-control"
+						<label>Teléfono</label> <input type="number" class="form-control"
+													   min="900000000" max="999999999"
 							name="telefono" required
 							th:value="${(proveedor != null) ? proveedor.telefono : ''}">
 					</div>
