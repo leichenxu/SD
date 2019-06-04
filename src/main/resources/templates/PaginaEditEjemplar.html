@@ -51,7 +51,7 @@
 						</select>
 					</div>
 					<div class="form-group">
-						<label>Año de acuñación</label> <input type="text"
+						<label>Año de acuñación</label> <input type="number" max="2019"
 							class="form-control" name="anio" required
 							th:value="${(ejemplar != null) ? ejemplar.anio : ''}">
 					</div>
