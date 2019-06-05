@@ -1,144 +1,145 @@
 package com.example.demo.Model;
 
 import javax.persistence.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Moneda {
-	@Id
-	private Long id;
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Id
+    private Long id;
 
-	public void setValorFacial(double valorFacial) {
-		this.valorFacial = valorFacial;
-	}
+    private double valorFacial;
+    private String unidadMonetaria;
+    private float diametro;
+    private float peso;
+    private String metales;
+    private String descripcion;
 
-	public void setUnidadMonetaria(String unidadMonetaria) {
-		this.unidadMonetaria = unidadMonetaria;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setDiametro(float diametro) {
-		this.diametro = diametro;
-	}
+    @OneToMany(mappedBy = "moneda", cascade = CascadeType.ALL)
+    private List<Ejemplar> listaEjemplares = new ArrayList<>();
 
-	public void setPeso(float peso) {
-		this.peso = peso;
-	}
+    public Moneda() {
 
-	public void setMetales(String metales) {
-		this.metales = metales;
-	}
+    }
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+    public Moneda(double valorFacial, String unidadMonetaria, float diametro, float peso, String metales,
+                  String descripcion, List<Ejemplar> l) {
+        this.valorFacial = valorFacial;
+        this.unidadMonetaria = unidadMonetaria;
+        this.diametro = diametro;
+        this.peso = peso;
+        this.metales = metales;
+        this.descripcion = descripcion;
+        this.id = (long) Math.abs(this.valorFacial * 10 + this.unidadMonetaria.hashCode() + this.diametro + this.peso
+                + this.metales.hashCode());
+        this.listaEjemplares = l;
+    }
 
-	private double valorFacial;
-	private String unidadMonetaria;
-	private float diametro;
-	private float peso;
-	private String metales;
-	private String descripcion;
-	@OneToMany(mappedBy = "moneda", cascade = CascadeType.ALL)
-	private List<Ejemplar> listaEjemplares = new ArrayList<Ejemplar>();
+    public Moneda(double valorFacial, String unidadMonetaria, float diametro, float peso, String metales,
+                  String descripcion) {
+        this.valorFacial = valorFacial;
+        this.unidadMonetaria = unidadMonetaria;
+        this.diametro = diametro;
+        this.peso = peso;
+        this.metales = metales;
+        this.descripcion = descripcion;
+        this.id = (long) Math.abs(this.valorFacial * 10 + this.unidadMonetaria.hashCode() + this.diametro + this.peso
+                + this.metales.hashCode());
+    }
 
-	public Moneda() {
+    public Moneda(Long id, double valorFacial, String unidadMonetaria, float diametro, float peso, String metales,
+                  String descripcion) {
+        this.valorFacial = valorFacial;
+        this.unidadMonetaria = unidadMonetaria;
+        this.diametro = diametro;
+        this.peso = peso;
+        this.metales = metales;
+        this.descripcion = descripcion;
+        this.id = id;
+    }
 
-	}
+    public void modificarMoneda(double valorFacial, String unidadMonetaria, float diametro, float peso, String metales,
+                                String descripcion) {
+        this.valorFacial = valorFacial;
+        this.unidadMonetaria = unidadMonetaria;
+        this.diametro = diametro;
+        this.peso = peso;
+        this.metales = metales;
+        this.descripcion = descripcion;
+    }
 
-	public Moneda(double valorFacial, String unidadMonetaria, float diametro, float peso, String metales,
-			String descripcion, List<Ejemplar> l) {
-		this.valorFacial = valorFacial;
-		this.unidadMonetaria = unidadMonetaria;
-		this.diametro = diametro;
-		this.peso = peso;
-		this.metales = metales;
-		this.descripcion = descripcion;
-		this.id = (long) Math.abs(this.valorFacial * 10 + this.unidadMonetaria.hashCode() + this.diametro + this.peso
-				+ this.metales.hashCode());
-		this.listaEjemplares = l;
-	}
+    public void setValorFacial(double valorFacial) {
+        this.valorFacial = valorFacial;
+    }
 
-	public Moneda(double valorFacial, String unidadMonetaria, float diametro, float peso, String metales,
-			String descripcion) {
-		this.valorFacial = valorFacial;
-		this.unidadMonetaria = unidadMonetaria;
-		this.diametro = diametro;
-		this.peso = peso;
-		this.metales = metales;
-		this.descripcion = descripcion;
-		this.id = (long) Math.abs(this.valorFacial * 10 + this.unidadMonetaria.hashCode() + this.diametro + this.peso
-				+ this.metales.hashCode());
-	}
+    public void setUnidadMonetaria(String unidadMonetaria) {
+        this.unidadMonetaria = unidadMonetaria;
+    }
 
-	public Moneda(Long id, double valorFacial, String unidadMonetaria, float diametro, float peso, String metales,
-			String descripcion) {
-		this.valorFacial = valorFacial;
-		this.unidadMonetaria = unidadMonetaria;
-		this.diametro = diametro;
-		this.peso = peso;
-		this.metales = metales;
-		this.descripcion = descripcion;
-		this.id = id;
-	}
+    public void setDiametro(float diametro) {
+        this.diametro = diametro;
+    }
 
-	public void modificarMoneda(double valorFacial, String unidadMonetaria, float diametro, float peso, String metales,
-			String descripcion) {
-		this.valorFacial = valorFacial;
-		this.unidadMonetaria = unidadMonetaria;
-		this.diametro = diametro;
-		this.peso = peso;
-		this.metales = metales;
-		this.descripcion = descripcion;
-		this.id = id;
-	}
+    public void setPeso(float peso) {
+        this.peso = peso;
+    }
 
-	@Override
-	public String toString() {
-		return this.unidadMonetaria;
-	}
+    public void setMetales(String metales) {
+        this.metales = metales;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
-	public String getUnidadMonetaria() {
-		return unidadMonetaria;
-	}
+    @Override
+    public String toString() {
+        return this.unidadMonetaria;
+    }
 
-	public float getPeso() {
-		return peso;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public List<Ejemplar> getListaEjemplares() {
-		return listaEjemplares;
-	}
+    public String getUnidadMonetaria() {
+        return unidadMonetaria;
+    }
 
-	public void setListaEjemplares(List<Ejemplar> listaEjemplares) {
-		this.listaEjemplares = listaEjemplares;
-	}
+    public float getPeso() {
+        return peso;
+    }
 
-	public float getDiametro() {
-		return diametro;
-	}
+    public List<Ejemplar> getListaEjemplares() {
+        return listaEjemplares;
+    }
 
-	public String getDescripcion() {
-		return descripcion;
-	}
+    public void setListaEjemplares(List<Ejemplar> listaEjemplares) {
+        this.listaEjemplares = listaEjemplares;
+    }
 
-	public String getMetales() {
-		return metales;
-	}
+    public float getDiametro() {
+        return diametro;
+    }
 
-	public double getValorFacial() {
-		return valorFacial;
-	}
+    public String getDescripcion() {
+        return descripcion;
+    }
 
-	public void removeEjemplar(Ejemplar ejemplar) {
-		this.listaEjemplares.remove(ejemplar);
-	}
+    public String getMetales() {
+        return metales;
+    }
+
+    public double getValorFacial() {
+        return valorFacial;
+    }
+
+    public void removeEjemplar(Ejemplar ejemplar) {
+        this.listaEjemplares.remove(ejemplar);
+    }
+
 }

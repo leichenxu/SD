@@ -1,95 +1,92 @@
 package com.example.demo.Model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Proveedor {
-	@Id
-	@GeneratedValue
-	private long id;
-	private String codigoIdentificacionFiscal;
-	private String nombre;
-	private String codigoPostal;
-	private String email;
-	private String telefono;
-	@OneToMany(mappedBy = "proveedor", cascade = CascadeType.ALL)
-	private List<Ejemplar> ejemplares;
+    @Id
+    @GeneratedValue
+    private long id;
 
-	public Proveedor() {
+    private String codigoIdentificacionFiscal;
+    private String nombre;
+    private String codigoPostal;
+    private String email;
+    private String telefono;
 
-	}
+    @OneToMany(mappedBy = "proveedor", cascade = CascadeType.ALL)
+    private List<Ejemplar> ejemplares;
 
-	public Proveedor(String codigoIdentificacionFiscal, String nombre, String codigoPostal, String email,
-			String telefono) {
-		this.codigoIdentificacionFiscal = codigoIdentificacionFiscal;
-		this.nombre = nombre;
-		this.codigoPostal = codigoPostal;
-		this.email = email;
-		this.telefono = telefono;
-	}
+    public Proveedor() {
 
-	public void modificarProveedor(String codigoIdentificacionFiscal, String nombre, String codigoPostal, String email,
-			String telefono) {
-		this.codigoIdentificacionFiscal = codigoIdentificacionFiscal;
-		this.nombre = nombre;
-		this.codigoPostal = codigoPostal;
-		this.email = email;
-		this.telefono = telefono;
-	}
+    }
 
+    public Proveedor(String codigoIdentificacionFiscal, String nombre, String codigoPostal, String email,
+                     String telefono) {
+        this.codigoIdentificacionFiscal = codigoIdentificacionFiscal;
+        this.nombre = nombre;
+        this.codigoPostal = codigoPostal;
+        this.email = email;
+        this.telefono = telefono;
+    }
 
+    public void modificarProveedor(String codigoIdentificacionFiscal, String nombre, String codigoPostal, String email,
+                                   String telefono) {
+        this.codigoIdentificacionFiscal = codigoIdentificacionFiscal;
+        this.nombre = nombre;
+        this.codigoPostal = codigoPostal;
+        this.email = email;
+        this.telefono = telefono;
+    }
 
-	public String getCodigoIdentificacionFiscal() {
-		return codigoIdentificacionFiscal;
-	}
+    public String getCodigoIdentificacionFiscal() {
+        return codigoIdentificacionFiscal;
+    }
 
-	public void setCodigoIdentificacionFiscal(String codigoIdentificacionFiscal) {
-		this.codigoIdentificacionFiscal = codigoIdentificacionFiscal;
-	}
+    public void setCodigoIdentificacionFiscal(String codigoIdentificacionFiscal) {
+        this.codigoIdentificacionFiscal = codigoIdentificacionFiscal;
+    }
 
-	@Override
+    @Override
+    public String toString() {
+        return this.nombre;
+    }
 
-	public String toString() {
-		return this.nombre;
-	}
+    public String getNombre() {
+        return nombre;
+    }
 
-	public String getNombre() {
-		return nombre;
-	}
+    public long getId() {
+        return this.id;
+    }
 
-	public long getId() {
-		return this.id;
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public String getCodigoPostal() {
+        return codigoPostal;
+    }
 
-	public String getCodigoPostal() {
-		return codigoPostal;
-	}
+    public void setCodigoPostal(String codigoPostal) {
+        this.codigoPostal = codigoPostal;
+    }
 
-	public void setCodigoPostal(String codigoPostal) {
-		this.codigoPostal = codigoPostal;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getTelefono() {
+        return telefono;
+    }
 
-	public String getTelefono() {
-		return telefono;
-	}
-
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
-	}
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
 
 }
