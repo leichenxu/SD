@@ -48,15 +48,16 @@
 						<td><span th:text="${proveedor.email}"></span></td>
 						<td><span th:text="${proveedor.telefono}"></span></td>
 						<td class="td-actions text-right">
-							<button type="button" rel="tooltip"
-								class="btn btn-success btn-round" data-toggle="modal"
-								data-target="#editProveedor">
-								<i class="material-icons">edit</i>
-							</button>
-							<button type="button" rel="tooltip"
-								class="btn btn-danger btn-round">
-								<i class="material-icons" th:data-id="${Ejemplar.id}">delete</i>
-							</button>
+                            <button type="button" rel="tooltip"
+                                    class="btn btn-success btn-round" data-toggle="modal"
+                                    th:onclick="'window.location.href =\''+@{/proveedor/edit/{id}(id=${proveedor.id})}+'\''">
+                                <i class="material-icons">edit</i>
+                            </button>
+                            <button type="button" rel="tooltip"
+                                    class="btn btn-danger btn-round"
+                                    th:onclick="'window.location.href =\''+@{/proveedor/delete/{id}(id=${proveedor.id})}+'\''">
+                                <i class="material-icons">delete</i>
+                            </button>
 						</td>
 					</tr>
 				</tbody>
