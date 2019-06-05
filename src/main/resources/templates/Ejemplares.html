@@ -28,7 +28,7 @@
 				<button type="button" rel="tooltip"
 					class="btn btn-secondary btn-round btn-fab ml-5">
 					<a href="/"><i class="material-icons">chevron_left</i></a>
-				</button>				
+				</button>
 			</div>
 			<table class="table">
 				<thead>
@@ -54,16 +54,16 @@
 								</button>
 						</a></td>
 						<td class="td-actions text-right">
-							<button type="button" rel="tooltip"
-								class="btn btn-success btn-round" data-toggle="modal"
-								data-target="#editEjemplar">
-								<i class="material-icons">edit</i>
-							</button>
-							<button type="button" rel="tooltip"
-								class="btn btn-danger btn-round">
-								<i class="material-icons" th:data-m-id="${Moneda.id}"
-									th:data-e-id="${ejemplar.id}">delete</i>
-							</button>
+                            <button type="button" rel="tooltip"
+                                    class="btn btn-success btn-round"
+                                    th:onclick="'window.location.href =\''+@{/ejemplar/edit/{id}(id=${ejemplar.id})}+'\''">
+                                <i class="material-icons">edit</i>
+                            </button>
+                            <button type="button" rel="tooltip"
+                                    class="btn btn-danger btn-round"
+                                    th:onclick="'window.location.href =\''+@{/ejemplar/delete/{id}(id=${ejemplar.id})}+'\''">
+                                <i class="material-icons">delete</i>
+                            </button>
 						</td>
 					</tr>
 				</tbody>
@@ -114,7 +114,7 @@
 	</div>
 
 	<div th:insert="fragments/general.html :: addModal"></div>
-	
+
 	<div class="modal fade" id="editEjemplar" tabindex="-1" role="dialog"
 		aria-labelledby="exampleModalLongTitle" aria-hidden="true">
 		<div class="modal-dialog" role="document">
