@@ -43,6 +43,7 @@
 					<div class="form-group">
 						<label>Código de identificación fiscal</label><input type="text" pattern="B.{8,8}"
 							oninvalid="this.setCustomValidity('Empieza por B y 8 números')"
+                            onchange="try{setCustomValidity('')}catch(e){}"
 							class="form-control" name="codigoIdentificacionFiscal" required
 							th:value="${(proveedor != null) ? proveedor.codigoIdentificacionFiscal : ''}">
 					</div>
