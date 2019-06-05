@@ -44,6 +44,8 @@
 					<div class="form-group">
 						<label>Valor facial</label> <input type="number" step="any"
 							class="form-control" name="valorFacial" required
+							oninvalid="this.setCustomValidity('Introduzca el valor en números')"
+							onchange="try{setCustomValidity('')}catch(e){}"
 							th:value="${(moneda != null) ? moneda.valorFacial : ''}">
 					</div>
 					<div class="form-group">
@@ -54,11 +56,15 @@
 					<div class="form-group">
 						<label>Diametro</label> <input type="number" step="any" class="form-control"
 							name="diametro" required
+							oninvalid="this.setCustomValidity('Introduzca el diámetro en números')"
+							onchange="try{setCustomValidity('')}catch(e){}"
 							th:value="${(moneda != null) ? moneda.diametro : ''}">
 					</div>
 					<div class="form-group">
 						<label>Peso(G)</label> <input type="number" step="any" class="form-control"
 							name="peso" required
+							oninvalid="this.setCustomValidity('Introduzca el peso en números')"
+							onchange="try{setCustomValidity('')}catch(e){}"
 							th:value="${(moneda != null) ? moneda.peso : ''}">
 					</div>
 					<div class="form-group">
