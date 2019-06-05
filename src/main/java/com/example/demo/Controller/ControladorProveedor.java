@@ -42,12 +42,21 @@ public class ControladorProveedor {
 			@RequestParam("codigoIdentificacionFiscal") String codigoIdentificacionFiscal,
 			@RequestParam("nombre") String nombre, @RequestParam("codigoPostal") String codigoPostal,
 			@RequestParam("email") String email, @RequestParam("telefono") String telefono, Model model) {
+	    // Añadir proveedor
 		if (id.equals("")) {
-			Proveedor proveedor = new Proveedor(codigoIdentificacionFiscal, nombre, codigoPostal, email, telefono);
-			repP.save(proveedor);
+		    // CIF no existente, añadir proveedor
+		    if (this.repP.findByCodigoIdentificacionFiscal(codigoIdentificacionFiscal) == null) {
+                Proveedor proveedor = new Proveedor(codigoIdentificacionFiscal, nombre, codigoPostal, email, telefono);
+                repP.save(proveedor);
+            // CIF existente, modificar proveedor
+            } else {
+		        Proveedor p = this.repP.findByCodigoIdentificacionFiscal(codigoIdentificacionFiscal);
+		        p.modificarProveedor(codigoIdentificacionFiscal, nombre, codigoPostal, email, telefono);
+		        this.repP.save(p);
+            }
+		// Editar proveedor
 		} else {
-			
-			Proveedor p=this.repP.findById(Long.parseLong(id)).get();
+			Proveedor p = this.repP.findById(Long.parseLong(id)).get();
 			p.modificarProveedor(codigoIdentificacionFiscal, nombre, codigoPostal, email, telefono);
 			this.repP.save(p);
 		}
