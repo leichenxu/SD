@@ -1,165 +1,75 @@
 <!DOCTYPE html>
 <html xmlns:th=http://www.thymeleaf.org
-	xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance
-	xsi:schemaLocation=http://www.thymeleaf.org>
+      xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance
+      xsi:schemaLocation=http://www.thymeleaf.org>
 <head>
-<meta charset="UTF-8">
-<title>Museo</title>
-<link rel="stylesheet" type="text/css"
-	href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css"
-	href="/assets/css/material-dashboard.css" />
-<link rel="stylesheet" type="text/css" href="/assets/css/MyCSS.css">
+    <meta charset="UTF-8">
+    <title>Museo</title>
+    <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="/assets/css/material-dashboard.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/css/MyCSS.css">
 </head>
 <body>
-	<h1>
-		<i>Museo numismatica</i>
-	</h1>
-	<div class="card">
-		<div class="card-header card-header-text card-header-primary">
-			<div class="card-text">
-				<h1 class="card-title">Ejemplares</h1>
-			</div>
-		</div>
-		<div class="card-body">
-			<div class="row">
-				<button type="button" rel="tooltip"
-					class="btn btn-secondary btn-round btn-fab ml-5">
-					<a href="/"><i class="material-icons">chevron_left</i></a>
-				</button>
-			</div>
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Año de acuñación</th>
-						<th>Ciudad de acuñación</th>
-						<th>Fecha de adquisición</th>
-						<th>Estado de conservación</th>
-						<th>Proveedor</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="ejemplar : ${Ejemplares}">
-						<td><span th:text="${ejemplar.anio}"></span></td>
-						<td><span th:text="${ejemplar.ciudad}"></span></td>
-						<td><span th:text="${ejemplar.fechaAdquisicion}"></span></td>
-						<td><span th:text="${ejemplar.conservacion}"></span></td>
-						<td><span th:text="${ejemplar.proveedor}"></span> <!--boton de info -->
-							<a th:href="@{'/proveedor/' + ${ejemplar.id}}">
-								<button type="submit" class="btn btn-info btn-fab btn-round"
-									data-toggle="modal">
-									<i class="material-icons">info</i>
-								</button>
-						</a></td>
-						<td class="td-actions text-right">
-                            <button type="button" rel="tooltip"
-                                    class="btn btn-success btn-round"
-                                    th:onclick="'window.location.href =\''+@{/ejemplar/edit/{id}(id=${ejemplar.id})}+'\''">
-                                <i class="material-icons">edit</i>
-                            </button>
-                            <button type="button" rel="tooltip"
-                                    class="btn btn-danger btn-round"
-                                    th:onclick="'window.location.href =\''+@{/ejemplar/delete/{id}(id=${ejemplar.id})}+'\''">
-                                <i class="material-icons">delete</i>
-                            </button>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
+<h1>
+    <i>Museo numismatica</i>
+</h1>
+<div class="card">
+    <div class="card-header card-header-text card-header-primary">
+        <div class="card-text">
+            <h1 class="card-title">Ejemplares</h1>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <button type="button" rel="tooltip"
+                    class="btn btn-secondary btn-round btn-fab ml-5">
+                <a href="/"><i class="material-icons">chevron_left</i></a>
+            </button>
+        </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Año de acuñación</th>
+                <th>Ciudad de acuñación</th>
+                <th>Fecha de adquisición</th>
+                <th>Estado de conservación</th>
+                <th>Proveedor</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="ejemplar : ${Ejemplares}">
+                <td><span th:text="${ejemplar.anio}"></span></td>
+                <td><span th:text="${ejemplar.ciudad}"></span></td>
+                <td><span th:text="${ejemplar.fechaAdquisicion}"></span></td>
+                <td><span th:text="${ejemplar.conservacion}"></span></td>
+                <td><span th:text="${ejemplar.proveedor}"></span> <!--boton de info -->
+                    <a th:href="@{'/proveedor/' + ${ejemplar.id}}">
+                        <button type="submit" class="btn btn-info btn-fab btn-round"
+                                data-toggle="modal">
+                            <i class="material-icons">info</i>
+                        </button>
+                    </a></td>
+                <td class="td-actions text-right">
+                    <button type="button" rel="tooltip"
+                            class="btn btn-success btn-round"
+                            th:onclick="'window.location.href =\''+@{/ejemplar/edit/{id}(id=${ejemplar.id})}+'\''">
+                        <i class="material-icons">edit</i>
+                    </button>
+                    <button type="button" rel="tooltip"
+                            class="btn btn-danger btn-round"
+                            th:onclick="'window.location.href =\''+@{/ejemplar/delete/{id}(id=${ejemplar.id})}+'\''">
+                        <i class="material-icons">delete</i>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
-	<div class="modal fade" id="searchModal" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLongTitle1">Busqueda
-						por criterio</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<div class="row">
-						<div class="dropdown">
-							<button class="btn btn-secondary dropdown-toggle" type="button"
-								id="dropdownMenuButton1" data-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false">Buscar</button>
-							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-								<a class="dropdown-item">Moneda</a> <a class="dropdown-item">Ejemplar</a>
-								<a class="dropdown-item">Proveedor</a>
-							</div>
-						</div>
-						<div class="dropdown">
-							<button class="btn btn-secondary dropdown-toggle" type="button"
-								id="dropdownMenuButton2" data-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false">Buscar</button>
-							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-								<a class="dropdown-item">UnidadMonetaria</a> <a
-									class="dropdown-item">Fecha de adquisición</a> <a
-									class="dropdown-item">Nombre</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary">Buscar</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div th:insert="fragments/general.html :: addModal"></div>
-
-	<div class="modal fade" id="editEjemplar" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLongTitle3">Modificar
-						ejemplar</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form action="/ejemplar/editEjemplar" method="post">
-						<div class="form-group">
-							<label>ID</label> <input class="form-control" name="id">
-						</div>
-						<div class="form-group">
-							<label>Año de acuñación</label> <input class="form-control"
-								name="anio">
-						</div>
-						<div class="form-group">
-							<label>Ciudad de acuñación</label> <input class="form-control"
-								name="ciudad">
-						</div>
-						<div class="form-group">
-							<label>Fecha de adquisición</label> <input class="form-control"
-								name="fechaAdquisicion" type="date">
-						</div>
-						<div class="form-group">
-							<label>Estado de conservación</label> <input class="form-control"
-								name="conservacion">
-						</div>
-						<div class="form-group">
-							<label>NIF proveedor</label> <input class="form-control"
-								name="proveedor">
-						</div>
-						<div class="modal-footer">
-							<button type="submit" class="btn btn-primary">Añadir</button>
-						</div>
-						<input type="hidden" name="moneda" th:value="${Moneda.id}">
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
 </body>
 </html>
