@@ -1,25 +1,22 @@
 package com.example.demo.Controller;
 
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.view.RedirectView;
-
 import com.example.demo.Model.Ejemplar;
 import com.example.demo.Model.Moneda;
 import com.example.demo.Model.Proveedor;
 import com.example.demo.Repository.RepositorioEjemplar;
 import com.example.demo.Repository.RepositorioMoneda;
 import com.example.demo.Repository.RepositorioProveedor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.view.RedirectView;
+
+import java.sql.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "ejemplar")

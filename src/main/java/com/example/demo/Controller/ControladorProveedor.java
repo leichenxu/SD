@@ -1,162 +1,161 @@
 package com.example.demo.Controller;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import com.example.demo.Model.Ejemplar;
-import com.example.demo.Model.Moneda;
+import com.example.demo.Model.Proveedor;
 import com.example.demo.Repository.RepositorioEjemplar;
 import com.example.demo.Repository.RepositorioMoneda;
+import com.example.demo.Repository.RepositorioProveedor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
-
-import com.example.demo.Model.Proveedor;
-import com.example.demo.Repository.RepositorioProveedor;
 
 @Controller
 @RequestMapping("proveedor")
 public class ControladorProveedor {
-	@Autowired
-	private RepositorioMoneda repM;
+    @Autowired
+    private RepositorioMoneda repM;
 
-	@Autowired
-	private RepositorioEjemplar repE;
+    @Autowired
+    private RepositorioEjemplar repE;
 
-	@Autowired
-	private RepositorioProveedor repP;
+    @Autowired
+    private RepositorioProveedor repP;
 
-	@RequestMapping("/{ejemplar}")
-	public String proveedorDeUnEjemplar(@PathVariable Ejemplar ejemplar, Model model) {
-		model.addAttribute("Proveedor", ejemplar.getProveedor());
-		model.addAttribute("Ejemplar", ejemplar);
-		return "ProveedorDeUnEjemplar";
-	}
+    @RequestMapping("/{ejemplar}")
+    public String proveedorDeUnEjemplar(@PathVariable Ejemplar ejemplar, Model model) {
+        model.addAttribute("Proveedor", ejemplar.getProveedor());
+        model.addAttribute("Ejemplar", ejemplar);
+        return "ProveedorDeUnEjemplar";
+    }
 
-	@RequestMapping(value = "/proveedorAniadir", method = RequestMethod.POST)
-	public RedirectView proveedor(@RequestParam("id") String id,
-			@RequestParam("codigoIdentificacionFiscal") String codigoIdentificacionFiscal,
-			@RequestParam("nombre") String nombre, @RequestParam("codigoPostal") String codigoPostal,
-			@RequestParam("email") String email, @RequestParam("telefono") String telefono, Model model) {
-	    // Añadir proveedor
-		if (id.equals("")) {
-		    // CIF no existente, añadir proveedor
-		    if (this.repP.findByCodigoIdentificacionFiscal(codigoIdentificacionFiscal) == null) {
+    @RequestMapping(value = "/proveedorAniadir", method = RequestMethod.POST)
+    public RedirectView proveedor(@RequestParam("id") String id,
+                                  @RequestParam("codigoIdentificacionFiscal") String codigoIdentificacionFiscal,
+                                  @RequestParam("nombre") String nombre,
+                                  @RequestParam("codigoPostal") String codigoPostal,
+                                  @RequestParam("email") String email,
+                                  @RequestParam("telefono") String telefono,
+                                  Model model) {
+        // Añadir proveedor
+        if (id.equals("")) {
+            // CIF no existente, añadir proveedor
+            if (this.repP.findByCodigoIdentificacionFiscal(codigoIdentificacionFiscal) == null) {
                 Proveedor proveedor = new Proveedor(codigoIdentificacionFiscal, nombre, codigoPostal, email, telefono);
                 repP.save(proveedor);
-            // CIF existente, modificar proveedor
+                // CIF existente, modificar proveedor
             } else {
-		        Proveedor p = this.repP.findByCodigoIdentificacionFiscal(codigoIdentificacionFiscal);
-		        p.modificarProveedor(codigoIdentificacionFiscal, nombre, codigoPostal, email, telefono);
-		        this.repP.save(p);
+                Proveedor p = this.repP.findByCodigoIdentificacionFiscal(codigoIdentificacionFiscal);
+                p.modificarProveedor(codigoIdentificacionFiscal, nombre, codigoPostal, email, telefono);
+                this.repP.save(p);
             }
-		// Editar proveedor
-		} else {
-			Proveedor p = this.repP.findById(Long.parseLong(id)).get();
-			p.modificarProveedor(codigoIdentificacionFiscal, nombre, codigoPostal, email, telefono);
-			this.repP.save(p);
-		}
-		return new RedirectView("/PaginaProveedor");
-	}
+            // Editar proveedor
+        } else {
+            Proveedor p = this.repP.findById(Long.parseLong(id)).get();
+            p.modificarProveedor(codigoIdentificacionFiscal, nombre, codigoPostal, email, telefono);
+            this.repP.save(p);
+        }
+        return new RedirectView("/PaginaProveedor");
+    }
 
-	@RequestMapping(value = "/edit/{id}")
-	public String proveedorModificar(@PathVariable long id, Model model) {
-		model.addAttribute("proveedor", this.repP.findById(id).get());
-		return "PaginaEditProveedor";
-	}
+    @RequestMapping(value = "/edit/{id}")
+    public String proveedorModificar(@PathVariable long id, Model model) {
+        model.addAttribute("proveedor", this.repP.findById(id).get());
+        return "PaginaEditProveedor";
+    }
 
-	@RequestMapping(value = "/delete/{id}")
-	public String deleteProveedor(@PathVariable Long id, Model model) {
-		this.repP.deleteById(id);
-		return "redirect:/PaginaProveedor";
-	}
-	/*
-	 * @DeleteMapping("/delete/{proveedor}") public ResponseEntity<?>
-	 * removeEjemplar(@PathVariable Proveedor proveedor) {
-	 * this.repP.delete(proveedor); return ResponseEntity.noContent().build(); }
-	 */
+    @RequestMapping(value = "/delete/{id}")
+    public String deleteProveedor(@PathVariable Long id, Model model) {
+        this.repP.deleteById(id);
+        return "redirect:/PaginaProveedor";
+    }
+    /*
+     * @DeleteMapping("/delete/{proveedor}") public ResponseEntity<?>
+     * removeEjemplar(@PathVariable Proveedor proveedor) {
+     * this.repP.delete(proveedor); return ResponseEntity.noContent().build(); }
+     */
 
-	private boolean CIFAscDes = false;
+    private boolean CIFAscDes = false;
 
-	@RequestMapping(value = "/CIF")
-	public String provResultCIF(Model model) {
-		if (!CIFAscDes) {
-			CIFAscDes = true;
-			model.addAttribute("Proveedor", this.repP.findAllByOrderByCodigoIdentificacionFiscalAsc());
-		} else {
-			CIFAscDes = false;
-			model.addAttribute("Proveedor", this.repP.findAllByOrderByCodigoIdentificacionFiscalDesc());
-		}
-		return "search_result_proveedor";
-	}
+    @RequestMapping(value = "/CIF")
+    public String provResultCIF(Model model) {
+        if (!CIFAscDes) {
+            CIFAscDes = true;
+            model.addAttribute("Proveedor", this.repP.findAllByOrderByCodigoIdentificacionFiscalAsc());
+        } else {
+            CIFAscDes = false;
+            model.addAttribute("Proveedor", this.repP.findAllByOrderByCodigoIdentificacionFiscalDesc());
+        }
+        return "search_result_proveedor";
+    }
 
-	private boolean nomb = false;
+    private boolean nomb = false;
 
-	@RequestMapping(value = "nombre")
-	public String provResultNombre(Model model) {
-		if (!nomb) {
-			nomb = true;
-			model.addAttribute("Proveedor", this.repP.findAllByOrderByNombreAsc());
-		} else {
-			nomb = false;
-			model.addAttribute("Proveedor", this.repP.findAllByOrderByNombreDesc());
-		}
-		return "search_result_proveedor";
+    @RequestMapping(value = "nombre")
+    public String provResultNombre(Model model) {
+        if (!nomb) {
+            nomb = true;
+            model.addAttribute("Proveedor", this.repP.findAllByOrderByNombreAsc());
+        } else {
+            nomb = false;
+            model.addAttribute("Proveedor", this.repP.findAllByOrderByNombreDesc());
+        }
+        return "search_result_proveedor";
 
-	}
+    }
 
-	private boolean codigoP = false;
+    private boolean codigoP = false;
 
-	@RequestMapping(value = "/codigoPostal")
-	public String codPAsc(Model model) {
-		if (!codigoP) {
-			codigoP = true;
-			model.addAttribute("Proveedor", this.repP.findAllByOrderByCodigoPostalAsc());
-		} else {
-			codigoP = false;
-			model.addAttribute("Proveedor", this.repP.findAllByOrderByCodigoPostalDesc());
-		}
-		return "search_result_proveedor";
-	}
+    @RequestMapping(value = "/codigoPostal")
+    public String codPAsc(Model model) {
+        if (!codigoP) {
+            codigoP = true;
+            model.addAttribute("Proveedor", this.repP.findAllByOrderByCodigoPostalAsc());
+        } else {
+            codigoP = false;
+            model.addAttribute("Proveedor", this.repP.findAllByOrderByCodigoPostalDesc());
+        }
+        return "search_result_proveedor";
+    }
 
-	private boolean email = false;
+    private boolean email = false;
 
-	@RequestMapping(value = "/email")
-	public String emailAsc(Model model) {
-		if (!email) {
-			email = true;
-			model.addAttribute("Proveedor", this.repP.findAllByOrderByEmailAsc());
-		} else {
-			email = false;
-			model.addAttribute("Proveedor", this.repP.findAllByOrderByEmailDesc());
-		}
-		return "search_result_proveedor";
-	}
+    @RequestMapping(value = "/email")
+    public String emailAsc(Model model) {
+        if (!email) {
+            email = true;
+            model.addAttribute("Proveedor", this.repP.findAllByOrderByEmailAsc());
+        } else {
+            email = false;
+            model.addAttribute("Proveedor", this.repP.findAllByOrderByEmailDesc());
+        }
+        return "search_result_proveedor";
+    }
 
-	private boolean telefono = false;
+    private boolean telefono = false;
 
-	@RequestMapping(value = "/telefono")
-	public String telefAsc(Model model) {
-		if (!telefono) {
-			telefono = true;
-			model.addAttribute("Proveedor", this.repP.findAllByOrderByTelefonoAsc());
-		} else {
-			telefono = false;
-			model.addAttribute("Proveedor", this.repP.findAllByOrderByTelefonoDesc());
-		}
-		return "search_result_proveedor";
-	}
+    @RequestMapping(value = "/telefono")
+    public String telefAsc(Model model) {
+        if (!telefono) {
+            telefono = true;
+            model.addAttribute("Proveedor", this.repP.findAllByOrderByTelefonoAsc());
+        } else {
+            telefono = false;
+            model.addAttribute("Proveedor", this.repP.findAllByOrderByTelefonoDesc());
+        }
+        return "search_result_proveedor";
+    }
 
-	private void defecto(Model model, boolean a, boolean b, boolean c) {
-		if (a)
-			model.addAttribute("Monedas", repM.findAll());
-		if (b)
-			model.addAttribute("Ejemplares", repE.findAll());
-		if (c)
-			model.addAttribute("Proveedores", repP.findAll());
-	}
+    private void defecto(Model model, boolean a, boolean b, boolean c) {
+        if (a)
+            model.addAttribute("Monedas", repM.findAll());
+        if (b)
+            model.addAttribute("Ejemplares", repE.findAll());
+        if (c)
+            model.addAttribute("Proveedores", repP.findAll());
+    }
 }
