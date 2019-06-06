@@ -32,4 +32,8 @@ public interface RepositorioEjemplar extends JpaRepository<Ejemplar, Long> {
     List<Ejemplar> findAllByOrderByProveedorAsc();
 
     List<Ejemplar> findAllByOrderByProveedorDesc();
+
+    List<Ejemplar> findByMonedaOrderByAnioAsc(Moneda moneda);
+
+    List<Ejemplar> findByMonedaOrderByAnioDesc(Moneda moneda);
 }
