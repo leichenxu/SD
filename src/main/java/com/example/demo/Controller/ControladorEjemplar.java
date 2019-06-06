@@ -39,6 +39,14 @@ public class ControladorEjemplar {
 		return "Ejemplares";
 	}
 
+	@RequestMapping("/proveedor/{proveedor}")
+	public String ejemplaresDelProveedor(@PathVariable Proveedor proveedor, Model model) {
+		List<Ejemplar> e = repE.findByProveedor(proveedor);
+		model.addAttribute("Ejemplares", e);
+		model.addAttribute("Proveedor", proveedor);
+		return "Ejemplares";
+	}
+
 	@RequestMapping(value = "/delete/{id}")
 	public String deleteEjemplar(@PathVariable Long id, Model model) {
 		this.repE.deleteById(id);
