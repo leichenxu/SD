@@ -157,9 +157,11 @@ public class ControladorEjemplar {
     public String ejemplarDeUnaMonedaAcun(@PathVariable Moneda moneda, Model model) {
         if (!ejemplarAcun) {
             ejemplarAcun = true;
+            model.addAttribute("Moneda", moneda);           
             model.addAttribute("Ejemplares", this.repE.findByMonedaOrderByAnioAsc(moneda));
         } else {
             ejemplarAcun = false;
+            model.addAttribute("Moneda", moneda);
             model.addAttribute("Ejemplares", this.repE.findByMonedaOrderByAnioDesc(moneda));
         }
         this.defecto(model, true, false, true);
