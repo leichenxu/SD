@@ -45,47 +45,46 @@
                 <i class="material-icons">search</i>
             </button>
         </div>
-        </div>
-        <table class="table">
-            <thead>
-            <tr>
-                <th><a href="/proveedor/CIF">Identificación fiscal</a></th>
-                <th><a href="/proveedor/nombre">Nombre</a></th>
-                <th><a href="/proveedor/codigoPostal">Código postal</a></th>
-                <th><a href="/proveedor/email">Email</a></th>
-                <th><a href="/proveedor/telefono">Teléfono</a></th>
-                <th>Ejemplares</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="proveedor: ${Proveedores}">
-                <td><span th:text="${proveedor.codigoIdentificacionFiscal}"></span></td>
-                <td><span th:text="${proveedor.nombre}"></span></td>
-                <td><span th:text="${proveedor.codigoPostal}"></span></td>
-                <td><span th:text="${proveedor.email}"></span></td>
-                <td><span th:text="${proveedor.telefono}"></span></td>
-                <!--boton de info -->
-                <td><a th:href="@{'/ejemplar/proveedor/' + ${proveedor.id}}">
-                    <button type="submit" class="btn btn-info btn-fab btn-round">
-                        <i class="material-icons">info</i>
-                    </button>
-                </a></td>
-                <td class="td-actions text-right">
-                    <button type="button" rel="tooltip"
-                            class="btn btn-success btn-round" data-toggle="modal"
-                            th:onclick="'window.location.href =\''+@{/proveedor/edit/{id}(id=${proveedor.id})}+'\''">
-                        <i class="material-icons">edit</i>
-                    </button>
-                    <button type="button" rel="tooltip"
-                            class="btn btn-danger btn-round"
-                            th:onclick="'window.location.href =\''+@{/proveedor/delete/{id}(id=${proveedor.id})}+'\''">
-                        <i class="material-icons">delete</i>
-                    </button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
     </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th><a href="/proveedor/CIF">Identificación fiscal</a></th>
+            <th><a href="/proveedor/nombre">Nombre</a></th>
+            <th><a href="/proveedor/codigoPostal">Código postal</a></th>
+            <th><a href="/proveedor/email">Email</a></th>
+            <th><a href="/proveedor/telefono">Teléfono</a></th>
+            <th>Ejemplares</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="proveedor: ${Proveedores}">
+            <td><span th:text="${proveedor.codigoIdentificacionFiscal}"></span></td>
+            <td><span th:text="${proveedor.nombre}"></span></td>
+            <td><span th:text="${proveedor.codigoPostal}"></span></td>
+            <td><span th:text="${proveedor.email}"></span></td>
+            <td><span th:text="${proveedor.telefono}"></span></td>
+            <!--boton de info -->
+            <td><a th:href="@{'/ejemplar/proveedor/' + ${proveedor.id}}">
+                <button type="submit" class="btn btn-info btn-fab btn-round">
+                    <i class="material-icons">info</i>
+                </button>
+            </a></td>
+            <td class="td-actions text-right">
+                <button type="button" rel="tooltip"
+                        class="btn btn-success btn-round" data-toggle="modal"
+                        th:onclick="'window.location.href =\''+@{/proveedor/edit/{id}(id=${proveedor.id})}+'\''">
+                    <i class="material-icons">edit</i>
+                </button>
+                <button type="button" rel="tooltip"
+                        class="btn btn-danger btn-round"
+                        th:onclick="'window.location.href =\''+@{/proveedor/delete/{id}(id=${proveedor.id})}+'\''">
+                    <i class="material-icons">delete</i>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 <div th:insert="fragments/general.html :: addModal"></div>
