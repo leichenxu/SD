@@ -53,4 +53,16 @@ public interface RepositorioEjemplar extends JpaRepository<Ejemplar, Long> {
 
     List<Ejemplar> findByMonedaOrderByProveedorDesc(Moneda moneda);
 
+    List<Ejemplar> findByProveedorOrderByAnioAsc(Proveedor proveedor);
+
+    List<Ejemplar> findByProveedorOrderByAnioDesc(Proveedor proveedor);
+
+    List<Ejemplar> findByProveedorOrderByCiudadAsc(Proveedor proveedor);
+
+    List<Ejemplar> findByProveedorOrderByCiudadDesc(Proveedor proveedor);
+
+    List<Ejemplar> findByProveedorOrderByFechaAdquisicionAsc(Proveedor proveedor);
+
+    List<Ejemplar> findByProveedorOrderByFechaAdquisicionDesc(Proveedor proveedor);
+
 }

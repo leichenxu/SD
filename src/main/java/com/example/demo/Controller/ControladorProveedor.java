@@ -53,7 +53,7 @@ public class ControladorProveedor {
                 p.modificarProveedor(codigoIdentificacionFiscal, nombre, codigoPostal, email, telefono);
                 this.repP.save(p);
             }
-            // Editar proveedor
+        // Editar proveedor
         } else {
             Proveedor p = this.repP.findById(Long.parseLong(id)).get();
             p.modificarProveedor(codigoIdentificacionFiscal, nombre, codigoPostal, email, telefono);
@@ -158,4 +158,5 @@ public class ControladorProveedor {
         if (c)
             model.addAttribute("Proveedores", repP.findAll());
     }
+
 }

@@ -208,4 +208,46 @@ public class ControladorEjemplar {
         return "ejemplares_de_moneda";
     }
 
+    private boolean acunacProveedor = false;
+    @RequestMapping("/acunacProveedor/{proveedor}")
+    public String ejemplarDeProveedorAcun(@PathVariable Proveedor proveedor, Model model) {
+        model.addAttribute("Proveedor", proveedor);
+        if (!acunacProveedor) {
+            acunacProveedor = true;
+            model.addAttribute("Ejemplares", this.repE.findByProveedorOrderByAnioAsc(proveedor));
+        } else {
+            acunacProveedor = false;
+            model.addAttribute("Ejemplares", this.repE.findByProveedorOrderByAnioDesc(proveedor));
+        }
+        return "ejemplares_de_proveedor";
+    }
+
+    private boolean ciudadProveedor = false;
+    @RequestMapping("/ciudadProveedor/{proveedor}")
+    public String ejemplarDeProveedorCiudad(@PathVariable Proveedor proveedor, Model model) {
+        model.addAttribute("Proveedor", proveedor);
+        if (!ciudadProveedor) {
+            ciudadProveedor = true;
+            model.addAttribute("Ejemplares", this.repE.findByProveedorOrderByCiudadAsc(proveedor));
+        } else {
+            ciudadProveedor = false;
+            model.addAttribute("Ejemplares", this.repE.findByProveedorOrderByCiudadDesc(proveedor));
+        }
+        return "ejemplares_de_proveedor";
+    }
+
+    private boolean fechaProveedor = false;
+    @RequestMapping("/fechaProveedor/{proveedor}")
+    public String ejemplarDeProveedorFecha(@PathVariable Proveedor proveedor, Model model) {
+        model.addAttribute("Proveedor", proveedor);
+        if (!fechaProveedor) {
+            fechaProveedor = true;
+            model.addAttribute("Ejemplares", this.repE.findByProveedorOrderByFechaAdquisicionAsc(proveedor));
+        } else {
+            fechaProveedor = false;
+            model.addAttribute("Ejemplares", this.repE.findByProveedorOrderByFechaAdquisicionDesc(proveedor));
+        }
+        return "ejemplares_de_proveedor";
+    }
+
 }
