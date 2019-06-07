@@ -33,9 +33,9 @@
         <table class="table">
             <thead>
             <tr>
-                <th>Año de acuñación</th>
-                <th>Ciudad de acuñación</th>
-                <th>Fecha de adquisición</th>
+                <th><a th:href="@{/ejemplar/acunacProveedor/{id}(id=${Proveedor.id})}">Año de acuñacion</a></th>
+                <th><a th:href="@{/ejemplar/ciudadProveedor/{id}(id=${Proveedor.id})}">Ciudad de acuñación</a></th>
+                <th><a th:href="@{/ejemplar/fechaProveedor/{id}(id=${Proveedor.id})}">Fecha de adquisición</a></th>
                 <th>Estado de conservación</th>
                 <th>Proveedor</th>
             </tr>

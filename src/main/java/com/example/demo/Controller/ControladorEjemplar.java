@@ -35,7 +35,7 @@ public class ControladorEjemplar {
         List<Ejemplar> e = repE.findByMoneda(moneda);
         model.addAttribute("Ejemplares", e);
         model.addAttribute("Moneda", moneda);
-        return "Ejemplares";
+        return "ejemplares_de_moneda";
     }
 
     @RequestMapping("/proveedor/{proveedor}")
@@ -43,7 +43,7 @@ public class ControladorEjemplar {
         List<Ejemplar> e = repE.findByProveedor(proveedor);
         model.addAttribute("Ejemplares", e);
         model.addAttribute("Proveedor", proveedor);
-        return "Ejemplares";
+        return "ejemplares_de_proveedor";
     }
 
     @RequestMapping(value = "/delete/{id}")
@@ -121,10 +121,14 @@ public class ControladorEjemplar {
     }
 
     @RequestMapping(value = "/ejemplarAniadir", method = RequestMethod.POST)
-    public RedirectView ejemplarAniadir(@RequestParam("id") String id, @RequestParam("anio") String anio,
-                                        @RequestParam("ciudad") String ciudad, @RequestParam("fechaAdquisicion") Date fechaA,
-                                        @RequestParam("conservacion") String conservacion, @RequestParam("proveedor") long idProveedor,
-                                        @RequestParam("moneda") long idMoneda, Model model) {
+    public RedirectView ejemplarAniadir(@RequestParam("id") String id,
+                                        @RequestParam("anio") String anio,
+                                        @RequestParam("ciudad") String ciudad,
+                                        @RequestParam("fechaAdquisicion") Date fechaA,
+                                        @RequestParam("conservacion") String conservacion,
+                                        @RequestParam("proveedor") long idProveedor,
+                                        @RequestParam("moneda") long idMoneda,
+                                        Model model) {
         if (id.equals("")) {
             Ejemplar e = new Ejemplar(Integer.valueOf(anio), ciudad, fechaA, conservacion,
                     repP.findById(idProveedor).get(), repM.findById(idMoneda).get());
@@ -148,9 +152,8 @@ public class ControladorEjemplar {
             model.addAttribute("Proveedores", repP.findAll());
     }
 
-    // TODO
-    /*private boolean ejemplarAcun = false;
-    @RequestMapping("/{moneda}/acun")
+    private boolean ejemplarAcun = false;
+    @RequestMapping("/acunacMoneda/{moneda}")
     public String ejemplarDeUnaMonedaAcun(@PathVariable Moneda moneda, Model model) {
         if (!ejemplarAcun) {
             ejemplarAcun = true;
@@ -160,7 +163,49 @@ public class ControladorEjemplar {
             model.addAttribute("Ejemplares", this.repE.findByMonedaOrderByAnioDesc(moneda));
         }
         this.defecto(model, true, false, true);
-        return "Ejemplares";
-    }*/
+        return "ejemplares_de_moneda";
+    }
+
+    private boolean ejemplarCiudad = false;
+    @RequestMapping("/ciudadMoneda/{moneda}")
+    public String ejemplarDeUnaMonedaCiudad(@PathVariable Moneda moneda, Model model) {
+        if (!ejemplarCiudad) {
+            ejemplarCiudad = true;
+            model.addAttribute("Ejemplares", this.repE.findByMonedaOrderByCiudadAsc(moneda));
+        } else {
+            ejemplarCiudad = false;
+            model.addAttribute("Ejemplares", this.repE.findByMonedaOrderByCiudadDesc(moneda));
+        }
+        this.defecto(model, true, false, true);
+        return "ejemplares_de_moneda";
+    }
+
+    private boolean ejemplarFecha = false;
+    @RequestMapping("/fechaMoneda/{moneda}")
+    public String ejemplarDeUnaMonedaFecha(@PathVariable Moneda moneda, Model model) {
+        if (!ejemplarFecha) {
+            ejemplarFecha = true;
+            model.addAttribute("Ejemplares", this.repE.findByMonedaOrderByFechaAdquisicionAsc(moneda));
+        } else {
+            ejemplarFecha = false;
+            model.addAttribute("Ejemplares", this.repE.findByMonedaOrderByFechaAdquisicionDesc(moneda));
+        }
+        this.defecto(model, true, false, true);
+        return "ejemplares_de_moneda";
+    }
+
+    private boolean ejemplarProveedor = false;
+    @RequestMapping("/proveedMoneda/{moneda}")
+    public String ejemplarDeUnaMonedaProveedor(@PathVariable Moneda moneda, Model model) {
+        if (!ejemplarProveedor) {
+            ejemplarProveedor = true;
+            model.addAttribute("Ejemplares", this.repE.findByMonedaOrderByProveedorAsc(moneda));
+        } else {
+            ejemplarProveedor = false;
+            model.addAttribute("Ejemplares", this.repE.findByMonedaOrderByProveedorDesc(moneda));
+        }
+        this.defecto(model, true, false, true);
+        return "ejemplares_de_moneda";
+    }
 
 }

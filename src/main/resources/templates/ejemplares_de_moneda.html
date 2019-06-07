@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th=http://www.thymeleaf.org
+      xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance
+      xsi:schemaLocation=http://www.thymeleaf.org>
+<head>
+    <meta charset="UTF-8">
+    <title>Museo</title>
+    <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="/assets/css/material-dashboard.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/css/MyCSS.css">
+</head>
+<body>
+<h1>
+    <i>Museo numismatica</i>
+</h1>
+<div class="card">
+    <div class="card-header card-header-text card-header-primary">
+        <div class="card-text">
+            <h1 class="card-title">Ejemplares</h1>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <button type="button" rel="tooltip"
+                    class="btn btn-secondary btn-round btn-fab ml-5">
+                <a href="/"><i class="material-icons">chevron_left</i></a>
+            </button>
+        </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th><a th:href="@{/ejemplar/acunacMoneda/{id}(id=${Moneda.id})}">Año de acuñacion</a></th>
+                <th><a th:href="@{/ejemplar/ciudadMoneda/{id}(id=${Moneda.id})}">Ciudad de acuñación</a></th>
+                <th><a th:href="@{/ejemplar/fechaMoneda/{id}(id=${Moneda.id})}">Fecha de adquisición</a></th>
+                <th>Estado de conservación</th>
+                <th><a th:href="@{/ejemplar/proveedMoneda/{id}(id=${Moneda.id})}">Proveedor</a></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="ejemplar : ${Ejemplares}">
+                <td><span th:text="${ejemplar.anio}"></span></td>
+                <td><span th:text="${ejemplar.ciudad}"></span></td>
+                <td><span th:text="${ejemplar.fechaAdquisicion}"></span></td>
+                <td><span th:text="${ejemplar.conservacion}"></span></td>
+                <td><span th:text="${ejemplar.proveedor}"></span> <!--boton de info -->
+                    <a th:href="@{'/proveedor/' + ${ejemplar.id}}">
+                        <button type="submit" class="btn btn-info btn-fab btn-round"
+                                data-toggle="modal">
+                            <i class="material-icons">info</i>
+                        </button>
+                    </a></td>
+                <td class="td-actions text-right">
+                    <button type="button" rel="tooltip"
+                            class="btn btn-success btn-round"
+                            th:onclick="'window.location.href =\''+@{/ejemplar/edit/{id}(id=${ejemplar.id})}+'\''">
+                        <i class="material-icons">edit</i>
+                    </button>
+                    <button type="button" rel="tooltip"
+                            class="btn btn-danger btn-round"
+                            th:onclick="'window.location.href =\''+@{/ejemplar/delete/{id}(id=${ejemplar.id})}+'\''">
+                        <i class="material-icons">delete</i>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
