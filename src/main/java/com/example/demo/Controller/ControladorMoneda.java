@@ -144,4 +144,11 @@ public class ControladorMoneda {
         if (c)
             model.addAttribute("Proveedores", repP.findAll());
     }
+
+    @RequestMapping("/paginaSearchMoneda")
+    public String buscarMoneda() {
+
+        return "search_moneda";
+    }
+
 }
