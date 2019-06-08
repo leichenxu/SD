@@ -25,4 +25,11 @@ public interface RepositorioMoneda extends JpaRepository<Moneda, Long> {
     List<Moneda> findAllByOrderByPesoAsc();
 
     List<Moneda> findAllByOrderByPesoDesc();
+
+    List<Moneda> findAllByDiametroOrderByDiametroAsc(float diametro);
+
+    List<Moneda> findAllByDiametroOrderByDiametroDesc(float diametro);
+
+    List<Moneda> findAllByPesoOrderByPesoAsc(float peso);
+
 }

@@ -60,4 +60,9 @@ public class ControladorCambioPagina {
         return "PaginaEditProveedor";
     }
 
+    @GetMapping("/paginaSearchMoneda")
+    public String paginaSearchMoneda(Model model) {
+        return "search_moneda";
+    }
+
 }

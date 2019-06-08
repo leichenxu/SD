@@ -20,7 +20,7 @@
 <div class="card">
     <div class="card-header card-header-text card-header-primary">
         <div class="card-text">
-            <h1 class="card-title">Búsqueda de ejemplares</h1>
+            <h1 class="card-title">Búsqueda de monedas</h1>
         </div>
     </div>
     <div class="card-body">
@@ -31,26 +31,25 @@
             </button>
         </div>
 
-        <div class="modal-body">
-            <form action="/ejemplar/ejemplarAniadir" method="post">
+        <div class="col">
+            <h4>Filtrar por diámetro/peso</h4>
+            <form action="/moneda/searchMoneda" method="POST">
                 <div class="form-group">
-                    <label>Moneda</label>
-                    <select class="form-control" name="valor_facial" required>
-                        <option value="" selected disabled>Selecciona un filtro</option>
-                        <option value="Valor facial"></option>
-                        <option value="Unidad monetaria"></option>
-                        <option value="Diámetro"></option>
-                        <option value="Peso"></option>
-                        <option value="Composición"></option>
+                    <select name="opcion" class="form-control" required>
+                        <option value="" selected disabled>Selecciona una opción</option>
+                        <option value="diametro">Filtrar por diámetro</option>
+                        <option value="peso">Filtrar por peso</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>A buscar</label>
-                    <input type="text" class="form-control"
-                           name="textoBuscar" required>
+                    <label for="valor">Valor a filtrar</label>
+                    <input type="number" class="form-control" name="valor" id="valor" step="any"
+                           placeholder="Introduce el valor a filtrar" required>
                 </div>
+                <button class="btn btn-primary" type="submit">Filtrar las monedas</button>
             </form>
         </div>
+
     </div>
 
 </div>

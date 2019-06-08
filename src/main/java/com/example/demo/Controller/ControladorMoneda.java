@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("moneda")
 public class ControladorMoneda {
@@ -145,10 +147,18 @@ public class ControladorMoneda {
             model.addAttribute("Proveedores", repP.findAll());
     }
 
-    @RequestMapping("/paginaSearchMoneda")
-    public String buscarMoneda() {
-
-        return "search_moneda";
+    @RequestMapping("/searchMoneda")
+    public String buscarMoneda(String opcion, float valor, Model model) {
+        List<Moneda> monedas = null;
+        switch (opcion) {
+            case "diametro":
+                monedas = this.repM.findAllByDiametroOrderByDiametroAsc(valor);
+                break;
+            case "peso":
+                monedas = this.repM.findAllByPesoOrderByPesoAsc(valor);
+        }
+        model.addAttribute("Monedas", monedas);
+        return "search_result_moneda";
     }
 
 }
