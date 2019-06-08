@@ -53,7 +53,7 @@ public class ControladorEjemplar {
     }
 
     @RequestMapping(value = "/edit/{id}")
-    public String ejemplarModificar(@PathVariable long id, Model model) {
+    public String ejemplarModificar(@PathVariable Long id, Model model) {
         model.addAttribute("ejemplar", this.repE.findById(id).get());
         model.addAttribute("Monedas", this.repM.findAll());
         model.addAttribute("Proveedores", this.repP.findAll());
@@ -122,7 +122,7 @@ public class ControladorEjemplar {
 
     @RequestMapping(value = "/ejemplarAniadir", method = RequestMethod.POST)
     public RedirectView ejemplarAniadir(@RequestParam("id") String id,
-                                        @RequestParam("anio") String anio,
+                                        @RequestParam("anio") int anio,
                                         @RequestParam("ciudad") String ciudad,
                                         @RequestParam("fechaAdquisicion") Date fechaA,
                                         @RequestParam("conservacion") String conservacion,
@@ -130,12 +130,12 @@ public class ControladorEjemplar {
                                         @RequestParam("moneda") long idMoneda,
                                         Model model) {
         if (id.equals("")) {
-            Ejemplar e = new Ejemplar(Integer.valueOf(anio), ciudad, fechaA, conservacion,
+            Ejemplar e = new Ejemplar(anio, ciudad, fechaA, conservacion,
                     repP.findById(idProveedor).get(), repM.findById(idMoneda).get());
             repE.save(e);
         } else {
             Ejemplar e = repE.findById(Long.parseLong(id)).get();
-            e.modificarEjemplar(Integer.valueOf(anio), ciudad, fechaA, conservacion,
+            e.modificarEjemplar(anio, ciudad, fechaA, conservacion,
                     repP.findById(idProveedor).get(), repM.findById(idMoneda).get());
             repE.save(e);
         }
