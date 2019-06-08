@@ -257,4 +257,19 @@ public class ControladorEjemplar {
         return "ejemplares_de_proveedor";
     }
 
+    @RequestMapping(value = "/searchEjemplar", method = RequestMethod.POST)
+    public String buscarEjemplar(String opcion, String valor, Model model) {
+        List<Ejemplar> ejemplares = null;
+        switch (opcion) {
+            case "anyo":
+                ejemplares = this.repE.findAllByAnio(Integer.parseInt(valor));
+                break;
+            case "ciudad":
+                ejemplares = this.repE.findAllByCiudad(valor);
+                break;
+        }
+        model.addAttribute("Ejemplares", ejemplares);
+        return "search_result_ejemplar";
+    }
+
 }

@@ -65,4 +65,8 @@ public interface RepositorioEjemplar extends JpaRepository<Ejemplar, Long> {
 
     List<Ejemplar> findByProveedorOrderByFechaAdquisicionDesc(Proveedor proveedor);
 
+    List<Ejemplar> findAllByAnio(int anio);
+
+    List<Ejemplar> findAllByCiudad(String ciudad);
+
 }
