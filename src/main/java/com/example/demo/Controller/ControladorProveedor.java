@@ -85,12 +85,12 @@ public class ControladorProveedor {
     public String provResultCIF(Model model) {
         if (!CIFAscDes) {
             CIFAscDes = true;
-            model.addAttribute("Proveedor", this.repP.findAllByOrderByCodigoIdentificacionFiscalAsc());
+            model.addAttribute("Proveedores", this.repP.findAllByOrderByCodigoIdentificacionFiscalAsc());
         } else {
             CIFAscDes = false;
-            model.addAttribute("Proveedor", this.repP.findAllByOrderByCodigoIdentificacionFiscalDesc());
+            model.addAttribute("Proveedores", this.repP.findAllByOrderByCodigoIdentificacionFiscalDesc());
         }
-        return "search_result_proveedor";
+        return "PaginaTodosLosProveedores";
     }
 
     private boolean nomb = false;
@@ -99,13 +99,12 @@ public class ControladorProveedor {
     public String provResultNombre(Model model) {
         if (!nomb) {
             nomb = true;
-            model.addAttribute("Proveedor", this.repP.findAllByOrderByNombreAsc());
+            model.addAttribute("Proveedores", this.repP.findAllByOrderByNombreAsc());
         } else {
             nomb = false;
-            model.addAttribute("Proveedor", this.repP.findAllByOrderByNombreDesc());
+            model.addAttribute("Proveedores", this.repP.findAllByOrderByNombreDesc());
         }
-        return "search_result_proveedor";
-
+        return "PaginaTodosLosProveedores";
     }
 
     private boolean codigoP = false;
@@ -114,12 +113,12 @@ public class ControladorProveedor {
     public String codPAsc(Model model) {
         if (!codigoP) {
             codigoP = true;
-            model.addAttribute("Proveedor", this.repP.findAllByOrderByCodigoPostalAsc());
+            model.addAttribute("Proveedores", this.repP.findAllByOrderByCodigoPostalAsc());
         } else {
             codigoP = false;
-            model.addAttribute("Proveedor", this.repP.findAllByOrderByCodigoPostalDesc());
+            model.addAttribute("Proveedores", this.repP.findAllByOrderByCodigoPostalDesc());
         }
-        return "search_result_proveedor";
+        return "PaginaTodosLosProveedores";
     }
 
     private boolean email = false;
@@ -128,12 +127,12 @@ public class ControladorProveedor {
     public String emailAsc(Model model) {
         if (!email) {
             email = true;
-            model.addAttribute("Proveedor", this.repP.findAllByOrderByEmailAsc());
+            model.addAttribute("Proveedores", this.repP.findAllByOrderByEmailAsc());
         } else {
             email = false;
-            model.addAttribute("Proveedor", this.repP.findAllByOrderByEmailDesc());
+            model.addAttribute("Proveedores", this.repP.findAllByOrderByEmailDesc());
         }
-        return "search_result_proveedor";
+        return "PaginaTodosLosProveedores";
     }
 
     private boolean telefono = false;
@@ -142,12 +141,12 @@ public class ControladorProveedor {
     public String telefAsc(Model model) {
         if (!telefono) {
             telefono = true;
-            model.addAttribute("Proveedor", this.repP.findAllByOrderByTelefonoAsc());
+            model.addAttribute("Proveedores", this.repP.findAllByOrderByTelefonoAsc());
         } else {
             telefono = false;
-            model.addAttribute("Proveedor", this.repP.findAllByOrderByTelefonoDesc());
+            model.addAttribute("Proveedores", this.repP.findAllByOrderByTelefonoDesc());
         }
-        return "search_result_proveedor";
+        return "PaginaTodosLosProveedores";
     }
 
     private void defecto(Model model, boolean a, boolean b, boolean c) {

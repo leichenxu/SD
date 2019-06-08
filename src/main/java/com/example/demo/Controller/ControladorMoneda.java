@@ -63,7 +63,7 @@ public class ControladorMoneda {
             model.addAttribute("Monedas", this.repM.findAllByOrderByIdDesc());
         }
         this.defecto(model, false, true, true);
-        return "search_result_moneda";
+        return "index";
     }
 
     private boolean val = false;
@@ -78,7 +78,7 @@ public class ControladorMoneda {
             model.addAttribute("Monedas", this.repM.findAllByOrderByValorFacialDesc());
         }
         this.defecto(model, false, true, true);
-        return "search_result_moneda";
+        return "index";
     }
 
     private boolean uni = false;
@@ -93,7 +93,7 @@ public class ControladorMoneda {
             model.addAttribute("Monedas", this.repM.findAllByOrderByUnidadMonetariaDesc());
         }
         this.defecto(model, false, true, true);
-        return "search_result_moneda";
+        return "index";
     }
 
     private boolean diam = false;
@@ -108,14 +108,14 @@ public class ControladorMoneda {
             model.addAttribute("Monedas", this.repM.findAllByOrderByDiametroDesc());
         }
         this.defecto(model, false, true, true);
-        return "search_result_moneda";
+        return "index";
     }
 
-    @PostMapping(value = "/BusquedadV")
+    /*@PostMapping(value = "/BusquedadV")
     public String valorFacial(Model model) {
         model.addAttribute("Monedas", repM.findAllByOrderByValorFacialAsc());
         return "search_result_moneda";
-    }
+    }*/
 
     private boolean peso = false;
 
@@ -129,7 +129,7 @@ public class ControladorMoneda {
             model.addAttribute("Monedas", this.repM.findAllByOrderByPesoDesc());
         }
         this.defecto(model, false, true, true);
-        return "search_result_moneda";
+        return "index";
     }
 
     @RequestMapping(value = "/delete/{id}")

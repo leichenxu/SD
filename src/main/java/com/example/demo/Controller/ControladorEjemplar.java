@@ -72,7 +72,7 @@ public class ControladorEjemplar {
             model.addAttribute("Ejemplares", this.repE.findAllByOrderByAnioDesc());
         }
         this.defecto(model, true, false, true);
-        return "search_result_ejemplar";
+        return "PaginaTodosLosEjemplares";
     }
 
     private boolean ciud = false;
@@ -87,7 +87,7 @@ public class ControladorEjemplar {
             model.addAttribute("Ejemplares", this.repE.findAllByOrderByCiudadDesc());
         }
         this.defecto(model, true, false, true);
-        return "search_result_ejemplar";
+        return "PaginaTodosLosEjemplares";
     }
 
     private boolean prov = false;
@@ -102,7 +102,7 @@ public class ControladorEjemplar {
             model.addAttribute("Ejemplares", this.repE.findAllByOrderByProveedorDesc());
         }
         this.defecto(model, true, false, true);
-        return "search_result_ejemplar";
+        return "PaginaTodosLosEjemplares";
     }
 
     private boolean fechaAd = false;
@@ -117,7 +117,7 @@ public class ControladorEjemplar {
             model.addAttribute("Ejemplares", this.repE.findAllByOrderByFechaAdquisicionDesc());
         }
         this.defecto(model, true, false, true);
-        return "search_result_ejemplar";
+        return "PaginaTodosLosEjemplares";
     }
 
     @RequestMapping(value = "/ejemplarAniadir", method = RequestMethod.POST)
@@ -134,7 +134,7 @@ public class ControladorEjemplar {
                     repP.findById(idProveedor).get(), repM.findById(idMoneda).get());
             repE.save(e);
         } else {
-            Ejemplar e=repE.findById(Long.parseLong(id)).get();
+            Ejemplar e = repE.findById(Long.parseLong(id)).get();
             e.modificarEjemplar(Integer.valueOf(anio), ciudad, fechaA, conservacion,
                     repP.findById(idProveedor).get(), repM.findById(idMoneda).get());
             repE.save(e);
@@ -153,6 +153,7 @@ public class ControladorEjemplar {
     }
 
     private boolean ejemplarAcun = false;
+
     @RequestMapping("/acunacMoneda/{moneda}")
     public String ejemplarDeUnaMonedaAcun(@PathVariable Moneda moneda, Model model) {
         model.addAttribute("Moneda", moneda);
@@ -167,6 +168,7 @@ public class ControladorEjemplar {
     }
 
     private boolean ejemplarCiudad = false;
+
     @RequestMapping("/ciudadMoneda/{moneda}")
     public String ejemplarDeUnaMonedaCiudad(@PathVariable Moneda moneda, Model model) {
         model.addAttribute("Moneda", moneda);
@@ -181,6 +183,7 @@ public class ControladorEjemplar {
     }
 
     private boolean ejemplarFecha = false;
+
     @RequestMapping("/fechaMoneda/{moneda}")
     public String ejemplarDeUnaMonedaFecha(@PathVariable Moneda moneda, Model model) {
         model.addAttribute("Moneda", moneda);
@@ -195,6 +198,7 @@ public class ControladorEjemplar {
     }
 
     private boolean ejemplarProveedor = false;
+
     @RequestMapping("/proveedMoneda/{moneda}")
     public String ejemplarDeUnaMonedaProveedor(@PathVariable Moneda moneda, Model model) {
         model.addAttribute("Moneda", moneda);
@@ -209,6 +213,7 @@ public class ControladorEjemplar {
     }
 
     private boolean acunacProveedor = false;
+
     @RequestMapping("/acunacProveedor/{proveedor}")
     public String ejemplarDeProveedorAcun(@PathVariable Proveedor proveedor, Model model) {
         model.addAttribute("Proveedor", proveedor);
@@ -223,6 +228,7 @@ public class ControladorEjemplar {
     }
 
     private boolean ciudadProveedor = false;
+
     @RequestMapping("/ciudadProveedor/{proveedor}")
     public String ejemplarDeProveedorCiudad(@PathVariable Proveedor proveedor, Model model) {
         model.addAttribute("Proveedor", proveedor);
@@ -237,6 +243,7 @@ public class ControladorEjemplar {
     }
 
     private boolean fechaProveedor = false;
+
     @RequestMapping("/fechaProveedor/{proveedor}")
     public String ejemplarDeProveedorFecha(@PathVariable Proveedor proveedor, Model model) {
         model.addAttribute("Proveedor", proveedor);
