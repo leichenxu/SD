@@ -20,14 +20,14 @@
 <div class="card">
     <div class="card-header card-header-text card-header-primary">
         <div class="card-text">
-            <h1 class="card-title">Búsqueda de ejemplares</h1>
+            <h1 class="card-title">Búsqueda de proveedores</h1>
         </div>
     </div>
     <div class="card-body">
         <div class="row">
             <button type="button" rel="tooltip"
                     class="btn btn-secondary btn-round btn-fab ml-5">
-                <a href="/"><i class="material-icons">chevron_left</i></a>
+                <a href="/PaginaProveedor"><i class="material-icons">chevron_left</i></a>
             </button>
         </div>
 
@@ -44,7 +44,7 @@
                                onchange="try{setCustomValidity('')}catch(e){}"
                                placeholder="Introduzca el CIF" required>
                     </div>
-                    <button class="btn btn-primary" type="submit">Filtrar los ejemplares</button>
+                    <button class="btn btn-primary" type="submit">Filtrar los proveedores</button>
                 </form>
             </div>
 
@@ -54,10 +54,25 @@
                         <select name="opcion" class="form-control" required>
                             <option value="nombre">Filtrar por nombre</option>
                         </select>
-                        <input type="text" class="form-control" name="valor" id="valorC"
+                        <input type="text" class="form-control" name="valor" id="valorN"
                                placeholder="Introduzca el nombre" required>
                     </div>
-                    <button class="btn btn-primary" type="submit">Filtrar los ejemplares</button>
+                    <button class="btn btn-primary" type="submit">Filtrar los proveedores</button>
+                </form>
+            </div>
+
+            <div class="col">
+                <form action="/proveedor/searchProveedor" method="POST">
+                    <div class="form-group">
+                        <select name="opcion" class="form-control" required>
+                            <option value="CP">Filtrar por código postal</option>
+                        </select>
+                        <input type="number" class="form-control" name="valor" id="valorCP" min="10000" max="99999"
+                               oninvalid="this.setCustomValidity('Código postal no válido')"
+                               onchange="try{setCustomValidity('')}catch(e){}"
+                               placeholder="Introduzca el código postal" required>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Filtrar los proveedores</button>
                 </form>
             </div>
         </div>
