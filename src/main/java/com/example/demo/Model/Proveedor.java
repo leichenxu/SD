@@ -11,7 +11,7 @@ public class Proveedor {
 
     private String codigoIdentificacionFiscal;
     private String nombre;
-    private String codigoPostal;
+    private int codigoPostal;
     private String email;
     private String telefono;
 
@@ -22,7 +22,7 @@ public class Proveedor {
 
     }
 
-    public Proveedor(String codigoIdentificacionFiscal, String nombre, String codigoPostal, String email,
+    public Proveedor(String codigoIdentificacionFiscal, String nombre, int codigoPostal, String email,
                      String telefono) {
         this.codigoIdentificacionFiscal = codigoIdentificacionFiscal;
         this.nombre = nombre;
@@ -31,7 +31,7 @@ public class Proveedor {
         this.telefono = telefono;
     }
 
-    public void modificarProveedor(String codigoIdentificacionFiscal, String nombre, String codigoPostal, String email,
+    public void modificarProveedor(String codigoIdentificacionFiscal, String nombre, int codigoPostal, String email,
                                    String telefono) {
         this.codigoIdentificacionFiscal = codigoIdentificacionFiscal;
         this.nombre = nombre;
@@ -65,11 +65,11 @@ public class Proveedor {
         this.nombre = nombre;
     }
 
-    public String getCodigoPostal() {
+    public int getCodigoPostal() {
         return codigoPostal;
     }
 
-    public void setCodigoPostal(String codigoPostal) {
+    public void setCodigoPostal(int codigoPostal) {
         this.codigoPostal = codigoPostal;
     }
 

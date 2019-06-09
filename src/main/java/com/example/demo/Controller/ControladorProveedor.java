@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("proveedor")
 public class ControladorProveedor {
@@ -37,7 +39,7 @@ public class ControladorProveedor {
     public RedirectView proveedor(@RequestParam("id") String id,
                                   @RequestParam("codigoIdentificacionFiscal") String codigoIdentificacionFiscal,
                                   @RequestParam("nombre") String nombre,
-                                  @RequestParam("codigoPostal") String codigoPostal,
+                                  @RequestParam("codigoPostal") int codigoPostal,
                                   @RequestParam("email") String email,
                                   @RequestParam("telefono") String telefono,
                                   Model model) {
@@ -156,6 +158,24 @@ public class ControladorProveedor {
             model.addAttribute("Ejemplares", repE.findAll());
         if (c)
             model.addAttribute("Proveedores", repP.findAll());
+    }
+
+    @RequestMapping("/searchProveedor")
+    public String buscarProveedor(String opcion, String valor, Model model) {
+        List<Proveedor> proveedores = null;
+        switch (opcion) {
+            case "CIF":
+                proveedores = this.repP.findAllByCodigoIdentificacionFiscal(valor);
+                break;
+            case "nombre":
+                proveedores = this.repP.findAllByNombre(valor);
+                break;
+            case "CP":
+                proveedores = this.repP.findAllByCodigoPostal(Integer.parseInt(valor));
+                break;
+        }
+        model.addAttribute("Proveedores", proveedores);
+        return "search_result_proveedor";
     }
 
 }

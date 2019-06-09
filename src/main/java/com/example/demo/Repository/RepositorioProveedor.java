@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface RepositorioProveedor extends JpaRepository<Proveedor, Long> {
-    Proveedor findAllByNombre(String name);
 
     List<Proveedor> findAllByOrderByCodigoIdentificacionFiscalAsc();
 
@@ -31,4 +30,15 @@ public interface RepositorioProveedor extends JpaRepository<Proveedor, Long> {
     Proveedor findByNombre(String nombre);
 
     Proveedor findByCodigoIdentificacionFiscal(String CIF);
+
+    List<Proveedor> findAllByNombre(String name);
+
+    List<Proveedor> findAllByCodigoPostal(int CP);
+
+    List<Proveedor> findAllByEmail(String email);
+
+    List<Proveedor> findAllByTelefono(String tlf);
+
+    List<Proveedor> findAllByCodigoIdentificacionFiscal(String CIF);
+
 }

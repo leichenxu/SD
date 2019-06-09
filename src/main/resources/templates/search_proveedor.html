@@ -1,10 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th=http://www.thymeleaf.org
+      xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance
+      xsi:schemaLocation=http://www.thymeleaf.org>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Museo</title>
+    <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="/assets/css/material-dashboard.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/css/MyCSS.css">
 </head>
 <body>
+<h1>
+    <i>Museo numismática</i>
+</h1>
+<div class="card">
+    <div class="card-header card-header-text card-header-primary">
+        <div class="card-text">
+            <h1 class="card-title">Búsqueda de ejemplares</h1>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <button type="button" rel="tooltip"
+                    class="btn btn-secondary btn-round btn-fab ml-5">
+                <a href="/"><i class="material-icons">chevron_left</i></a>
+            </button>
+        </div>
 
+        <div class="row">
+            <div class="col">
+                <form action="/proveedor/searchProveedor" method="POST">
+                    <div class="form-group">
+                        <select name="opcion" class="form-control" required>
+                            <option value="CIF">Filtrar por CIF</option>
+                        </select>
+                        <input type="text" class="form-control" name="valor" id="valorA" step="any"
+                               pattern="B.{8,8}"
+                               oninvalid="this.setCustomValidity('Empieza por B y 8 números')"
+                               onchange="try{setCustomValidity('')}catch(e){}"
+                               placeholder="Introduzca el CIF" required>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Filtrar los ejemplares</button>
+                </form>
+            </div>
+
+            <div class="col">
+                <form action="/proveedor/searchProveedor" method="POST">
+                    <div class="form-group">
+                        <select name="opcion" class="form-control" required>
+                            <option value="nombre">Filtrar por nombre</option>
+                        </select>
+                        <input type="text" class="form-control" name="valor" id="valorC"
+                               placeholder="Introduzca el nombre" required>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Filtrar los ejemplares</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</div>
 </body>
 </html>
