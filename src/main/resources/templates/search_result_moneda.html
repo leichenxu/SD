@@ -1,67 +1,67 @@
 <!DOCTYPE html>
 <html xmlns:th=http://www.thymeleaf.org
-	xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance
-	xsi:schemaLocation=http://www.thymeleaf.org>
+      xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance
+      xsi:schemaLocation=http://www.thymeleaf.org>
 <head>
-<meta charset="UTF-8">
-<title>Museo</title>
-<link rel="stylesheet" type="text/css"
-	href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css"
-	href="/assets/css/material-dashboard.css" />
-<link rel="stylesheet" type="text/css" href="/assets/css/MyCSS.css">
+    <meta charset="UTF-8">
+    <title>Museo</title>
+    <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="/assets/css/material-dashboard.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/css/MyCSS.css">
 </head>
 <body>
-	<h1>
-		<i>Museo numismatica</i>
-	</h1>
-	<div class="card">
-		<div class="card-header card-header-text card-header-primary">
-			<div class="card-text">
-				<h1 class="card-title">Resultado de la búsqueda</h1>
-			</div>
-		</div>
-		<div class="card-body">
-			<button type="button" rel="tooltip"
-				class="btn btn-secondary btn-round btn-fab ml-5">
-				<a href="/"><i class="material-icons">chevron_left</i></a>
-			</button>
-			<table class="table">
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Valor facial</th>
-						<th>Unidad monetaria</th>
-						<th>Diámetro</th>
-						<th>Peso</th>
-						<th>Composición</th>
-						<th>Descripción</th>
-						<th>Ejemplares</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="moneda : ${Monedas}">
-						<td><span th:text="${moneda.id}"></span></td>
-						<td><span th:text="${moneda.valorFacial}"></span></td>
-						<td><span th:text="${moneda.unidadMonetaria}"></span></td>
-						<td><span th:text="${moneda.diametro}"></span></td>
-						<td><span th:text="${moneda.peso}"></span></td>
-						<td><span th:text="${moneda.metales}"></span></td>
-						<td><span th:text="${moneda.descripcion}"></span></td>
-						<!--boton de info -->
-						<td><a th:href="@{'/ejemplar/' + ${moneda.id}}">
-								<button type="submit" class="btn btn-info btn-fab btn-round"
-									data-toggle="modal">
-									<i class="material-icons">info</i>
-								</button>
-						</a></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
+<h1>
+    <i>Museo numismatica</i>
+</h1>
+<div class="card">
+    <div class="card-header card-header-text card-header-primary">
+        <div class="card-text">
+            <h1 class="card-title">Resultado de la búsqueda</h1>
+        </div>
+    </div>
+    <div class="card-body">
+        <button type="button" rel="tooltip"
+                class="btn btn-secondary btn-round btn-fab ml-5">
+            <a href="/"><i class="material-icons">chevron_left</i></a>
+        </button>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Valor facial</th>
+                <th>Unidad monetaria</th>
+                <th>Diámetro</th>
+                <th>Peso</th>
+                <th>Composición</th>
+                <th>Descripción</th>
+                <th>Ejemplares</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="moneda : ${Monedas}">
+                <td><span th:text="${moneda.id}"></span></td>
+                <td><span th:text="${moneda.valorFacial}"></span></td>
+                <td><span th:text="${moneda.unidadMonetaria}"></span></td>
+                <td><span th:text="${moneda.diametro}"></span></td>
+                <td><span th:text="${moneda.peso}"></span></td>
+                <td><span th:text="${moneda.metales}"></span></td>
+                <td><span th:text="${moneda.descripcion}"></span></td>
+                <!--boton de info -->
+                <td><a th:href="@{'/ejemplar/' + ${moneda.id}}">
+                    <button type="submit" class="btn btn-info btn-fab btn-round"
+                            data-toggle="modal">
+                        <i class="material-icons">info</i>
+                    </button>
+                </a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
 </body>
 </html>
