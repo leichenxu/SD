@@ -31,27 +31,47 @@
             </button>
         </div>
 
-        <div class="col">
-            <h4>Filtrar por diámetro/peso</h4>
-            <form action="/moneda/searchMoneda" method="POST">
-                <div class="form-group">
-                    <select name="opcion" class="form-control" required>
-                        <option value="" selected disabled>Selecciona una opción</option>
-                        <option value="diametro">Filtrar por diámetro</option>
-                        <option value="peso">Filtrar por peso</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="valor">Valor a filtrar</label>
-                    <input type="number" class="form-control" name="valor" id="valor" step="any"
-                           placeholder="Introduzca el valor a filtrar" required>
-                </div>
-                <button class="btn btn-primary" type="submit">Filtrar las monedas</button>
-            </form>
+        <div class="row">
+            <div class="col">
+                <h4>Filtrar por unidad monetaria</h4>
+                <form action="/moneda/searchMoneda" method="POST">
+                    <div class="form-group">
+                        <select name="opcion" class="form-control" required>
+                            <option value="unidadMonetaria" selected>Filtrar por unidad monetaria</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="valor">Valor a filtrar</label>
+                        <input type="text" class="form-control" name="valor"
+                               placeholder="Introduzca la unidad monetaria" required maxlength="32">
+                    </div>
+                    <button class="btn btn-primary" type="submit">Filtrar las monedas</button>
+                </form>
+            </div>
+
+            <div class="col">
+                <h4>Filtrar por valor facial/diámetro/peso</h4>
+                <form action="/moneda/searchMoneda" method="POST">
+                    <div class="form-group">
+                        <select name="opcion" class="form-control" required>
+                            <option value="" selected disabled>Selecciona una opción</option>
+                            <option value="valorFacial">Filtrar por valor facial</option>
+                            <option value="diametro">Filtrar por diámetro</option>
+                            <option value="peso">Filtrar por peso</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="valor">Valor a filtrar</label>
+                        <input type="number" class="form-control" name="valor" id="valor" step="any"
+                               placeholder="Introduzca el valor a filtrar" required>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Filtrar las monedas</button>
+                </form>
+            </div>
         </div>
 
     </div>
-
 </div>
+
 </body>
 </html>

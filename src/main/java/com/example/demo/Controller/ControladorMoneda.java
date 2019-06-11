@@ -148,14 +148,20 @@ public class ControladorMoneda {
     }
 
     @RequestMapping("/searchMoneda")
-    public String buscarMoneda(String opcion, float valor, Model model) {
+    public String buscarMoneda(String opcion, String valor, Model model) {
         List<Moneda> monedas = null;
         switch (opcion) {
+            case "unidadMonetaria":
+                monedas = this.repM.findAllByUnidadMonetariaOrderByUnidadMonetaria(valor);
+                break;
+            case "valorFacial":
+                monedas = this.repM.findAllByValorFacialOrderByValorFacial(Double.parseDouble(valor));
+                break;
             case "diametro":
-                monedas = this.repM.findAllByDiametroOrderByDiametroAsc(valor);
+                monedas = this.repM.findAllByDiametroOrderByDiametro(Float.parseFloat(valor));
                 break;
             case "peso":
-                monedas = this.repM.findAllByPesoOrderByPesoAsc(valor);
+                monedas = this.repM.findAllByPesoOrderByPeso(Float.parseFloat(valor));
         }
         model.addAttribute("Monedas", monedas);
         return "search_result_moneda";
