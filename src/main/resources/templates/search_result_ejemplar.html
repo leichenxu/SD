@@ -51,6 +51,18 @@
                             <i class="material-icons">info</i>
                         </button>
                     </a></td>
+                <td class="td-actions text-right">
+                    <button type="button" rel="tooltip"
+                            class="btn btn-success btn-round"
+                            th:onclick="'window.location.href =\''+@{/ejemplar/edit/{id}(id=${ejemplar.id})}+'\''">
+                        <i class="material-icons">edit</i>
+                    </button>
+                    <button type="button" rel="tooltip"
+                            class="btn btn-danger btn-round"
+                            th:onclick="'window.location.href =\''+@{/ejemplar/delete/{id}(id=${ejemplar.id})}+'\''">
+                        <i class="material-icons">delete</i>
+                    </button>
+                </td>
             </tr>
         </table>
     </div>
