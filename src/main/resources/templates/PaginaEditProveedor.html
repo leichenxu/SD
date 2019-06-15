@@ -42,7 +42,8 @@
 						th:if="${proveedor == null}" value="" />
 					<div class="form-group">
 						<label>Código de identificación fiscal</label><input type="text" pattern="[A-Z].{8,8}"
-							oninvalid="this.setCustomValidity('Empieza por letra mayuscula y 8 números')"
+							oninvalid="this.setCustomValidity('Empieza por una letra mayúscula seguido de 7 números ' +
+							 'y un dígito de control (número/letra)')"
                             onchange="try{setCustomValidity('')}catch(e){}"
 							class="form-control" name="codigoIdentificacionFiscal" required
 							th:value="${(proveedor != null) ? proveedor.codigoIdentificacionFiscal : ''}">
@@ -60,10 +61,8 @@
 							th:value="${(proveedor != null) ? proveedor.codigoPostal : ''}">
 					</div>
 					<div class="form-group">
-						<label>Email</label> <input type="text" class="form-control"
-							name="email" required pattern=".{1,}@.{3,}"
-                            oninvalid="this.setCustomValidity('Correo electrónico no válido')"
-                            onchange="try{setCustomValidity('')}catch(e){}"
+						<label>Email</label> <input type="email" class="form-control"
+							name="email" required
 							th:value="${(proveedor != null) ? proveedor.email : ''}">
 					</div>
 					<div class="form-group">
