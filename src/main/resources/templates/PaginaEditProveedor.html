@@ -41,9 +41,9 @@
 						th:value="${proveedor.id}" /> <input type="hidden" name="id"
 						th:if="${proveedor == null}" value="" />
 					<div class="form-group">
-						<label>Código de identificación fiscal</label><input type="text" pattern="[A-Z].{8,8}"
+						<label>Código de identificación fiscal</label><input type="text" pattern="[A-W]{1}[0-9]{7}[A-Z0-9]{1}"
 							oninvalid="this.setCustomValidity('Empieza por una letra mayúscula seguido de 7 números ' +
-							 'y un dígito de control (número/letra)')"
+							 'y un dígito de control (número/letra en mayúscula)')"
                             onchange="try{setCustomValidity('')}catch(e){}"
 							class="form-control" name="codigoIdentificacionFiscal" required
 							th:value="${(proveedor != null) ? proveedor.codigoIdentificacionFiscal : ''}">
