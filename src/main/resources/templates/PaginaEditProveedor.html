@@ -41,8 +41,8 @@
 						th:value="${proveedor.id}" /> <input type="hidden" name="id"
 						th:if="${proveedor == null}" value="" />
 					<div class="form-group">
-						<label>Código de identificación fiscal</label><input type="text" pattern="B.{8,8}"
-							oninvalid="this.setCustomValidity('Empieza por B y 8 números')"
+						<label>Código de identificación fiscal</label><input type="text" pattern="[A-Z].{8,8}"
+							oninvalid="this.setCustomValidity('Empieza por letra mayuscula y 8 números')"
                             onchange="try{setCustomValidity('')}catch(e){}"
 							class="form-control" name="codigoIdentificacionFiscal" required
 							th:value="${(proveedor != null) ? proveedor.codigoIdentificacionFiscal : ''}">
@@ -68,7 +68,7 @@
 					</div>
 					<div class="form-group">
 						<label>Teléfono</label> <input type="number" class="form-control"
-													   min="900000000" max="999999999"
+													   min="600000000" max="999999999"
                         oninvalid="this.setCustomValidity('Número de teléfono fijo no válido')"
                         onchange="try{setCustomValidity('')}catch(e){}"
 							name="telefono" required

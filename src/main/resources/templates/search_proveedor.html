@@ -39,8 +39,8 @@
                             <option value="CIF">Filtrar por CIF</option>
                         </select>
                         <input type="text" class="form-control" name="valor" id="valorA" step="any"
-                               pattern="B.{8,8}"
-                               oninvalid="this.setCustomValidity('Empieza por B y 8 números')"
+                               pattern="[A-Z].{8,8}"
+                               oninvalid="this.setCustomValidity('Empieza por letra mayuscula y 8 números')"
                                onchange="try{setCustomValidity('')}catch(e){}"
                                placeholder="Introduzca el CIF" required>
                     </div>
